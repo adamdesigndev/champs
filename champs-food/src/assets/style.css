@@ -1,4 +1,4 @@
   /* Utilities */
 .wrapper-general {
-  width: min(var(--inner-content-basic), 100% -4rem);
+  width: min(var(--inner-content-max-width-basic), 100% -4rem);
 }
