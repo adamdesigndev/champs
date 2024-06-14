@@ -1,23 +1,4 @@
-body {
-    background-color: white;
-    color: var(--font-color);
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    margin: 1rem 0;
-  }
-  
-  p {
-    margin: 1rem 0;
-  }
-  
-  a {
-    color: var(--primary-color);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+  /* Utilities */
+.wrapper-general {
+  width: min(var(--inner-content-basic), 100% -4rem);
+}
