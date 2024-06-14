@@ -1,4 +1,30 @@
-  /* Utilities */
+/* Utilities */
+
+/* General contetn wrapper */
 .wrapper-general {
-  width: min(var(--inner-content-max-width-basic), 100% -4rem);
+  width: min(var(--inner-content-max-width-v1), 100% - var(--padding-inline-v1) * 2);
+  margin-inline: auto;
+}
+
+/* content with sidebar in single item, cart, & checkout */
+.main-with-sidebar {
+  --breakpoint: 550px;
+  --gap: 2rem;
+
+  display: flex;
+  gap: var(gap);
+  flex-wrap: wrap;
+}
+
+.main-with-sidebar > * {
+  flex-grow: 1;
+}
+
+.main-with-sidebar > main {
+  flex-grow: 999;
+  flex-basis: calc(var(--breakpoint) - 100%) * 9999;
+}
+
+.main-with-sidebar > aside {
+  flex-basis: 250px;
 }

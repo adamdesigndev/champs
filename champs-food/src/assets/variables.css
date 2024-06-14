@@ -6,5 +6,6 @@
     --font-size-large: 24px;
 
     /* wrappers */
-    --content-max-width-basic: 1160px;
+    --content-max-width-v1: 1160px;
+    --padding-inline-v1: 2rem;
   }

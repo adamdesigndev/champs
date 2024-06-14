@@ -4,6 +4,11 @@
     padding: 0;
   }
 
+  /* reintroduces top spacing except parent element */
+  .flow > * + * {
+    margin-top: 1em;
+  }
+
   *,
   *::before,
   *::after {
@@ -14,6 +19,7 @@
     background-color: #fff;
   }
   
+  /* resets only if it has a class */
   ul[class] {
     list-style: none;
     margin: 0;
