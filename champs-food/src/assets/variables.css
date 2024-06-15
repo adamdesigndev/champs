@@ -1,11 +1,32 @@
 :root {
-    --primary-color: #ffcc00;
-    --secondary-color: #333;
-    --font-color: #000;
-    --font-size-base: 16px;
-    --font-size-large: 24px;
+  /* Colors */
+  --clr-body: #292B2F;
+  --clr-primary: #F43737;
+  --clr-primary-100: #FDD7D7;
+  --clr-primary-200: #B42929;
+  --clr-accent-creme: #F8F7F5; 
 
-    /* wrappers */
-    --content-max-width-v1: 1160px;
-    --padding-inline-v1: 2rem;
+  /* Font size */
+  --fs-700: 2.325rem;
+  --fs-800: 2.7rem;
+  --fs-900: 4.5rem;
+
+
+  /* wrappers */
+  --content-max-width-v1: 1160px;
+  --padding-inline-v1: 2rem;
+}
+
+@media (width > 850px) {
+  :root {
+    --fs-100: .7rem;
+    --fs-200: .9rem;
+    --fs-300: 1rem;
+    --fs-400: 1.325rem;
+    --fs-500: 1.625rem;
+    --fs-600: 2rem;
+    --fs-700: 2.5rem;
+    --fs-800: 3rem;
+    --fs-900: 6.5rem;
   }
+}

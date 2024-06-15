@@ -1,4 +1,20 @@
+/* Body */
+body {
+  background-color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--body-clr);
+}
+
 /* Utilities */
+.main-copy {
+  font-family: var(--font-fam-body);
+  font-size: 1rem;
+  color: var(--main-copy-clr);
+  text-wrap: pretty;
+}
 
 /* General contetn wrapper */
 .wrapper-general {
