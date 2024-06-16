@@ -7,6 +7,12 @@
   --clr-accent-creme: #F8F7F5; 
 
   /* Font size */
+  --fs-100: .7rem;
+  --fs-200: .9rem;
+  --fs-300: 1rem;
+  --fs-400: 1.325rem;
+  --fs-500: 1.625rem;
+  --fs-600: 2rem;
   --fs-700: 2.325rem;
   --fs-800: 2.7rem;
   --fs-900: 4.5rem;
