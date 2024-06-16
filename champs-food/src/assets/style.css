@@ -16,7 +16,21 @@ body {
   text-wrap: pretty;
 }
 
-/* General contetn wrapper */
+/* header outer content wrapper */
+.wrapper-header-outer {
+  border-bottom: 1px solid #000;
+}
+
+.wrapper-header-inner {
+  max-width: 2400px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+/* General content wrapper */
 .wrapper-general {
   width: min(var(--inner-content-max-width-v1), 100% - var(--padding-inline-v1) * 2);
   margin-inline: auto;
@@ -43,4 +57,11 @@ body {
 
 .main-with-sidebar > aside {
   flex-basis: 250px;
+}
+
+/* product list wrapper */
+.wrapper-food-items-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px));
+  gap: 2rem;
 }
