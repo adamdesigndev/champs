@@ -1,0 +1,69 @@
+/* styles.css */
+
+/* Body */
+body {
+  background-color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--body-clr);
+}
+
+/* Utilities */
+.main-copy {
+  font-family: var(--font-fam-body);
+  font-size: 1rem;
+  color: var(--main-copy-clr);
+  text-wrap: pretty;
+}
+
+/* header outer content wrapper */
+.wrapper-header-outer {
+  border-bottom: 1px solid #000;
+}
+
+.wrapper-nav-inner {
+  max-width: 2400px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+/* General content wrapper */
+.wrapper-general {
+  width: min(var(--inner-content-max-width-v1), 100% - var(--padding-inline-v1) * 2);
+  margin-inline: auto;
+}
+
+/* content with sidebar in single item, cart, & checkout */
+.main-with-sidebar {
+  --breakpoint: 550px;
+  --gap: 2rem;
+
+  display: flex;
+  gap: var(gap);
+  flex-wrap: wrap;
+}
+
+.main-with-sidebar > * {
+  flex-grow: 1;
+}
+
+.main-with-sidebar > main {
+  flex-grow: 999;
+  flex-basis: calc(var(--breakpoint) - 100%) * 9999;
+}
+
+.main-with-sidebar > aside {
+  flex-basis: 250px;
+}
+
+/* product list wrapper */
+.wrapper-food-items-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px));
+  gap: 2rem;
+}
