@@ -25,6 +25,7 @@
 .nav-menu-links {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -38,7 +39,7 @@
 }
 
 .cart-icon {
-  height: 1.5rem;
+  height: 1.8rem;
 }
 
   </style>
