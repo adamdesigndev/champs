@@ -22,6 +22,21 @@
   </script>
   
   <style scoped>
+  /* header outer content wrapper */
+.wrapper-header-outer {
+  border-bottom: 1px solid #000;
+}
+
+.wrapper-nav-inner {
+  max-width: 2400px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
 .nav-menu-links {
   display: flex;
   flex-direction: row;

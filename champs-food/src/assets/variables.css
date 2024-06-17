@@ -23,6 +23,7 @@
   --padding-inline-v1: 2rem;
 }
 
+/* Font size */
 @media (width > 850px) {
   :root {
     --fs-100: .7rem;
