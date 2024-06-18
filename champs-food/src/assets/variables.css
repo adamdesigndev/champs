@@ -6,6 +6,10 @@
   --clr-primary-200: #B42929;
   --clr-accent-creme: #F8F7F5; 
 
+  /* Font Families */
+  --ff-headers: "Nunito Sans", sans-serif;
+  --font-fam-body: "DM Sans", sans-serif;
+
   /* Font size */
   --fs-100: .7rem;
   --fs-200: .9rem;
