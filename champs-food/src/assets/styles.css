@@ -67,3 +67,20 @@ body {
   cursor: pointer;
   letter-spacing: 0.06rem;
 }
+
+.two-up-section-image {
+ border-radius: 30px;
+}
+
+.header-1 {
+  font-size: var(--fs-900);
+  line-height: 6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--clr-body);
+  margin-bottom: 1.5rem;
+}
+
+.body-bottom-button {
+  margin-bottom: 1rem;
+}

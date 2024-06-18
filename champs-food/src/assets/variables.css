@@ -21,6 +21,8 @@
   /* wrappers */
   --content-max-width-v1: 1160px;
   --padding-inline-v1: 2rem;
+  --wrapper-outer-padding-tb: 10rem;
+  --content-gap: 3rem;
 }
 
 /* Font size */
@@ -34,6 +36,6 @@
     --fs-600: 2rem;
     --fs-700: 2.5rem;
     --fs-800: 3rem;
-    --fs-900: 6.5rem;
+    --fs-900: 7rem;
   }
 }
