@@ -18,5 +18,13 @@ export const foodItems = [
       image: '/images/chicken-spicy-burger.jpg',
       featured: true,
       category: 'burger'
+    },
+    {
+      name: 'Spicy Chicken Burger',
+      description: 'Very spicy chicken burger',
+      price: 5.99,
+      image: '/images/chicken-spicy-burger.jpg',
+      featured: true,
+      category: 'burger'
     }
   ];

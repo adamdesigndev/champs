@@ -1,9 +1,12 @@
+<!-- MenuNavigation.vue -->
 <template>
-    <nav class="menu-navigation">
-      <ul>
-        <li v-for="category in categories" :key="category" @click="selectCategory(category)">
-          {{ category }}
-        </li>
+    <nav class="">
+      <ul class="menu-navigation">
+       <li>Specials</li>
+       <li>Specials</li>
+       <li>Specials</li>
+       <li>Specials</li>
+       <li>Specials</li>
       </ul>
     </nav>
   </template>
@@ -24,10 +27,10 @@
   </script>
   
   <style scoped>
-  .menu-navigation ul {
+  .menu-navigation {
     display: flex;
-    list-style: none;
-    padding: 0;
+    flex-direction: column;
+    gap: 2rem;
   }
   
   .menu-navigation li {

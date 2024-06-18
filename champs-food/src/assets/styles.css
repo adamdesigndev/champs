@@ -39,27 +39,34 @@ body {
   margin-inline: auto;
 }
 
+/* Menu page content wrapper */
+.wrapper-menu-outer-section {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--wrapper-outer-menu-padding-tb);
+  padding-bottom: var(--wrapper-outer-menu-padding-tb);
+}
+
 /* content with sidebar in single item, cart, & checkout */
-.main-with-sidebar {
-  --breakpoint: 550px;
+.with-sidebar {
+  --main-min-width: 350px;
+  --side-bar-size: 100px;
   --gap: 2rem;
 
   display: flex;
-  gap: var(gap);
+  gap: var(--gap);
   flex-wrap: wrap;
 }
 
-.main-with-sidebar > * {
+.with-sidebar > :first-child {
   flex-grow: 1;
 }
 
-.main-with-sidebar > main {
+.with-sidebar > :last-child {
   flex-grow: 999;
-  flex-basis: calc(var(--breakpoint) - 100%) * 9999;
-}
-
-.main-with-sidebar > aside {
-  flex-basis: 250px;
+  flex-basis: calc(
+    (var(--main-min-width) - (100% - var(--side-bar-size) - var(--gap)) * 9999)
+  );
 }
 
 /* product list wrapper */

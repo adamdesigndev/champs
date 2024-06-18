@@ -27,6 +27,8 @@
   --padding-inline-v1: 2rem;
   --wrapper-outer-padding-tb: 6rem;
   --content-gap: 3rem;
+
+  --wrapper-outer-menu-padding-tb: 3rem;
 }
 
 /* Font size */
