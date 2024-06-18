@@ -1,6 +1,6 @@
 <template>
     <section class="wrapper-outer-hero-home">
-      <div class="wrapper-inner-hero-content">
+      <div class="wrapper-inner-hero-content wrapper-general">
         <div class="wrapper-inner-hero-left">
           <h1 class="header-1">Welcome Champs</h1>
         <p class="body-bottom-button">Delicious food, ready to serve!</p>
@@ -28,7 +28,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--content-gap);
-    max-width: var(--content-max-width-v1);
   }
   
   .hero-image img {
