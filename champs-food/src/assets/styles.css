@@ -19,6 +19,7 @@ body {
 }
 
 /* General content wrapper */
+
 .wrapper-general {
   width: min(var(--inner-content-max-width-v1), 100% - var(--padding-inline-v1) * 2);
   margin-inline: auto;

@@ -5,7 +5,7 @@
         <p>Delicious food, ready to serve!</p>
       </div>
       <div class="hero-image">
-        <img src="/images/hero-image.jpg" alt="Delicious food">
+        <img src="" alt="Delicious food">
       </div>
     </section>
   </template>
