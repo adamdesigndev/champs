@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../pages/Home.vue';
 import Menu from '../pages/Menu.vue';
+import SingleFoodItem from '../pages/SingleFoodItem.vue';
 
 const routes = [
   {
@@ -10,9 +11,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/menu',
+    path: '/Menu',
     name: 'Menu',
     component: Menu
+  },
+  {
+    path: '/SingleFoodItem',
+    name: 'SingleFoodItem',
+    component: SingleFoodItem
   },
   // Add other routes here
 ];

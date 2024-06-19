@@ -3,8 +3,8 @@
       <nav class="wrapper-nav-inner">
         <ul class="nav-menu-links">
           <li><a class="header-nav-links" href="/">Home</a></li>
-          <li><a class="header-nav-links" href="/menu">Menu</a></li>
-          <li><a class="header-nav-links" href="/about">About</a></li>
+          <li><a class="header-nav-links" href="/Menu">Menu</a></li>
+          <li><a class="header-nav-links" href="/About">About</a></li>
         </ul>
         <a href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt=""></a>
         <ul class="nav-menu-links">

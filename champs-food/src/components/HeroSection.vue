@@ -4,7 +4,7 @@
         <div class="wrapper-inner-hero-left">
           <h1 class="header-1">Welcome Champs</h1>
         <p class="body-bottom-button">Delicious food, ready to serve!</p>
-        <button class="main-btn">Start Order</button>
+        <button class="main-btn"><a class="" href="/SingleFoodItem">Add To Order</a></button>
         </div>
         <div class="wrapper-inner-hero-right">
         <img class="two-up-section-image" src="/images/grilledClub_colbyJack_PDP.png" alt="Delicious food">
