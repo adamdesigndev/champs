@@ -25,9 +25,5 @@
   </script>
   
   <style scoped>
- .wrapper-basic-two-up {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
- }
+
   </style>
