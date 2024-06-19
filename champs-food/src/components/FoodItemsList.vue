@@ -1,4 +1,5 @@
 <template>
+  <h2 class="header-3">Menu</h2>
     <section class="food-items-list">
       <FoodItemCard v-for="item in filteredItems" :key="item.name" :item="item" />
     </section>

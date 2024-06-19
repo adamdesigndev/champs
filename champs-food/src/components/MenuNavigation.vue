@@ -1,5 +1,6 @@
 <!-- MenuNavigation.vue -->
 <template>
+  <h1 class="header-2">Menu</h1>
     <nav class="">
       <ul class="menu-navigation">
        <li>Specials</li>
@@ -34,12 +35,11 @@
   }
   
   .menu-navigation li {
-    margin: 0 1rem;
     cursor: pointer;
-    color: var(--primary-color);
+    border-bottom: 2px solid rgba(0,0,0,0);
   }
   
   .menu-navigation li:hover {
-    text-decoration: underline;
+    border-bottom: 2px solid var(--clr-primary);
   }
   </style>

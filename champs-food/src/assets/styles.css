@@ -49,9 +49,9 @@ body {
 
 /* content with sidebar in single item, cart, & checkout */
 .with-sidebar {
-  --main-min-width: 450px;
-  --side-bar-size: 200px;
-  --gap: 7rem;
+  --main-min-width: 520px;
+  --sidebar-size: 150px;
+  --gap: 5rem;
 
   display: flex;
   gap: var(--gap);
@@ -65,7 +65,7 @@ body {
 .with-sidebar > :last-child {
   flex-grow: 999;
   flex-basis: calc(
-    (var(--main-min-width) - (100% - var(--side-bar-size) - var(--gap)) * 9999)
+    ((var(--main-min-width) - (100% - var(--sidebar-size) - var(--gap))) * 9999)
   );
 }
 
