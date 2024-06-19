@@ -49,9 +49,9 @@ body {
 
 /* content with sidebar in single item, cart, & checkout */
 .with-sidebar {
-  --main-min-width: 350px;
-  --side-bar-size: 100px;
-  --gap: 2rem;
+  --main-min-width: 250px;
+  --side-bar-size: 200px;
+  --gap: 7rem;
 
   display: flex;
   gap: var(--gap);
