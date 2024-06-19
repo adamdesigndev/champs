@@ -26,8 +26,13 @@
   .food-item-card {
     border-radius: 15px;
     padding: 1rem;
-    background-color: var(--clr-accent-creme);
     min-width: 200px;
+    cursor: pointer;
+  }
+
+  .food-item-card:hover {
+    background-color: var(--clr-accent-creme);
+    filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.3));
   }
   
   .food-item-card img {

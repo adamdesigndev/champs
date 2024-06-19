@@ -49,7 +49,7 @@ body {
 
 /* content with sidebar in single item, cart, & checkout */
 .with-sidebar {
-  --main-min-width: 520px;
+  --main-min-width: 542px;
   --sidebar-size: 150px;
   --gap: 5rem;
 

@@ -42,4 +42,13 @@
   .menu-navigation li:hover {
     border-bottom: 2px solid var(--clr-primary);
   }
+
+  @media (width < 850px) {
+    .menu-navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+}
   </style>
