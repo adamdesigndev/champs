@@ -1,7 +1,7 @@
 <template>
     <div class="food-item-card">
       <img src="/images/grilledClub_colbyJack_PDP.png" :alt="item.name">
-      <h4 class="header-4">{{ item.name }}</h4>
+      <h6 class="header-6">{{ item.name }}</h6>
       <p v-if="item.price">${{ item.price }}</p>
       <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
     </div>
@@ -27,7 +27,7 @@
     border-radius: 15px;
     padding: 1rem;
     background-color: var(--clr-accent-creme);
-    min-width: 300px;
+    min-width: 200px;
   }
   
   .food-item-card img {
@@ -35,13 +35,5 @@
     max-width: 200px;
     margin-inline: auto;
     margin-bottom: 2rem;
-  }
-  
-  .food-item-card button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
   }
   </style>

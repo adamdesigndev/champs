@@ -49,7 +49,7 @@ body {
 
 /* content with sidebar in single item, cart, & checkout */
 .with-sidebar {
-  --main-min-width: 250px;
+  --main-min-width: 450px;
   --side-bar-size: 200px;
   --gap: 7rem;
 
@@ -122,7 +122,7 @@ body {
 
 .header-4 {
   font-family: var(--ff-headers);
-  font-size: var(--fs-400);
+  font-size: var(--fs-500);
   line-height: 1.5rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -132,10 +132,20 @@ body {
 
 .header-5 {
   font-family: var(--ff-headers);
-  font-size: var(--fs-500);
+  font-size: var(--fs-400);
   line-height: 1.5rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--clr-body);
   margin-bottom: 1rem;
+}
+
+.header-6 {
+  font-family: var(--ff-headers);
+  font-size: var(--fs-300);
+  line-height: .5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--clr-body);
+  margin-bottom: .8rem;
 }
