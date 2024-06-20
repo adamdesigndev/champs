@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../pages/Home.vue';
 import Menu from '../pages/Menu.vue';
 import SingleFoodItem from '../pages/SingleFoodItem.vue';
+import Cart from '../pages/Cart.vue';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/SingleFoodItem',
     name: 'SingleFoodItem',
     component: SingleFoodItem
+  },
+  {
+    path: '/Cart',
+    name: 'Cart',
+    component: Cart
   },
   // Add other routes here
 ];

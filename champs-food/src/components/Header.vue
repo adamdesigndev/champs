@@ -8,7 +8,7 @@
         </ul>
         <a href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt=""></a>
         <ul class="nav-menu-links">
-          <li><a href="/cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt=""></a></li>
+          <li><a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt=""></a></li>
           <li><button class="main-btn">Start Order</button></li>
         </ul>
       </nav>
