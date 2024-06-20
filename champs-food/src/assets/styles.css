@@ -88,6 +88,16 @@ body {
   gap: 2rem;
 }
 
+/* Card right menu & cart */
+.menu-cart-card-right {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-accent-creme);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 .5rem 1rem rgba(73,73,73,.25);
+}
+
 /* Main button */
 .main-btn {
   font-size: var(--fs-300);
@@ -155,7 +165,7 @@ body {
 .header-6 {
   font-family: var(--ff-headers);
   font-size: var(--fs-300);
-  line-height: .5rem;
+  line-height: 1rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--clr-body);

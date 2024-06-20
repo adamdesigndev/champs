@@ -1,11 +1,23 @@
 <template>
-    <aside class="order-summary">
-      <h3>Order Summary</h3>
-      <p>Total Items: {{ totalItems }}</p>
-      <p>Subtotal: ${{ subtotal.toFixed(2) }}</p>
-      <p>Tax (5%): ${{ tax.toFixed(2) }}</p>
-      <p>Total: ${{ total.toFixed(2) }}</p>
-      <button @click="proceedToCheckout">Proceed to Checkout</button>
+    <aside class="menu-cart-card-right cart-summary">
+      <div class="card-header-cart">
+        <h2 class="header-5">Order Summary</h2>
+      <p class="header-6">{{ totalItems }} item(s)</p>
+      </div>
+      <div class="cart-price-order-details">
+        <div class="inner-cart-price-order-details">
+          <p class="cart-total-details">Subtotal:</p>
+          <p class="cart-total-details">${{ subtotal.toFixed(2) }}</p>
+        </div>
+        <div class="inner-cart-price-order-details">
+      <p class="cart-total-details">Tax:</p>
+      <p class="cart-total-details">${{ tax.toFixed(2) }}</p>
+    </div>
+    </div>
+      <button class="main-btn add-item-with-price" @click="proceedToCheckout">
+        <p>Checkout</p>
+        <p>${{ tax.toFixed(2) }}</p>
+      </button>
     </aside>
   </template>
   
@@ -29,17 +41,26 @@
   </script>
   
   <style scoped>
-  .order-summary {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    text-align: center;
+  .cart-summary {
+    justify-content: space-between;
+    gap: 2rem;
   }
-  
-  .order-summary button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+
+  .inner-cart-price-order-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .cart-total-details {
+    font-size: var(--fs-200);
+  }
+
+  .add-item-with-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
   }
   </style>
