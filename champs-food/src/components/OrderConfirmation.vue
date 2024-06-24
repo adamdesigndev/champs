@@ -1,8 +1,10 @@
 <template>
-    <div class="order-confirmation">
-      <h3>Order Confirmed!</h3>
-      <p>Thank you for your order. Your food will be ready soon.</p>
-      <button @click="goHome">Go to Home</button>
+    <div class="wrapper-order-confirmation">
+      <img src="/images/order-confirmed-check.svg" alt="">
+      <h1 class="header-2">Order Complete!</h1>
+      <p class="main-copy body-bottom-button">Thank you for your order. You will receive a confirmation at
+        example@gmail.com shortly.</p>
+      <button class="main-btn" @click="goHome">Back to Home</button>
     </div>
   </template>
   
@@ -13,9 +15,22 @@
   </script>
   
   <style scoped>
-  .order-confirmation {
-    padding: 1rem;
+  .wrapper-order-confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+  }
+
+  .wrapper-order-confirmation img {
+    max-width: 300px;
+    margin-bottom: 2rem;
+  }
+
+  .wrapper-order-confirmation p{
+   text-align: center;
+   max-width: 600px;
   }
   
   .order-confirmation button {

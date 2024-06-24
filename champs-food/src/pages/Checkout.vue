@@ -1,12 +1,13 @@
 <template>
 <div class="wrapper-menu-outer-section">
     <div class="wrapper-general">
-      <h1 class="header-2">Chekout</h1>
-    <div class="wrapper-with-info-card-right">
+      <OrderConfirmation />
+      <!-- <h1 class="header-2">Chekout</h1> -->
+    <!-- <div class="wrapper-with-info-card-right"> -->
       <!-- <UserInfo /> -->
-      <UserPayment />
-      <div><OrderSummaryPanel /></div>
-    </div>
+      <!-- <UserPayment /> -->
+      <!-- <div><OrderSummaryPanel /></div> -->
+    <!-- </div> -->
   </div>
     </div>
   </template>
