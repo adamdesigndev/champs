@@ -4,6 +4,60 @@
         <h2 class="header-5">Order Summary</h2>
       <p class="header-6">{{ totalItems }} item(s)</p>
       </div>
+      <div class="panel-list-items">
+        <div class="panel-item">
+          <div class="panel-item-name-size">
+            <h6 class="header-6">
+              Chicken Sandwich
+            </h6>
+            <p class="size-quantity-details">
+              medium
+            </p>
+          </div>
+          <div class="panal-price-quantity">
+            <p class="panel-item-price">$20.99</p>
+            <p class="size-quantity-details">
+              Qty: 3
+            </p>
+          </div>
+        </div>
+
+        <div class="panel-item">
+          <div class="panel-item-name-size">
+            <h6 class="header-6">
+              Chicken Sandwich
+            </h6>
+            <p class="size-quantity-details">
+              medium
+            </p>
+          </div>
+          <div class="panal-price-quantity">
+            <p class="panel-item-price">$20.99</p>
+            <p class="size-quantity-details">
+              Qty: 3
+            </p>
+          </div>
+        </div>
+
+        <div class="panel-item">
+          <div class="panel-item-name-size">
+            <h6 class="header-6">
+              Chicken Sandwich
+            </h6>
+            <p class="size-quantity-details">
+              medium
+            </p>
+          </div>
+          <div class="panal-price-quantity">
+            <p class="panel-item-price">$20.99</p>
+            <p class="size-quantity-details">
+              Qty: 3
+            </p>
+          </div>
+        </div>
+      </div>
+
+      
       <div class="cart-price-order-details">
         <div class="inner-cart-price-order-details">
           <p class="cart-total-details">Subtotal:</p>
@@ -44,6 +98,36 @@
   .cart-summary {
     justify-content: space-between;
     gap: 2rem;
+  }
+
+  .panel-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .panel-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border-bottom: 1px rgb(219, 219, 219) solid;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .size-quantity-details {
+    font-size: var(--fs-300);
+    color: rgb(103, 103, 103);
+  }
+
+  .panal-price-quantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+  }
+
+  .panel-item-price {
+    font-size: var(--fs-200);
   }
 
   .inner-cart-price-order-details {
