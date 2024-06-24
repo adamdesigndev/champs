@@ -1,25 +1,24 @@
 <template>
       <div class="user-payment">
-      <h3>Payment Information</h3>
-      <form @submit.prevent="submitPaymentInfo">
-        <label>
-          Card Name:
-          <input type="text" v-model="cardName" required>
+        <h2 class="header-4">Payment Info</h2>
+      <form class="wrapper-user-payment body-bottom-button" @submit.prevent="submitPaymentInfo">
+
+        <label class="form-label">
+          Card Number
+          <input class="form-input" type="text" v-model="cardNumber" required>
         </label>
-        <label>
-          Card Number:
-          <input type="text" v-model="cardNumber" required>
+        <div class="user-payment-date-ccv">
+        <label class="form-label">
+          Expiration Date
+          <input class="form-input" type="text" v-model="expirationDate" required>
         </label>
-        <label>
-          Expiration Date:
-          <input type="text" v-model="expirationDate" required>
-        </label>
-        <label>
-          CCV:
-          <input type="text" v-model="ccv" required>
-        </label>
-        <button type="submit">Place Order</button>
+        <label class="form-label">
+          CCV
+          <input class="form-input" type="text" v-model="ccv" required>
+        </label class="form-label">
+      </div>
       </form>
+      <button class="main-btn" type="submit">Place Order</button>
     </div>
   </template>
   
@@ -38,25 +37,17 @@ const submitPaymentInfo = () => {
   </script>
   
   <style scoped>
-  .user-payment {
-  padding: 1rem;
-}
-
-.user-payment form {
+.wrapper-user-payment {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
-.user-payment label {
-  margin-bottom: 0.5rem;
-}
 
-.user-payment button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
+
+.user-payment-date-ccv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
   </style>

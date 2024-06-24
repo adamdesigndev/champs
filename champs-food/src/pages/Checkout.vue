@@ -3,7 +3,8 @@
     <div class="wrapper-general">
       <h1 class="header-2">Chekout</h1>
     <div class="wrapper-with-info-card-right">
-      <UserInfo />
+      <!-- <UserInfo /> -->
+      <UserPayment />
       <div><OrderSummaryPanel /></div>
     </div>
   </div>

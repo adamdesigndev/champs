@@ -1,7 +1,7 @@
 <template>
     <div class="user-info">
-      <h4 class="header-4">Contact Info</h4>
-      <form class="wrapper-contact-form body-bottom-button " @submit.prevent="submitUserInfo">
+      <h2 class="header-4">Contact Info</h2>
+      <form class="wrapper-contact-form body-bottom-button" @submit.prevent="submitUserInfo">
         <label class="form-label">
           First Name
           <input class="form-input" type="text" v-model="firstName" required>
