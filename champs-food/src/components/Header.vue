@@ -9,7 +9,7 @@
         <a href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt=""></a>
         <ul class="nav-menu-links">
           <li><a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt=""></a></li>
-          <li><button class="main-btn">Start Order</button></li>
+          <li><a class="header-nav-links" href="/Checkout"><button class="main-btn">Checkout</button></a></li>
         </ul>
       </nav>
     </header>

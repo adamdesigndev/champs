@@ -111,6 +111,10 @@ body {
   letter-spacing: 0.06rem;
 }
 
+.main-btn:hover {
+  background-color: var(--clr-primary-200)
+}
+
 .body-bottom-button {
   margin-bottom: 1rem;
 }
@@ -170,4 +174,22 @@ body {
   text-transform: uppercase;
   color: var(--clr-body);
   margin-bottom: .6rem;
+}
+
+/* Form elements */
+.form-label {
+  display: flex;
+  flex-direction: column;
+  color: rgb(154, 154, 154);
+  font-size: var(--fs-300);
+  letter-spacing: .05rem;
+}
+
+.form-input {
+  border: none;
+  border-bottom: 2px solid rgb(193, 193, 193);
+}
+
+.form-input:focus {
+  border-bottom: 2px solid var(--clr-primary);
 }

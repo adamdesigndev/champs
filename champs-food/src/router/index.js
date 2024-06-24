@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue';
 import Menu from '../pages/Menu.vue';
 import SingleFoodItem from '../pages/SingleFoodItem.vue';
 import Cart from '../pages/Cart.vue';
+import Checkout from '../pages/Checkout.vue';
 
 const routes = [
   {
@@ -26,7 +27,11 @@ const routes = [
     name: 'Cart',
     component: Cart
   },
-  // Add other routes here
+  {
+    path: '/Checkout',
+    name: 'Checkout',
+    component: Checkout
+  }
 ];
 
 const router = createRouter({
