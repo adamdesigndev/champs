@@ -1,24 +1,22 @@
+<!-- MobileMenu.vue -->
 <template>
-    <div class="mobile-menu" v-if="isOpen">
+    <div class="mobile-menu" 
+    v-if="isOpen">
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/menu">Menu</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/cart">Cart</a></li>
+          <li><a href="/Menu">Menu</a></li>
+          <li><a href="/Cart">Bag</a></li>
+          <li><a href="/About">About</a></li>
+          <li><a href="/Home">Home</a></li>
         </ul>
       </nav>
     </div>
   </template>
   
   <script setup>
-  import { ref } from 'vue';
-  
-  const isOpen = ref(false);
-  
-  const toggleMenu = () => {
-    isOpen.value = !isOpen.value;
-  };
+const props = defineProps({
+  isOpen: Boolean
+});
   </script>
   
   <style scoped>
@@ -28,25 +26,30 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--secondary-color);
+    background-color: var(--clr-primary);
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
+    gap: 5rem;
+    z-index: 2000;
+    padding: 1rem;
   }
   
   .mobile-menu nav ul {
     list-style: none;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
-  
-  .mobile-menu nav li {
-    margin: 1rem 0;
-  }
+
   
   .mobile-menu nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    font-size: var(--font-size-large);
+    font-size: var(--fs-900);
+    font-weight: 600;
+    line-height: 4rem;
   }
   </style>
