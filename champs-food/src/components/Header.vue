@@ -1,39 +1,41 @@
-<!-- Header.vue -->
 <template>
-    <header>
-      <nav class="wrapper-nav-inner">
-        <button class="hamburger mobile-header" 
-        @click="toggleMenu">
-        <img src="/images/mobile-nav-hamburger.svg" alt=""></button>
-        <ul class="nav-menu-links desktop-header">
-          <li><a class="header-nav-links" href="/">Home</a></li>
-          <li><a class="header-nav-links" href="/Menu">Menu</a></li>
-          <li><a class="header-nav-links" href="/About">About</a></li>
-        </ul>
-        <a class="desktop-header" href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt=""></a>
-        <a class="mobile-header" href="/Home"><img src="/images/logo-comb-mobile.svg" alt=""></a>
-        <ul class="nav-menu-links">
-          <li><a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt=""></a></li>
-          <li class="desktop-header"><a class="header-nav-links" href="/Checkout"><button class="main-btn">Checkout</button></a></li>
-        </ul>
-      </nav>
-    </header>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
+  <header class="wrapper-header-outer">
+    <nav class="wrapper-nav-inner">
+      <button class="hamburger mobile-header" @click="toggleMenu">
+        <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu">
+      </button>
+      <ul class="nav-menu-links desktop-header">
+        <li><a class="header-nav-links" href="/">Home</a></li>
+        <li><a class="header-nav-links" href="/Menu">Menu</a></li>
+        <li><a class="header-nav-links" href="/About">About</a></li>
+      </ul>
+      <a class="desktop-header" href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt="Logo"></a>
+      <a class="mobile-header" href="/Home"><img src="/images/logo-comb-mobile.svg" alt="Logo"></a>
+      <ul class="nav-menu-links">
+        <li><a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart"></a></li>
+        <li class="desktop-header"><a class="header-nav-links" href="/Checkout"><button class="main-btn">Checkout</button></a></li>
+      </ul>
+    </nav>
+  </header>
+</template>
 
-  const props = defineProps({
-    toggleMenu: Function
-  });
-  
-  const cartItemCount = ref(0);
-  </script>
-  
-  <style scoped>
-  /* header outer content wrapper */
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  toggleMenu: Function
+});
+
+const cartItemCount = ref(0);
+</script>
+
+<style scoped>
+/* header outer content wrapper */
 .wrapper-header-outer {
-  border-bottom: 1px solid #000;
+
+  background-color: #fff;
+  position: relative;
+  z-index: 2000; /* Ensure header is above the mobile menu */
 }
 
 .wrapper-nav-inner {
@@ -63,9 +65,8 @@
 }
 
 .cart-icon {
-  height: 1.8rem;
+  width: 1.2rem;
 }
-
 
 .mobile-header {
   display: none;
@@ -77,20 +78,18 @@
   cursor: pointer;
 }
 
-.hamburger img{
+.hamburger img {
   width: 25px;
 }
-
 
 @media (width < 850px) {
   .mobile-header {
     display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .desktop-header {
+    display: none;
+  }
 }
- .desktop-header {
-  display: none;
- }
-}
-
-  </style>
+</style>
