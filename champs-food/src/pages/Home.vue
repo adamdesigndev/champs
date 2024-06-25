@@ -1,3 +1,4 @@
+<!-- Home.vue -->
 <template>
     <div>
       <HeroSection />
