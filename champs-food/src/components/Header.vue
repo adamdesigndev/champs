@@ -1,3 +1,4 @@
+<!-- Header.vue -->
 <template>
   <header class="wrapper-header-outer">
     <nav class="wrapper-nav-inner">
@@ -20,13 +21,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { inject } from 'vue';
 
-const props = defineProps({
-  toggleMenu: Function
-});
-
-const cartItemCount = ref(0);
+const toggleMenu = inject('toggleMenu');
+const isMenuOpen = inject('isMenuOpen');
 </script>
 
 <style scoped>

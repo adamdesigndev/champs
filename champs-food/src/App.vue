@@ -1,15 +1,15 @@
 <!-- App.vue -->
 <template>
   <div class="full-height">
-    <Header :toggleMenu="toggleMenu" />
-    <MobileMenu :isOpen="isMenuOpen" />
+    <Header />
+    <MobileMenu />
     <router-view />
     <Footer />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import MobileMenu from './components/MobileMenu.vue';
@@ -19,6 +19,9 @@ const isMenuOpen = ref(false);
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 }
+
+provide('isMenuOpen', isMenuOpen);
+provide('toggleMenu', toggleMenu);
 </script>
 
 <style>
