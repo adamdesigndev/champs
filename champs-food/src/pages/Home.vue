@@ -1,7 +1,14 @@
 <!-- Home.vue -->
 <template>
     <div>
-      <HeroSection />
+      <HeroSection 
+      heading="Chicken for the Champs"
+      subheading="Delicious food, ready to serve!"
+      buttonText="Add To Order"
+      buttonLink="/SingleFoodItem"
+      imageSrc="/images/grilledClub_colbyJack_PDP.png"
+      imageAlt="Delicous food"
+      />
       <ThreeColumnSection />
       <BasicTwoColumn />
     </div>
