@@ -1,6 +1,10 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../pages/Home.vue';
+import Menu from '../pages/Menu.vue';
+import SingleFoodItem from '../pages/SingleFoodItem.vue';
+import Cart from '../pages/Cart.vue';
+import Checkout from '../pages/Checkout.vue';
 
 const routes = [
   {
@@ -8,7 +12,26 @@ const routes = [
     name: 'Home',
     component: Home
   },
-  // Add other routes here
+  {
+    path: '/Menu',
+    name: 'Menu',
+    component: Menu
+  },
+  {
+    path: '/SingleFoodItem',
+    name: 'SingleFoodItem',
+    component: SingleFoodItem
+  },
+  {
+    path: '/Cart',
+    name: 'Cart',
+    component: Cart
+  },
+  {
+    path: '/Checkout',
+    name: 'Checkout',
+    component: Checkout
+  }
 ];
 
 const router = createRouter({

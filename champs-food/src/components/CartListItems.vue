@@ -14,6 +14,8 @@
   
   <style scoped>
   .cart-list {
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
   </style>

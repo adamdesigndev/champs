@@ -1,11 +1,9 @@
 <template>
     <div class="food-item-card">
-      <img :src="item.image" :alt="item.name">
-      <h3>{{ item.name }}</h3>
-      <p>{{ item.description }}</p>
-      <p v-if="item.price">Price: ${{ item.price }}</p>
-      <p v-if="item.sizes">Starting at: ${{ Math.min(...Object.values(item.sizes)) }}</p>
-      <button @click="addToCart(item)">Add to Cart</button>
+      <img src="/images/grilledClub_colbyJack_PDP.png" :alt="item.name">
+      <h6 class="header-6">{{ item.name }}</h6>
+      <p v-if="item.price">${{ item.price }}</p>
+      <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
     </div>
   </template>
   
@@ -26,21 +24,21 @@
   
   <style scoped>
   .food-item-card {
-    border: 1px solid #ddd;
+    border-radius: 15px;
     padding: 1rem;
-    text-align: center;
+    min-width: 200px;
+    cursor: pointer;
+  }
+
+  .food-item-card:hover {
+    background-color: var(--clr-accent-creme);
+    filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.3));
   }
   
   .food-item-card img {
     width: 100%;
     max-width: 200px;
-  }
-  
-  .food-item-card button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+    margin-inline: auto;
+    margin-bottom: 2rem;
   }
   </style>

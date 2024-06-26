@@ -1,4 +1,5 @@
 <template>
+  <h2 class="header-3">Menu</h2>
     <section class="food-items-list">
       <FoodItemCard v-for="item in filteredItems" :key="item.name" :item="item" />
     </section>
@@ -22,9 +23,8 @@
   
   <style scoped>
   .food-items-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    padding: 2rem;
   }
   </style>

@@ -1,25 +1,25 @@
 <template>
     <div class="user-info">
-      <h3>User Information</h3>
-      <form @submit.prevent="submitUserInfo">
-        <label>
-          First Name:
-          <input type="text" v-model="firstName" required>
+      <h2 class="header-4">Contact Info</h2>
+      <form class="wrapper-contact-form body-bottom-button" @submit.prevent="submitUserInfo">
+        <label class="form-label">
+          First Name
+          <input class="form-input" type="text" v-model="firstName" required>
         </label>
-        <label>
-          Last Name:
-          <input type="text" v-model="lastName" required>
+        <label class="form-label">
+          Last Name
+          <input class="form-input" type="text" v-model="lastName" required>
         </label>
-        <label>
-          Phone:
-          <input type="tel" v-model="phone" required>
+        <label class="form-label">
+          Phone
+          <input class="form-input" type="tel" v-model="phone" required>
         </label>
-        <label>
-          Email:
-          <input type="email" v-model="email" required>
+        <label class="form-label">
+          Email
+          <input class="form-input" type="email" v-model="email" required>
         </label>
-        <button type="submit">Next</button>
       </form>
+      <button class="main-btn" type="submit">Proceed to Payment</button>
     </div>
   </template>
   
@@ -37,25 +37,17 @@
   </script>
   
   <style scoped>
+  .wrapper-contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
   .user-info {
     padding: 1rem;
-  }
-  
-  .user-info form {
-    display: flex;
-    flex-direction: column;
   }
   
   .user-info label {
     margin-bottom: 0.5rem;
   }
-  
-  .user-info button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    margin-top: 1rem;
-  }
+
   </style>
