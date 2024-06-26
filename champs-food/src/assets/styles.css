@@ -39,12 +39,6 @@ body {
   margin-inline: auto;
 }
 
-.wrapper-basic-two-up {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
- }
-
  .wrapper-with-info-card-right {
   display: grid;
   grid-template-columns: 2fr 1fr;
