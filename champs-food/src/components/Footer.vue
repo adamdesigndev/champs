@@ -101,4 +101,16 @@ justify-content: center;
   line-height: 1rem;
   letter-spacing: .05rem;
 }
+
+@media (width < 850px) {
+  .footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-notes {
+  text-align: center;
+}
+}
   </style>

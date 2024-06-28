@@ -30,12 +30,13 @@ const props = defineProps({
   background-color: var(--clr-accent-creme);
   display: flex;
   justify-content: center;
-  padding: var(--wrapper-outer-padding-tb);
+  padding-top: var(--wrapper-outer-padding-tb);
+  padding-bottom: var(--wrapper-outer-padding-tb);
 }
 
 .wrapper-inner-hero-content {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(375px, 100%), 1fr));
   gap: var(--content-gap);
 }
 

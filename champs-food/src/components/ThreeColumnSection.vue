@@ -34,7 +34,7 @@
   <style scoped>
 .wrapper-three-up {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 3rem;
 }
 
