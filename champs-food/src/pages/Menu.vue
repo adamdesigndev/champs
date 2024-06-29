@@ -2,14 +2,24 @@
     <div class="wrapper-menu-outer-section">
       <div class="wrapper-general">
       <div class="with-sidebar">
-        <aside class="sidebar"><MenuNavigation /></aside>
-        <main class=""><FoodItemsList /></main>
+        <aside class="sidebar"><MenuNavigation 
+          @update-category="updateCategory"/></aside>
+        <main class=""><FoodItemsList 
+          :selectedCategory="selectedCategory"/></main>
     </div>
   </div>
     </div>
   </template>
   
   <script setup>
+import { ref } from 'vue';
+
   import MenuNavigation from '../components/MenuNavigation.vue';
   import FoodItemsList from '../components/FoodItemsList.vue';
+
+  const selectedCategory = ref(null);
+
+  const updateCategory = (category) => {
+    selectedCategory.value = category;
+  }
   </script>

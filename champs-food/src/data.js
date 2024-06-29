@@ -210,7 +210,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Garden-Salad-Crispy-Chicken.png',
       featured: false,
-      category: 'Side'
+      category: 'Salad'
     },
     {
       name: 'SOUTHWEST SALAD W/ GRILLED CHICKEN',
@@ -304,7 +304,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Biscuit-Chicken.png',
       featured: false,
-      category: 'Side'
+      category: 'Breakfast'
     },
     {
       name: 'Egg White Grill',
@@ -312,7 +312,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/eggWHTchk.png',
       featured: false,
-      category: 'Side'
+      category: 'Breakfast'
     },
     {
       name: 'Bacon, Egg & Cheese Muffin',
@@ -320,7 +320,7 @@ export const foodItems = [
       price: 4.99,
       image: '/images/BaconEggCheeseMuffin.png',
       featured: false,
-      category: 'Side'
+      category: 'Breakfast'
     },
     {
       name: 'Chicken, Egg & Cheese Biscuit',
@@ -328,7 +328,7 @@ export const foodItems = [
       price: 4.99,
       image: '/images/Biscuit_ChickenEggCheese.png',
       featured: false,
-      category: 'Side'
+      category: 'Breakfast'
     },
     {
       name: 'Small Hash Browns',
@@ -336,7 +336,7 @@ export const foodItems = [
       price: 2.99,
       image: '/images/Breakfast-Hashbrowns.png',
       featured: false,
-      category: 'Side'
+      category: 'Breakfast'
     },
     {
       name: 'Hash Brown Scramble Bowl',
@@ -344,6 +344,6 @@ export const foodItems = [
       price: 3.99,
       image: '/images/ChickenHashbrownBreakfastBowl.png',
       featured: false,
-      category: 'Side'
+      category: 'Breakfast'
     },
   ];

@@ -16,6 +16,9 @@
   });
   
   const filteredItems = computed(() => {
+    if(props.selectedCategory === 'Featured') {
+      return foodItems.filter(item => item.featured);
+    }
     return props.selectedCategory
       ? foodItems.filter(item => item.category === props.selectedCategory)
       : foodItems;

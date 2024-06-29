@@ -3,13 +3,27 @@
   <h1 class="header-2">Menu</h1>
     <nav class="">
       <ul class="menu-navigation">
-       <li>Fatured</li>
-       <li>Sandwiches</li>
-       <li>Sides</li>
-       <li>Salads</li>
-       <li>Breakfast</li>
-       <li>Drinks</li>
-       <li>Desserts</li>
+       <li
+       @click="selectCategory('Featured')"
+       >Fatured</li>
+       <li
+       @click="selectCategory('Sandwich')"
+       >Sandwiches</li>
+       <li
+       @click="selectCategory('Side')"
+       >Sides</li>
+       <li
+       @click="selectCategory('Salad')"
+       >Salads</li>
+       <li
+       @click="selectCategory('Breakfast')"
+       >Breakfast</li>
+       <li
+       @click="selectCategory('Bevarage')"
+       >Drinks</li>
+       <li
+        @click="selectCategory('Dessert')"
+       >Desserts</li>
       </ul>
     </nav>
   </template>
@@ -17,12 +31,11 @@
   <script setup>
   import { ref } from 'vue';
   
-  const categories = ref(['Chicken', 'Burger', 'Pizza', 'Drinks']); // Add your categories here
+  const categories = ref(['Featured', 'Sandwich', 'Side', 'Salad', 'Breakfast', 'Beverage', 'Dessert']); 
   const selectedCategory = ref(null);
   
   const selectCategory = (category) => {
     selectedCategory.value = category;
-    // Emit event to parent component to update the selected category
     emit('update-category', category);
   };
   
