@@ -1,3 +1,4 @@
+// Data.js
 export const foodItems = [
   // Drinks
     {

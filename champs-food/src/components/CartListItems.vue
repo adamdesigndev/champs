@@ -1,3 +1,4 @@
+
 <template>
     <section class="cart-list">
       <CartFoodItem v-for="item in cartItems" :key="item.name" :item="item" />

@@ -1,3 +1,4 @@
+<!-- FoodItemCard.vue -->
 <template>
     <div class="food-item-card">
       <img :src="item.image" :alt="item.name">
@@ -42,7 +43,6 @@
   
   .food-item-card img {
     max-height: 150px;
-    width: 100%;
     margin-inline: auto;
     margin-bottom: 2rem;
   }
