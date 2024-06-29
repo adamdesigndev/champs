@@ -198,6 +198,7 @@ export const foodItems = [
     {
       name: 'GARDEN SALAD W/ GRILLED CHICKEN',
       description: 'Mixed greens topped with grilled chicken strips, grape tomatoes, shredded carrots, shredded cheddar, croutons & buttermilk ranch dressing.',
+      price: 5.99,
       image: '/images/Garden-Salad-Grilled-Chicken.png',
       featured: false,
       category: 'Salad'
@@ -205,6 +206,7 @@ export const foodItems = [
     {
       name: 'GARDEN SALAD W/ CRISPY CHICKEN',
       description: 'Mixed greens topped with crispy chicken strips, grape tomatoes, shredded carrots, shredded cheddar, croutons & buttermilk ranch dressing.',
+      price: 5.99,
       image: '/images/Garden-Salad-Crispy-Chicken.png',
       featured: false,
       category: 'Side'
@@ -212,6 +214,7 @@ export const foodItems = [
     {
       name: 'SOUTHWEST SALAD W/ GRILLED CHICKEN',
       description: 'Mixed greens with grilled chicken strips, tomatoes, shredded carrots, shredded cheddar, roasted corn, black beans, tortilla strips & Southwest dressing.',
+      price: 5.99,
       image: '/images/SW-Salad-Grilled-Chicken.png',
       featured: false,
       category: 'Salad'
@@ -219,6 +222,7 @@ export const foodItems = [
     {
       name: 'SOUTHWEST SALAD W/ CRISPY CHICKEN',
       description: 'Mixed greens with crispy chicken strips, tomatoes, shredded carrots, shredded cheddar, roasted corn, black beans, tortilla strips & Southwest dressing.',
+      price: 5.99,
       image: '/images/SW-Salad-Crispy-Chicken.png',
       featured: false,
       category: 'Salad'
@@ -226,6 +230,7 @@ export const foodItems = [
     {
       name: 'SIDE SALAD',
       description: 'Crisp iceberg and romaine lettuce, grape tomatoes & carrots with Champs Famous Buttermilk Ranch dressing. Champs Buttermilk Ranch on a salad? Sign me up.',
+      price: 5.99,
       image: '/images/Side-Salad.png',
       featured: false,
       category: 'Salad'
@@ -270,6 +275,7 @@ export const foodItems = [
     {
       name: 'CLASSIC GRILLED WRAP',
       description: 'Grilled chicken strips, shredded lettuce, shredded cheddar, jalapenos, Spicy Good Good sauce & buttermilk ranch in a warm tortilla.',
+      price: 4.99,
       image: '/images/Classic-Grilled-Wrap.png',
       featured: false,
       category: 'Side'
@@ -277,6 +283,7 @@ export const foodItems = [
     {
       name: 'CLASSIC CRISPY WRAP',
       description: 'A chicken strip, shredded lettuce, shredded cheddar, pickles, Good Good sauce & buttermilk ranch dressing wrapped up in a warm tortilla.',
+      price: 5.99,
       image: '/images/Classic-Crispy-Wrap.png',
       featured: false,
       category: 'Side'
@@ -284,6 +291,7 @@ export const foodItems = [
     {
       name: 'SPICY GRILLED WRAP ',
       description: 'Grilled chicken strips, shredded lettuce, shredded cheddar, jalapenos, Spicy Good Good sauce & buttermilk ranch in a warm tortilla.',
+      price: 5.99,
       image: '/images/Spicy-Grilled-Wrap.png',
       featured: false,
       category: 'Side'
@@ -292,6 +300,7 @@ export const foodItems = [
     {
       name: 'Chicken Biscuit',
       description: 'A breakfast portion of our famous boneless breast of chicken, seasoned to perfection, hand-breaded, pressure cooked in 100% refined peanut oil and served on a buttermilk biscuit baked fresh at each Restaurant.',
+      price: 5.99,
       image: '/images/Biscuit-Chicken.png',
       featured: false,
       category: 'Side'
@@ -299,6 +308,7 @@ export const foodItems = [
     {
       name: 'Egg White Grill',
       description: 'A breakfast portion of grilled chicken with a hint of citrus, served on a toasted classic English Muffin with egg whites and American cheese.',
+      price: 5.99,
       image: '/images/eggWHTchk.png',
       featured: false,
       category: 'Side'
@@ -306,6 +316,7 @@ export const foodItems = [
     {
       name: 'Bacon, Egg & Cheese Muffin',
       description: 'Delicious strips of smoked applewood bacon, folded egg and American cheese served on a toasted classic English Muffin.',
+      price: 4.99,
       image: '/images/BaconEggCheeseMuffin.png',
       featured: false,
       category: 'Side'
@@ -313,6 +324,7 @@ export const foodItems = [
     {
       name: 'Chicken, Egg & Cheese Biscuit',
       description: 'A breakfast portion of our famous boneless breast of chicken, seasoned to perfection, freshly breaded, pressure cooked in 100% refined peanut oil, a folded egg and cheese, served on a buttermilk biscuit baked fresh at each Restaurant.',
+      price: 4.99,
       image: '/images/Biscuit_ChickenEggCheese.png',
       featured: false,
       category: 'Side'
@@ -320,6 +332,7 @@ export const foodItems = [
     {
       name: 'Small Hash Browns',
       description: 'Crispy potato medallions cooked in canola oil.',
+      price: 2.99,
       image: '/images/Breakfast-Hashbrowns.png',
       featured: false,
       category: 'Side'
@@ -327,6 +340,7 @@ export const foodItems = [
     {
       name: 'Hash Brown Scramble Bowl',
       description: 'A hearty morning meal of sliced Chick-fil-A Nuggets, crispy Hash Browns, scrambled eggs and a blend of Monterey Jack and Cheddar cheeses. Made fresh each morning. Served in a convenient bowl. Served with Jalapeño Salsa.',
+      price: 3.99,
       image: '/images/ChickenHashbrownBreakfastBowl.png',
       featured: false,
       category: 'Side'

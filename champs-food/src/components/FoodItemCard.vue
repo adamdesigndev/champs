@@ -1,6 +1,6 @@
 <template>
     <div class="food-item-card">
-      <img src="/images/grilledClub_colbyJack_PDP.png" :alt="item.name">
+      <img :src="item.image" :alt="item.name">
       <h6 class="header-6">{{ item.name }}</h6>
       <p v-if="item.price">${{ item.price }}</p>
       <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
@@ -28,6 +28,11 @@
     padding: 1rem;
     min-width: 200px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
   }
 
   .food-item-card:hover {
@@ -36,8 +41,8 @@
   }
   
   .food-item-card img {
+    max-height: 150px;
     width: 100%;
-    max-width: 200px;
     margin-inline: auto;
     margin-bottom: 2rem;
   }

@@ -3,11 +3,13 @@
   <h1 class="header-2">Menu</h1>
     <nav class="">
       <ul class="menu-navigation">
-       <li>Specials</li>
-       <li>Specials</li>
-       <li>Specials</li>
-       <li>Specials</li>
-       <li>Specials</li>
+       <li>Fatured</li>
+       <li>Sandwiches</li>
+       <li>Sides</li>
+       <li>Salads</li>
+       <li>Breakfast</li>
+       <li>Drinks</li>
+       <li>Desserts</li>
       </ul>
     </nav>
   </template>
