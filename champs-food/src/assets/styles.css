@@ -140,9 +140,19 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.header-4 {
+.header-3 {
   font-family: var(--ff-headers);
   font-size: var(--fs-500);
+  line-height: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--clr-body);
+  margin-bottom: 1.5rem;
+}
+
+.header-4 {
+  font-family: var(--ff-headers);
+  font-size: var(--fs-400);
   line-height: 1.5rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -152,7 +162,7 @@ body {
 
 .header-5 {
   font-family: var(--ff-headers);
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   line-height: 1.5rem;
   font-weight: 900;
   text-transform: uppercase;

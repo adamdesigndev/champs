@@ -1,6 +1,6 @@
 <!-- FoodItemsList.vue -->
 <template>
-  <h2 class="header-3">Menu</h2>
+  <h2 class="header-3">{{ selectedCategory || 'Menu' }}</h2>
     <section class="food-items-list">
       <FoodItemCard v-for="item in filteredItems" :key="item.name" :item="item" />
     </section>
@@ -16,7 +16,7 @@
   });
   
   const filteredItems = computed(() => {
-    if(props.selectedCategory === 'Featured') {
+    if(props.selectedCategory === 'FEATURED') {
       return foodItems.filter(item => item.featured);
     }
     return props.selectedCategory

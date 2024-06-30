@@ -4,25 +4,25 @@
     <nav class="">
       <ul class="menu-navigation">
        <li
-       @click="selectCategory('Featured')"
-       >Fatured</li>
+       @click="selectCategory('FEATURED')"
+       >Featured</li>
        <li
-       @click="selectCategory('Sandwich')"
-       >Sandwiches</li>
+       @click="selectCategory('ENTRÉES')"
+       >Entrées</li>
        <li
-       @click="selectCategory('Side')"
+       @click="selectCategory('SIDES')"
        >Sides</li>
        <li
-       @click="selectCategory('Salad')"
+       @click="selectCategory('SALADS')"
        >Salads</li>
        <li
-       @click="selectCategory('Breakfast')"
+       @click="selectCategory('BREAKFAST')"
        >Breakfast</li>
        <li
-       @click="selectCategory('Bevarage')"
+       @click="selectCategory('DRINKS')"
        >Drinks</li>
        <li
-        @click="selectCategory('Dessert')"
+        @click="selectCategory('DESSERTS')"
        >Desserts</li>
       </ul>
     </nav>
@@ -31,7 +31,7 @@
   <script setup>
   import { ref } from 'vue';
   
-  const categories = ref(['Featured', 'Sandwich', 'Side', 'Salad', 'Breakfast', 'Beverage', 'Dessert']); 
+  const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'BREAKFAST', 'DRINKS', 'DESSERTS']); 
   const selectedCategory = ref(null);
   
   const selectCategory = (category) => {

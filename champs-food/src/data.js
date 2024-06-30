@@ -11,7 +11,7 @@ export const foodItems = [
       },
       image: '/images/Coca-Cola.png',
       featured: false,
-      category: 'Beverage'
+      category: 'DRINKS'
     },
     {
       name: 'Sprite®',
@@ -23,7 +23,7 @@ export const foodItems = [
       },
       image: '/images/Sprite.png',
       featured: false,
-      category: 'Beverage'
+      category: 'DRINKS'
     },
     {
       name: 'Minute Maid® Lemonade',
@@ -35,7 +35,7 @@ export const foodItems = [
       },
       image: '/images/Lemonade.png',
       featured: false,
-      category: 'Beverage'
+      category: 'DRINKS'
     },
     {
       name: 'Dr Pepper®',
@@ -47,7 +47,7 @@ export const foodItems = [
       },
       image: '/images/Dr_Pepper.png',
       featured: false,
-      category: 'Beverage'
+      category: 'DRINKS'
     },
     {
       name: 'Simply Orange®',
@@ -59,7 +59,7 @@ export const foodItems = [
       },
       image: '/images/SimplyOrange.png',
       featured: false,
-      category: 'Beverage'
+      category: 'DRINKS'
     },
     {
       name: 'Fanta® ',
@@ -71,7 +71,7 @@ export const foodItems = [
       },
       image: '/images/Fanta.png',
       featured: false,
-      category: 'Beverage'
+      category: 'DRINKS'
     },
     // Desserts
     {
@@ -83,44 +83,8 @@ export const foodItems = [
         large: 5.99
       },
       image: '/images/Oreo-Shake.png',
-      featured: false,
-      category: 'Dessert'
-    },
-    {
-      name: 'Pineapple Express Shake',
-      description: 'Sip, sip, relax with this thick & creamy shake with pineapple flavors.',
-      sizes: {
-        small: 3.99,
-        medium: 4.99,
-        large: 5.99
-      },
-      image: '/images/Pineapple-Express-Shake.png',
-      featured: false,
-      category: 'Dessert'
-    },
-    {
-      name: 'Vanilla Shake w/ Boba',
-      description: 'A thick and creamy Vanilla Shake made even more delicious with brown sugar Boba and a whipped topping.',
-      sizes: {
-        small: 3.99,
-        medium: 4.99,
-        large: 5.99
-      },
-      image: '/images/Vanilla-Shake-Boba.png',
-      featured: false,
-      category: 'Dessert'
-    },
-    {
-      name: 'Strawberry Shake',
-      description: 'A thick and creamy shake, blended with strawberry flavors. Worth getting brain freeze over.',
-      sizes: {
-        small: 3.99,
-        medium: 4.99,
-        large: 5.99
-      },
-      image: '/images/Strawberry-Shake.png',
-      featured: false,
-      category: 'Dessert'
+      featured: true,
+      category: 'DESSERTS'
     },
     {
       name: 'Chocolate Shake',
@@ -132,7 +96,7 @@ export const foodItems = [
       },
       image: '/images/Chocolate-Shake.png',
       featured: false,
-      category: 'Dessert'
+      category: 'DESSERTS'
     },
     {
       name: 'Vanilla Shake',
@@ -144,7 +108,43 @@ export const foodItems = [
       },
       image: '/images/Vanilla-Shake.png',
       featured: false,
-      category: 'Dessert'
+      category: 'DESSERTS'
+    },
+    {
+      name: 'Strawberry Shake',
+      description: 'A thick and creamy shake, blended with strawberry flavors.',
+      sizes: {
+        small: 3.99,
+        medium: 4.99,
+        large: 5.99
+      },
+      image: '/images/Strawberry-Shake.png',
+      featured: false,
+      category: 'DESSERTS'
+    },
+    {
+      name: 'Pineapple Shake',
+      description: 'A thick and creamy shake, blended with pineapple flavors.',
+      sizes: {
+        small: 3.99,
+        medium: 4.99,
+        large: 5.99
+      },
+      image: '/images/Pineapple-Shake.png',
+      featured: false,
+      category: 'DESSERTS'
+    },
+    {
+      name: 'Vanilla Shake w/ Boba',
+      description: 'A thick and creamy Vanilla Shake made even more delicious with brown sugar Boba and a whipped topping.',
+      sizes: {
+        small: 3.99,
+        medium: 4.99,
+        large: 5.99
+      },
+      image: '/images/Vanilla-Shake-Boba.png',
+      featured: true,
+      category: 'DESSERTS'
     },
     // Sandwiches
     {
@@ -153,7 +153,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Homestyle-Ranch-Chicken-Club.png',
       featured: true,
-      category: 'Sandwich'
+      category: 'ENTRÉES'
     },
     {
       name: 'SPICY CHICKEN® W/ CHEESE',
@@ -161,7 +161,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Spicy-Chicken-W-Cheese.png',
       featured: false,
-      category: 'Sandwich'
+      category: 'ENTRÉES'
     },
     {
       name: 'SPICY CHICKEN',
@@ -169,15 +169,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Spicy-Chicken.png',
       featured: true,
-      category: 'Sandwich'
-    },
-    {
-      name: 'CRISPY CHICKEN STRIPS',
-      description: 'Boneless chicken tenders seasoned to perfection, freshly breaded and pressure cooked in 100% refined peanut oil.',
-      price: 5.99,
-      image: '/images/Crispy-Chicken-Strips.png',
-      featured: false,
-      category: 'Sandwich'
+      category: 'ENTRÉES'
     },
     {
       name: 'CLUCK SANDWICH',
@@ -185,7 +177,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Cluck-Sandwich.png',
       featured: false,
-      category: 'Sandwich'
+      category: 'ENTRÉES'
     },
     {
       name: 'GRILLED CHICKEN SANDWICH',
@@ -193,7 +185,15 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Grilled-Chicken-Sandwich.png',
       featured: false,
-      category: 'Sandwich'
+      category: 'ENTRÉES'
+    },
+    {
+      name: 'CRISPY CHICKEN STRIPS',
+      description: 'Boneless chicken tenders seasoned to perfection, freshly breaded and pressure cooked in 100% refined peanut oil.',
+      price: 5.99,
+      image: '/images/Crispy-Chicken-Strips.png',
+      featured: false,
+      category: 'ENTRÉES'
     },
     // Salads
     {
@@ -202,7 +202,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Garden-Salad-Grilled-Chicken.png',
       featured: false,
-      category: 'Salad'
+      category: 'SALADS'
     },
     {
       name: 'GARDEN SALAD W/ CRISPY CHICKEN',
@@ -210,7 +210,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Garden-Salad-Crispy-Chicken.png',
       featured: false,
-      category: 'Salad'
+      category: 'SALADS'
     },
     {
       name: 'SOUTHWEST SALAD W/ GRILLED CHICKEN',
@@ -218,15 +218,15 @@ export const foodItems = [
       price: 5.99,
       image: '/images/SW-Salad-Grilled-Chicken.png',
       featured: false,
-      category: 'Salad'
+      category: 'SALADS'
     },
     {
       name: 'SOUTHWEST SALAD W/ CRISPY CHICKEN',
       description: 'Mixed greens with crispy chicken strips, tomatoes, shredded carrots, shredded cheddar, roasted corn, black beans, tortilla strips & Southwest dressing.',
       price: 5.99,
       image: '/images/SW-Salad-Crispy-Chicken.png',
-      featured: false,
-      category: 'Salad'
+      featured: true,
+      category: 'SALADS'
     },
     {
       name: 'SIDE SALAD',
@@ -234,7 +234,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Side-Salad.png',
       featured: false,
-      category: 'Salad'
+      category: 'SALADS'
     },
     // Sides
     {
@@ -247,7 +247,7 @@ export const foodItems = [
       },
       image: '/images/French-Fry.png',
       featured: false,
-      category: 'Side'
+      category: 'SIDES'
     },
     {
       name: 'CURLY FRIES',
@@ -259,7 +259,7 @@ export const foodItems = [
       },
       image: '/images/Curly-Fry.png',
       featured: false,
-      category: 'Side'
+      category: 'SIDES'
     },
     {
       name: 'ONION RINGS',
@@ -271,7 +271,7 @@ export const foodItems = [
       },
       image: '/images/Onion-Rings.png',
       featured: false,
-      category: 'Side'
+      category: 'SIDES'
     },
     {
       name: 'CLASSIC GRILLED WRAP',
@@ -279,7 +279,7 @@ export const foodItems = [
       price: 4.99,
       image: '/images/Classic-Grilled-Wrap.png',
       featured: false,
-      category: 'Side'
+      category: 'SIDES'
     },
     {
       name: 'CLASSIC CRISPY WRAP',
@@ -287,7 +287,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Classic-Crispy-Wrap.png',
       featured: false,
-      category: 'Side'
+      category: 'SIDES'
     },
     {
       name: 'SPICY GRILLED WRAP ',
@@ -295,7 +295,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Spicy-Grilled-Wrap.png',
       featured: false,
-      category: 'Side'
+      category: 'SIDES'
     },
     // Breakfast
     {
@@ -304,7 +304,7 @@ export const foodItems = [
       price: 5.99,
       image: '/images/Biscuit-Chicken.png',
       featured: false,
-      category: 'Breakfast'
+      category: 'BREAKFAST'
     },
     {
       name: 'Egg White Grill',
@@ -319,8 +319,8 @@ export const foodItems = [
       description: 'Delicious strips of smoked applewood bacon, folded egg and American cheese served on a toasted classic English Muffin.',
       price: 4.99,
       image: '/images/BaconEggCheeseMuffin.png',
-      featured: false,
-      category: 'Breakfast'
+      featured: true,
+      category: 'BREAKFAST'
     },
     {
       name: 'Chicken, Egg & Cheese Biscuit',
@@ -328,7 +328,7 @@ export const foodItems = [
       price: 4.99,
       image: '/images/Biscuit_ChickenEggCheese.png',
       featured: false,
-      category: 'Breakfast'
+      category: 'BREAKFAST'
     },
     {
       name: 'Small Hash Browns',
@@ -336,7 +336,7 @@ export const foodItems = [
       price: 2.99,
       image: '/images/Breakfast-Hashbrowns.png',
       featured: false,
-      category: 'Breakfast'
+      category: 'BREAKFAST'
     },
     {
       name: 'Hash Brown Scramble Bowl',
@@ -344,6 +344,6 @@ export const foodItems = [
       price: 3.99,
       image: '/images/ChickenHashbrownBreakfastBowl.png',
       featured: false,
-      category: 'Breakfast'
+      category: 'BREAKFAST'
     },
   ];

@@ -1,12 +1,13 @@
+<!-- SingleFoodItem.vue -->
 <template>
   <div class="wrapper-menu-outer-section">
     <div class="wrapper-general">
     <div class="wrapper-with-info-card-right">
-      <img src="/images/kfc-new8pcTenders.png" :alt="item.name">
+      <img :src="item.image" :alt="item.name">
       <div class="single-food-item-buy-card">
         <div>
           <h3 class="header-5">{{ item.name }}</h3>
-      <p class="main-copy">These crispy chicken tenders are prepared fresh to order</p>
+      <p class="main-copy">{{item.description}}</p>
         </div>
         <div v-if="item.sizes">
           <h6 class="header-6">Select size</h6>
