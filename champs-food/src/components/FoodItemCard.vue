@@ -1,49 +1,46 @@
 <!-- FoodItemCard.vue -->
 <template>
-    <div class="food-item-card">
+  <div class="food-item-card">
+    <router-link :to="{ name: 'SingleFoodItem', params: { name: item.name } }">
       <img :src="item.image" :alt="item.name">
       <h6 class="header-6">{{ item.name }}</h6>
       <p v-if="item.price">${{ item.price }}</p>
       <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
-    </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  
-  const props = defineProps({
-    item: Object
-  });
-  
-  const cart = ref([]);
-  
-  const addToCart = (item) => {
-    cart.value.push(item);
-    console.log(cart.value); // Temporary for development, replace with actual cart handling
-  };
-  </script>
-  
-  <style scoped>
-  .food-item-card {
-    border-radius: 15px;
-    padding: 1rem;
-    min-width: 200px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 300px;
-    text-align: center;
-  }
+    </router-link>
+  </div>
+</template>
 
-  .food-item-card:hover {
-    background-color: var(--clr-accent-creme);
-    filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.3));
-  }
-  
-  .food-item-card img {
-    max-height: 150px;
-    margin-inline: auto;
-    margin-bottom: 2rem;
-  }
-  </style>
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  item: Object
+});
+
+const cart = ref([]);
+</script>
+
+<style scoped>
+.food-item-card {
+  border-radius: 15px;
+  padding: 1rem;
+  min-width: 200px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+}
+
+.food-item-card:hover {
+  background-color: var(--clr-accent-creme);
+  filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.3));
+}
+
+.food-item-card img {
+  max-height: 150px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+</style>

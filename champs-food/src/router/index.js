@@ -13,22 +13,23 @@ const routes = [
     component: Home
   },
   {
-    path: '/Menu',
+    path: '/menu',
     name: 'Menu',
     component: Menu
   },
   {
-    path: '/SingleFoodItem',
+    path: '/food/:name',
     name: 'SingleFoodItem',
-    component: SingleFoodItem
+    component: SingleFoodItem,
+    props: true
   },
   {
-    path: '/Cart',
+    path: '/cart',
     name: 'Cart',
     component: Cart
   },
   {
-    path: '/Checkout',
+    path: '/checkout',
     name: 'Checkout',
     component: Checkout
   }
