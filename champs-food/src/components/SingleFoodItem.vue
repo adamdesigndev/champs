@@ -1,4 +1,3 @@
-<!-- SingleFoodItem.vue -->
 <template>
   <div v-if="item">
     <div class="wrapper-menu-outer-section">
@@ -13,15 +12,27 @@
             <div v-if="item.sizes">
               <h6 class="header-6">Select size</h6>
               <div class="wrapper-size-selecter">
-                <button class="single-size">
+                <button
+                  class="single-size"
+                  :class="{ selected: selectedSize.value === 'small' }"
+                  @click="selectSize('small')"
+                >
                   <div class="size-square"><p>S</p></div>
                   <div class="size-square-text-below">Small</div>
                 </button>
-                <button class="single-size">
+                <button
+                  class="single-size"
+                  :class="{ selected: selectedSize.value === 'medium' }"
+                  @click="selectSize('medium')"
+                >
                   <div class="size-square"><p>M</p></div>
                   <div class="size-square-text-below">Medium</div>
                 </button>
-                <button class="single-size">
+                <button
+                  class="single-size"
+                  :class="{ selected: selectedSize.value === 'large' }"
+                  @click="selectSize('large')"
+                >
                   <div class="size-square"><p>L</p></div>
                   <div class="size-square-text-below">Large</div>
                 </button>
@@ -29,16 +40,16 @@
             </div>
             <div class="wrapper-qauntity-add-to-cart">
               <div class="wrapper-quanitity">
-                <p class="header-quanitity">Quanitity</p>
+                <p class="header-quanitity">Quantity</p>
                 <div class="quanitiy-picker">
-                  <button class="minus-qty">-</button>
-                  <p class="food-item-amount-number">3</p>
-                  <button class="plus-qty">+</button>
+                  <button class="minus-qty" @click="updateQuantity(-1)">-</button>
+                  <p class="food-item-amount-number">{{ quantity }}</p>
+                  <button class="plus-qty" @click="updateQuantity(1)">+</button>
                 </div>
               </div>
               <button class="main-btn add-item-with-price" @click="addToCart(item)">
                 <p>Add To Cart</p>
-                <p class="single-item-price-in-button"></p>
+                <p class="single-item-price-in-button">{{ totalPriceFormatted }}</p>
               </button>
             </div>
           </div>
@@ -52,22 +63,43 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
   item: Object
 });
 
-const selectedSize = ref(props.item && props.item.sizes ? Object.keys(props.item.sizes)[0] : null);
+const selectedSize = ref('medium'); // Default to 'medium'
+const quantity = ref(1);
+
+const selectSize = (size) => {
+  selectedSize.value = size;
+};
+
+const updateQuantity = (amount) => {
+  quantity.value = Math.max(1, quantity.value + amount); // Ensure quantity is at least 1
+};
+
+const totalPrice = computed(() => {
+  if (props.item.sizes) {
+    return quantity.value * props.item.sizes[selectedSize.value];
+  } else {
+    return quantity.value * props.item.price;
+  }
+});
+
+const totalPriceFormatted = computed(() => {
+  return `$${totalPrice.value.toFixed(2)}`;
+});
 
 const addToCart = (item) => {
-  console.log('Adding to cart', { item, size: selectedSize.value }); // Temporary for development, replace with actual cart logic
+  console.log('Adding to cart', { item, size: selectedSize.value, quantity: quantity.value }); // Temporary for development, replace with actual cart logic
 };
 
 // Watch for changes in the item prop to set the default size
 watch(() => props.item, (newItem) => {
   if (newItem && newItem.sizes) {
-    selectedSize.value = Object.keys(newItem.sizes)[0];
+    selectedSize.value = 'medium' in newItem.sizes ? 'medium' : Object.keys(newItem.sizes)[0];
   }
 });
 </script>
@@ -98,6 +130,26 @@ watch(() => props.item, (newItem) => {
   width: 60px;
   color: #000;
   font-weight: 600;
+  border: 2px solid transparent; /* Default transparent border */
+}
+
+.single-size.selected .size-square {
+  color: #fff;
+}
+
+.single-size.selected[data-size="small"] .size-square {
+  background-color: blue;
+  border: 2px solid green; /* Green border for selected size */
+}
+
+.single-size.selected[data-size="medium"] .size-square {
+  background-color: blue;
+  border: 2px solid green; /* Green border for selected size */
+}
+
+.single-size.selected[data-size="large"] .size-square {
+  background-color: purple;
+  border: 2px solid green; /* Green border for selected size */
 }
 
 .size-square:hover {
