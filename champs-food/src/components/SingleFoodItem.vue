@@ -1,9 +1,11 @@
+<!-- @format -->
+<!-- SingleFoodItem.vue -->
 <template>
   <div v-if="item">
     <div class="wrapper-menu-outer-section">
       <div class="wrapper-general">
         <div class="wrapper-with-info-card-right">
-          <img :src="item.image" :alt="item.name">
+          <img :src="item.image" :alt="item.name" />
           <div class="single-food-item-buy-card">
             <div>
               <h3 class="header-5">{{ item.name }}</h3>
@@ -42,14 +44,21 @@
               <div class="wrapper-quanitity">
                 <p class="header-quanitity">Quantity</p>
                 <div class="quanitiy-picker">
-                  <button class="minus-qty" @click="updateQuantity(-1)">-</button>
+                  <button class="minus-qty" @click="updateQuantity(-1)">
+                    -
+                  </button>
                   <p class="food-item-amount-number">{{ quantity }}</p>
                   <button class="plus-qty" @click="updateQuantity(1)">+</button>
                 </div>
               </div>
-              <button class="main-btn add-item-with-price" @click="addToCart(item)">
+              <button
+                class="main-btn add-item-with-price"
+                @click="addToCart(item)"
+              >
                 <p>Add To Cart</p>
-                <p class="single-item-price-in-button">{{ totalPriceFormatted }}</p>
+                <p class="single-item-price-in-button">
+                  {{ totalPriceFormatted }}
+                </p>
               </button>
             </div>
           </div>
@@ -58,18 +67,20 @@
     </div>
   </div>
   <div v-else>
-    <p>Loading...</p> <!-- Optional loading message -->
+    <p>Loading...</p>
+    <!-- Optional loading message -->
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch } from "vue";
+import { cartStore } from "../../cartStore";
 
 const props = defineProps({
-  item: Object
+  item: Object,
 });
 
-const selectedSize = ref('medium'); // Default to 'medium'
+const selectedSize = ref("medium"); // Default to 'medium'
 const quantity = ref(1);
 
 const selectSize = (size) => {
@@ -93,26 +104,38 @@ const totalPriceFormatted = computed(() => {
 });
 
 const addToCart = (item) => {
-  console.log('Adding to cart', { item, size: selectedSize.value, quantity: quantity.value }); // Temporary for development, replace with actual cart logic
+  const cartItem = {
+    ...item,
+    size: selectedSize.value,
+    quantity: quantity.value,
+    totalPrice: totalPrice.value,
+  };
+  console.log("Adding to cart:", cartItem); // Add this line to debug
+  cartStore.addToCart(cartItem);
+  console.log("Current cart items:", cartStore.items); // Log current cart items
 };
 
 // Watch for changes in the item prop to set the default size
-watch(() => props.item, (newItem) => {
-  if (newItem && newItem.sizes) {
-    selectedSize.value = 'medium' in newItem.sizes ? 'medium' : Object.keys(newItem.sizes)[0];
+watch(
+  () => props.item,
+  (newItem) => {
+    if (newItem && newItem.sizes) {
+      selectedSize.value =
+        "medium" in newItem.sizes ? "medium" : Object.keys(newItem.sizes)[0];
+    }
   }
-});
+);
 </script>
 
 <style scoped>
 .wrapper-size-selecter {
   display: flex;
   flex-direction: row;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
 .single-size {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border: none;
   cursor: pointer;
 }
@@ -164,7 +187,7 @@ watch(() => props.item, (newItem) => {
   background-color: var(--clr-accent-creme);
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 .5rem 1rem rgba(73,73,73,.25);
+  box-shadow: 0 0.5rem 1rem rgba(73, 73, 73, 0.25);
 }
 
 .single-food-item img {
@@ -174,7 +197,7 @@ watch(() => props.item, (newItem) => {
 .wrapper-qauntity-add-to-cart {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .wrapper-quanitity {
@@ -200,9 +223,9 @@ watch(() => props.item, (newItem) => {
 }
 
 .quanitiy-picker button {
-  padding: 0rem .8rem;
+  padding: 0rem 0.8rem;
   border: none;
-  background-color: rgb(0,0,0,0);
+  background-color: rgb(0, 0, 0, 0);
   font-size: var(--fs-500);
 }
 
