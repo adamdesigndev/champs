@@ -7,10 +7,7 @@
     <div class="main-cart-item-details">
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
       <div class="wrapper-size-quantity">
-        <p
-          class="size-quantity-header"
-          v-if="item.sizes !== undefined && item.sizes !== null"
-        >
+        <p class="size-quantity-header" v-if="item.size">
           Size: <span>{{ item.size }}</span>
         </p>
         <p class="size-quantity-header">
@@ -29,27 +26,32 @@
 </template>
 
 <script setup>
-import { cartStore } from "../../cartStore";
+import { useRouter } from 'vue-router';
+import { cartStore } from '../../cartStore';
 
 const props = defineProps({
   item: Object,
 });
+
+const router = useRouter();
 
 const removeFromCart = (item) => {
   cartStore.removeFromCart(item);
 };
 
 const editItem = (item) => {
-  // Logic to edit item
+  cartStore.setCurrentEditItem(item);
+  router.push({ name: 'SingleFoodItem', params: { id: item.name }, query: { edit: 'true' } });
 };
 </script>
+
 
 <style scoped>
 .wrapper-cart-single-item {
   display: grid;
-  grid-template-columns: 2fr 6fr 1fr;
-  gap: 2rem;
-  border-bottom: 1px solid #cacaca;
+  grid-template-columns: 2fr 5fr 1fr;
+  gap: 1.5rem;
+  border-bottom: 1px solid #eaeaea;
   padding-bottom: 1.5rem;
 }
 
@@ -96,3 +98,4 @@ const editItem = (item) => {
   line-height: 1rem;
 }
 </style>
+

@@ -8,7 +8,7 @@
           <img :src="item.image" :alt="item.name" />
           <div class="single-food-item-buy-card">
             <div>
-              <h3 class="header-5">{{ item.name }}</h3>
+              <h3 class="header-4">{{ item.name }}</h3>
               <p class="main-copy">{{ item.description }}</p>
             </div>
             <div v-if="item.sizes">
@@ -44,18 +44,16 @@
               <div class="wrapper-quanitity">
                 <p class="header-quanitity">Quantity</p>
                 <div class="quanitiy-picker">
-                  <button class="minus-qty" @click="updateQuantity(-1)">
-                    -
-                  </button>
+                  <button class="minus-qty" @click="updateQuantity(-1)">-</button>
                   <p class="food-item-amount-number">{{ quantity }}</p>
                   <button class="plus-qty" @click="updateQuantity(1)">+</button>
                 </div>
               </div>
               <button
                 class="main-btn add-item-with-price"
-                @click="addToCart(item)"
+                @click="updateOrAddToCart(item)"
               >
-                <p>Add To Cart</p>
+                <p>{{ isEditing ? 'Update' : 'Add To Cart' }}</p>
                 <p class="single-item-price-in-button">
                   {{ totalPriceFormatted }}
                 </p>
@@ -73,14 +71,18 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import { cartStore } from "../../cartStore";
+import { ref, computed, watch, onMounted } from 'vue';
+import { cartStore } from '../../cartStore';
+import { useRoute, useRouter } from 'vue-router';
 
 const props = defineProps({
   item: Object,
 });
 
-const selectedSize = ref("medium"); // Default to 'medium'
+const route = useRoute();
+const router = useRouter();
+const isEditing = ref(false);
+const selectedSize = ref('medium'); // Default to 'medium'
 const quantity = ref(1);
 
 const selectSize = (size) => {
@@ -103,16 +105,21 @@ const totalPriceFormatted = computed(() => {
   return `$${totalPrice.value.toFixed(2)}`;
 });
 
-const addToCart = (item) => {
+const updateOrAddToCart = (item) => {
   const cartItem = {
     ...item,
     size: selectedSize.value,
     quantity: quantity.value,
     totalPrice: totalPrice.value,
   };
-  console.log("Adding to cart:", cartItem); // Add this line to debug
-  cartStore.addToCart(cartItem);
-  console.log("Current cart items:", cartStore.items); // Log current cart items
+  if (isEditing.value) {
+    cartStore.updateCartItem(cartItem);
+    cartStore.clearCurrentEditItem();
+    router.push({ name: 'Cart' });
+  } else {
+    cartStore.addToCart(cartItem);
+  }
+  console.log('Current cart items:', cartStore.items); // Log current cart items
 };
 
 // Watch for changes in the item prop to set the default size
@@ -121,11 +128,21 @@ watch(
   (newItem) => {
     if (newItem && newItem.sizes) {
       selectedSize.value =
-        "medium" in newItem.sizes ? "medium" : Object.keys(newItem.sizes)[0];
+        'medium' in newItem.sizes ? 'medium' : Object.keys(newItem.sizes)[0];
     }
   }
 );
+
+onMounted(() => {
+  if (route.query.edit === 'true' && cartStore.currentEditItem) {
+    isEditing.value = true;
+    const item = cartStore.currentEditItem;
+    selectedSize.value = item.size;
+    quantity.value = item.quantity;
+  }
+});
 </script>
+
 
 <style scoped>
 .wrapper-size-selecter {
@@ -188,6 +205,7 @@ watch(
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 0.5rem 1rem rgba(73, 73, 73, 0.25);
+  align-self: start;
 }
 
 .single-food-item img {

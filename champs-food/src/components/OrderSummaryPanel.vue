@@ -4,9 +4,12 @@
   <aside class="menu-cart-card-right cart-summary">
     <div class="card-header-cart">
       <h2 class="header-5">Order Summary</h2>
-      <p class="header-6">{{ totalItems }} item(s)</p>
+      <div class="wrapper-total-items-in-cart">
+        <p class="header-6">{{ totalItems }} item(s)</p>
+        <button class="btn-view-all" @click="toggleViewAll">{{ viewAll ? '^' : 'v' }}</button>
+      </div>
     </div>
-    <div class="panel-list-items">
+    <div class="panel-list-items" v-show="viewAll">
       <div
         v-for="item in cartStore.items"
         :key="item.name + item.size"
@@ -14,7 +17,7 @@
       >
         <div class="panel-item-name-size">
           <h6 class="header-6">{{ item.name }}</h6>
-          <p class="size-quantity-details" v-if="item.sizes">{{ item.size }}</p>
+          <p class="size-quantity-details" v-if="item.size">{{ item.size }}</p>
         </div>
         <div class="panel-price-quantity">
           <p class="panel-item-price">
@@ -45,8 +48,14 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { cartStore } from "../../cartStore";
+
+const viewAll = ref(false);
+
+const toggleViewAll = () => {
+  viewAll.value = !viewAll.value;
+};
 
 const totalItems = computed(() =>
   cartStore.items.reduce((sum, item) => sum + item.quantity, 0)
@@ -64,8 +73,22 @@ const proceedToCheckout = () => {
 
 <style scoped>
 .cart-summary {
+  gap: 2rem; 
+}
+
+.wrapper-total-items-in-cart {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 2rem;
+  align-items: center;
+}
+
+.btn-view-all {
+  background-color: rgba(0,0,0,0);
+  padding: 0 5px;
+  line-height: 0;
+  border: none;
+  cursor: pointer;
 }
 
 .panel-list-items {
