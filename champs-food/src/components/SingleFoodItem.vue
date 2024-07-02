@@ -110,6 +110,12 @@ const loadState = () => {
   }
 };
 
+const resetState = () => {
+  selectedSize.value = "medium"; // Reset to default size
+  quantity.value = 1; // Reset to default quantity
+  localStorage.removeItem(`itemState_${props.item.name}`); // Remove saved state
+};
+
 const selectSize = (size) => {
   selectedSize.value = size;
   saveState();
@@ -143,12 +149,13 @@ const addOrUpdateCart = (item) => {
   if (isEditing.value) {
     cartStore.updateCartItem(cartItem);
     cartStore.clearCurrentEditItem();
+    router.push({ name: 'Cart' });
   } else {
     cartStore.addToCart(cartItem);
+    router.push({ name: 'Menu' });
   }
   console.log("Current cart items:", cartStore.items);
-  saveState();
-  router.push({ name: 'Cart' });
+  resetState(); // Reset the state after adding/updating the cart
 };
 
 onMounted(() => {
@@ -159,14 +166,7 @@ onMounted(() => {
     isEditing.value = true;
     cartStore.clearCurrentEditItem(); // Clear the edit state after loading
   } else {
-    const savedState = localStorage.getItem(`itemState_${props.item.name}`);
-    if (savedState) {
-      const { selectedSize: savedSize, quantity: savedQuantity } = JSON.parse(
-        savedState
-      );
-      selectedSize.value = savedSize;
-      quantity.value = savedQuantity;
-    }
+    resetState(); // Reset to default state if not editing
   }
 });
 
@@ -181,7 +181,6 @@ watch(
   }
 );
 </script>
-
 
 
 <style scoped>
