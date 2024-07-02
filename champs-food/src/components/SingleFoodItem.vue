@@ -53,9 +53,9 @@
               </div>
               <button
                 class="main-btn add-item-with-price"
-                @click="updateOrAddToCart(item)"
+                @click="addToCart(item)"
               >
-                <p>{{ isEditing ? 'Update' : 'Add To Cart' }}</p>
+                <p>Add To Cart</p>
                 <p class="single-item-price-in-button">
                   {{ totalPriceFormatted }}
                 </p>
@@ -75,24 +75,47 @@
 <script setup>
 import { ref, computed, watch, onMounted } from "vue";
 import { cartStore } from "../../cartStore";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 
 const props = defineProps({
   item: Object,
 });
 
 const route = useRoute();
-const router = useRouter();
-const isEditing = ref(route.query.edit === "true");
+
 const selectedSize = ref("medium"); // Default to 'medium'
 const quantity = ref(1);
 
+const saveState = () => {
+  localStorage.setItem(
+    `itemState_${props.item.name}`,
+    JSON.stringify({
+      selectedSize: selectedSize.value,
+      quantity: quantity.value,
+      totalPrice: totalPrice.value,
+    })
+  );
+};
+
+const loadState = () => {
+  const savedState = localStorage.getItem(`itemState_${props.item.name}`);
+  if (savedState) {
+    const { selectedSize: savedSize, quantity: savedQuantity } = JSON.parse(
+      savedState
+    );
+    selectedSize.value = savedSize;
+    quantity.value = savedQuantity;
+  }
+};
+
 const selectSize = (size) => {
   selectedSize.value = size;
+  saveState();
 };
 
 const updateQuantity = (amount) => {
   quantity.value = Math.max(1, quantity.value + amount); // Ensure quantity is at least 1
+  saveState();
 };
 
 const totalPrice = computed(() => {
@@ -107,22 +130,36 @@ const totalPriceFormatted = computed(() => {
   return `$${totalPrice.value.toFixed(2)}`;
 });
 
-const updateOrAddToCart = (item) => {
+const addToCart = (item) => {
   const cartItem = {
     ...item,
     size: selectedSize.value,
     quantity: quantity.value,
     totalPrice: totalPrice.value,
   };
-  if (isEditing.value) {
-    cartStore.updateCartItem(cartItem);
-    cartStore.clearCurrentEditItem();
-    router.push({ name: "Cart" });
-  } else {
-    cartStore.addToCart(cartItem);
-  }
+  console.log("Adding to cart:", cartItem); // Add this line to debug
+  cartStore.addToCart(cartItem);
   console.log("Current cart items:", cartStore.items); // Log current cart items
+  saveState();
 };
+
+onMounted(() => {
+  if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
+    const { size, quantity: editQuantity } = cartStore.currentEditItem;
+    selectedSize.value = size;
+    quantity.value = editQuantity;
+    cartStore.clearCurrentEditItem(); // Clear the edit state after loading
+  } else {
+    const savedState = localStorage.getItem(`itemState_${props.item.name}`);
+    if (savedState) {
+      const { selectedSize: savedSize, quantity: savedQuantity } = JSON.parse(
+        savedState
+      );
+      selectedSize.value = savedSize;
+      quantity.value = savedQuantity;
+    }
+  }
+});
 
 // Watch for changes in the item prop to set the default size
 watch(
@@ -134,16 +171,7 @@ watch(
     }
   }
 );
-
-onMounted(() => {
-  if (isEditing.value && cartStore.currentEditItem) {
-    const item = cartStore.currentEditItem;
-    selectedSize.value = item.size;
-    quantity.value = item.quantity;
-  }
-});
 </script>
-
 
 
 <style scoped>

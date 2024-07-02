@@ -6,6 +6,7 @@ const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 export const cartStore = reactive({
   items: storedCartItems,
   currentEditItem: null,
+  isEditing: false,
 
   addToCart(newItem) {
     const existingItemIndex = this.items.findIndex(
@@ -40,16 +41,15 @@ export const cartStore = reactive({
 
   setCurrentEditItem(item) {
     this.currentEditItem = item;
+    this.isEditing = true;
   },
 
   clearCurrentEditItem() {
     this.currentEditItem = null;
+    this.isEditing = false;
   },
 });
 
 watchEffect(() => {
   localStorage.setItem('cartItems', JSON.stringify(cartStore.items));
 });
-
-
-
