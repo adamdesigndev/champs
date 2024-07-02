@@ -7,7 +7,10 @@
     <div class="main-cart-item-details">
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
       <div class="wrapper-size-quantity">
-        <p class="size-quantity-header" v-if="item.size">
+        <p
+          class="size-quantity-header"
+          v-if="item.sizes"
+        >
           Size: <span>{{ item.size }}</span>
         </p>
         <p class="size-quantity-header">
@@ -27,7 +30,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { cartStore } from '../../cartStore';
+import { cartStore } from "../../cartStore";
 
 const props = defineProps({
   item: Object,
@@ -41,7 +44,7 @@ const removeFromCart = (item) => {
 
 const editItem = (item) => {
   cartStore.setCurrentEditItem(item);
-  router.push({ name: 'SingleFoodItem', params: { id: item.name }, query: { edit: 'true' } });
+  router.push({ name: 'SingleFoodItem', query: { edit: true } });
 };
 </script>
 

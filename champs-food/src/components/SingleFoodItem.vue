@@ -44,7 +44,9 @@
               <div class="wrapper-quanitity">
                 <p class="header-quanitity">Quantity</p>
                 <div class="quanitiy-picker">
-                  <button class="minus-qty" @click="updateQuantity(-1)">-</button>
+                  <button class="minus-qty" @click="updateQuantity(-1)">
+                    -
+                  </button>
                   <p class="food-item-amount-number">{{ quantity }}</p>
                   <button class="plus-qty" @click="updateQuantity(1)">+</button>
                 </div>
@@ -71,9 +73,9 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
-import { cartStore } from '../../cartStore';
-import { useRoute, useRouter } from 'vue-router';
+import { ref, computed, watch, onMounted } from "vue";
+import { cartStore } from "../../cartStore";
+import { useRoute, useRouter } from "vue-router";
 
 const props = defineProps({
   item: Object,
@@ -81,8 +83,8 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
-const isEditing = ref(false);
-const selectedSize = ref('medium'); // Default to 'medium'
+const isEditing = ref(route.query.edit === "true");
+const selectedSize = ref("medium"); // Default to 'medium'
 const quantity = ref(1);
 
 const selectSize = (size) => {
@@ -115,11 +117,11 @@ const updateOrAddToCart = (item) => {
   if (isEditing.value) {
     cartStore.updateCartItem(cartItem);
     cartStore.clearCurrentEditItem();
-    router.push({ name: 'Cart' });
+    router.push({ name: "Cart" });
   } else {
     cartStore.addToCart(cartItem);
   }
-  console.log('Current cart items:', cartStore.items); // Log current cart items
+  console.log("Current cart items:", cartStore.items); // Log current cart items
 };
 
 // Watch for changes in the item prop to set the default size
@@ -128,20 +130,20 @@ watch(
   (newItem) => {
     if (newItem && newItem.sizes) {
       selectedSize.value =
-        'medium' in newItem.sizes ? 'medium' : Object.keys(newItem.sizes)[0];
+        "medium" in newItem.sizes ? "medium" : Object.keys(newItem.sizes)[0];
     }
   }
 );
 
 onMounted(() => {
-  if (route.query.edit === 'true' && cartStore.currentEditItem) {
-    isEditing.value = true;
+  if (isEditing.value && cartStore.currentEditItem) {
     const item = cartStore.currentEditItem;
     selectedSize.value = item.size;
     quantity.value = item.quantity;
   }
 });
 </script>
+
 
 
 <style scoped>
