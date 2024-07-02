@@ -53,9 +53,9 @@
               </div>
               <button
                 class="main-btn add-item-with-price"
-                @click="addToCart(item)"
+                @click="addOrUpdateCart(item)"
               >
-                <p>Add To Cart</p>
+                <p>{{ isEditing ? 'Update' : 'Add To Cart' }}</p>
                 <p class="single-item-price-in-button">
                   {{ totalPriceFormatted }}
                 </p>
@@ -74,14 +74,16 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from "vue";
+import { useRoute, useRouter } from 'vue-router';
 import { cartStore } from "../../cartStore";
-import { useRoute } from "vue-router";
 
 const props = defineProps({
   item: Object,
 });
 
 const route = useRoute();
+const router = useRouter();
+const isEditing = ref(false);
 
 const selectedSize = ref("medium"); // Default to 'medium'
 const quantity = ref(1);
@@ -130,17 +132,23 @@ const totalPriceFormatted = computed(() => {
   return `$${totalPrice.value.toFixed(2)}`;
 });
 
-const addToCart = (item) => {
+const addOrUpdateCart = (item) => {
   const cartItem = {
     ...item,
     size: selectedSize.value,
     quantity: quantity.value,
     totalPrice: totalPrice.value,
   };
-  console.log("Adding to cart:", cartItem); // Add this line to debug
-  cartStore.addToCart(cartItem);
-  console.log("Current cart items:", cartStore.items); // Log current cart items
+  console.log("Adding or updating cart:", cartItem);
+  if (isEditing.value) {
+    cartStore.updateCartItem(cartItem);
+    cartStore.clearCurrentEditItem();
+  } else {
+    cartStore.addToCart(cartItem);
+  }
+  console.log("Current cart items:", cartStore.items);
   saveState();
+  router.push({ name: 'Cart' });
 };
 
 onMounted(() => {
@@ -148,6 +156,7 @@ onMounted(() => {
     const { size, quantity: editQuantity } = cartStore.currentEditItem;
     selectedSize.value = size;
     quantity.value = editQuantity;
+    isEditing.value = true;
     cartStore.clearCurrentEditItem(); // Clear the edit state after loading
   } else {
     const savedState = localStorage.getItem(`itemState_${props.item.name}`);
@@ -172,6 +181,7 @@ watch(
   }
 );
 </script>
+
 
 
 <style scoped>
