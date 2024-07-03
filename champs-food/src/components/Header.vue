@@ -13,7 +13,18 @@
       <a class="desktop-header" href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt="Logo"></a>
       <a class="mobile-header" href="/Home"><img src="/images/logo-comb-mobile.svg" alt="Logo"></a>
       <ul class="nav-menu-links">
-        <li><a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart"></a></li>
+        <li class="cart-icon-wrapper">
+          <a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart"></a>
+          <transition name="badge">
+            <span
+              v-if="totalItems > 0"
+              :key="cartUpdateKey"
+              class="cart-notification"
+            >
+              {{ totalItems }}
+            </span>
+          </transition>
+        </li>
         <li class="desktop-header"><a class="header-nav-links" href="/Checkout"><button class="main-btn">Checkout</button></a></li>
       </ul>
     </nav>
@@ -21,16 +32,32 @@
 </template>
 
 <script setup>
-import { inject } from 'vue';
+import { inject, computed, ref, watch } from 'vue';
+import { cartStore } from "../../cartStore";
 
 const toggleMenu = inject('toggleMenu');
 const isMenuOpen = inject('isMenuOpen');
+
+const totalItems = computed(() => {
+  return cartStore.items.reduce((sum, item) => sum + item.quantity, 0);
+});
+
+const cartUpdateKey = ref(0);
+
+watch(
+  () => cartStore.items.map(item => ({ name: item.name, size: item.size, quantity: item.quantity })),
+  (newItems, oldItems) => {
+    if (JSON.stringify(newItems) !== JSON.stringify(oldItems)) {
+      cartUpdateKey.value++;
+    }
+  },
+  { deep: true }
+);
 </script>
 
 <style scoped>
 /* header outer content wrapper */
 .wrapper-header-outer {
-
   background-color: #fff;
   position: relative;
   z-index: 2000; /* Ensure header is above the mobile menu */
@@ -62,8 +89,43 @@ const isMenuOpen = inject('isMenuOpen');
   height: 3.5rem;
 }
 
+.cart-icon-wrapper {
+  position: relative;
+}
+
 .cart-icon {
   width: 1.2rem;
+}
+
+.cart-notification {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  background-color: var(--clr-primary);
+  color: #ffffff;
+  border: 3px solid white;
+  border-radius: 50%;
+  padding: 1px;
+  min-width: 32px;
+  min-height: 32px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fs-200);
+  animation: pop-in 0.3s ease;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .mobile-header {
