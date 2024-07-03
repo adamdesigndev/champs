@@ -7,6 +7,7 @@ export const cartStore = reactive({
   items: storedCartItems,
   currentEditItem: null,
   isEditing: false,
+  animationTrigger: 0, // Add this line
 
   addToCart(newItem) {
     const existingItemIndex = this.items.findIndex(
@@ -21,6 +22,7 @@ export const cartStore = reactive({
       const cartItem = { ...newItem };
       this.items.push(cartItem);
     }
+    this.animationTrigger++; // Increment the trigger
   },
 
   removeFromCart(item) {
@@ -31,14 +33,11 @@ export const cartStore = reactive({
   },
 
   updateCartItem(updatedItem) {
-    const originalItemIndex = this.items.findIndex(
-      (item) => item.name === updatedItem.name
+    const itemIndex = this.items.findIndex(
+      (item) => item.name === updatedItem.name && item.size === updatedItem.size
     );
-
-    if (originalItemIndex !== -1) {
-      this.items[originalItemIndex] = updatedItem;
-    } else {
-      this.addToCart(updatedItem); // In case the original item is not found, add it as a new item
+    if (itemIndex !== -1) {
+      this.items[itemIndex] = updatedItem;
     }
   },
 

@@ -3,55 +3,73 @@
   <header class="wrapper-header-outer">
     <nav class="wrapper-nav-inner">
       <button class="hamburger mobile-header" @click="toggleMenu">
-        <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu">
+        <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
       </button>
       <ul class="nav-menu-links desktop-header">
         <li><a class="header-nav-links" href="/">Home</a></li>
         <li><a class="header-nav-links" href="/Menu">Menu</a></li>
         <li><a class="header-nav-links" href="/About">About</a></li>
       </ul>
-      <a class="desktop-header" href="http://"><img class="header-logo" src="/images/Champs-head.svg" alt="Logo"></a>
-      <a class="mobile-header" href="/Home"><img src="/images/logo-comb-mobile.svg" alt="Logo"></a>
+      <a class="desktop-header" href="http://">
+        <img class="header-logo" src="/images/Champs-head.svg" alt="Logo" />
+      </a>
+      <a class="mobile-header" href="/Home">
+        <img src="/images/logo-comb-mobile.svg" alt="Logo" />
+      </a>
       <ul class="nav-menu-links">
         <li class="cart-icon-wrapper">
-          <a href="/Cart"><img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart"></a>
-          <transition name="badge">
-            <span
-              v-if="totalItems > 0"
-              :key="cartUpdateKey"
-              class="cart-notification"
-            >
-              {{ totalItems }}
-            </span>
-          </transition>
+          <a href="/Cart">
+            <img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart" />
+          </a>
+          <span
+            v-if="totalItems > 0"
+            ref="badge"
+            class="cart-notification"
+            :class="{ animate: isAnimating }"
+          >
+            {{ totalItems }}
+          </span>
         </li>
-        <li class="desktop-header"><a class="header-nav-links" href="/Checkout"><button class="main-btn">Checkout</button></a></li>
+        <li class="desktop-header">
+          <a class="header-nav-links" href="/Checkout">
+            <button class="main-btn">Checkout</button>
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script setup>
-import { inject, computed, ref, watch } from 'vue';
+import { inject, computed, ref, watch } from "vue";
 import { cartStore } from "../../cartStore";
 
-const toggleMenu = inject('toggleMenu');
-const isMenuOpen = inject('isMenuOpen');
+const toggleMenu = inject("toggleMenu");
+const isMenuOpen = inject("isMenuOpen");
 
 const totalItems = computed(() => {
   return cartStore.items.reduce((sum, item) => sum + item.quantity, 0);
 });
 
-const cartUpdateKey = ref(0);
+const badgeRef = ref(null);
+const lastCartLength = ref(cartStore.items.length);
+const isAnimating = ref(false);
+
+const triggerBadgeAnimation = () => {
+  isAnimating.value = true;
+  setTimeout(() => {
+    isAnimating.value = false;
+  }, 300);
+};
 
 watch(
-  () => cartStore.items.map(item => ({ name: item.name, size: item.size, quantity: item.quantity })),
-  (newItems, oldItems) => {
-    if (JSON.stringify(newItems) !== JSON.stringify(oldItems)) {
-      cartUpdateKey.value++;
+  () => cartStore.items.length,
+  (newLength, oldLength) => {
+    if (newLength > oldLength) {
+      triggerBadgeAnimation();
     }
-  },
-  { deep: true }
+    lastCartLength.value = newLength;
+  }
 );
 </script>
 
@@ -113,6 +131,9 @@ watch(
   justify-content: center;
   align-items: center;
   font-size: var(--fs-200);
+}
+
+.cart-notification.animate {
   animation: pop-in 0.3s ease;
 }
 
