@@ -3,7 +3,7 @@
 <!-- OrderConfirmation.vue -->
 <template>
   <div class="wrapper-order-confirmation">
-    <img src="/images/order-confirmed-check.svg" alt="" />
+    <img src="/images/order-confirmed-check.svg" alt="Order Confirmed" />
     <h1 class="header-2">Order Complete!</h1>
     <p class="main-copy body-bottom-button">
       Thank you for your order. You will receive a confirmation at
@@ -14,8 +14,12 @@
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 const goHome = () => {
-  console.log("Navigating to home"); // Temporary for development, replace with actual navigation logic
+  router.push("/");
 };
 </script>
 

@@ -24,8 +24,8 @@
         Email
         <input class="form-input" type="email" v-model="email" required />
       </label>
+      <button class="main-btn" type="submit">Proceed to Payment</button>
     </form>
-    <button class="main-btn" type="submit">Proceed to Payment</button>
   </div>
 </template>
 
@@ -39,6 +39,7 @@ const email = ref("");
 
 const submitUserInfo = () => {
   console.log("User info submitted", { firstName, lastName, phone, email }); // Temporary for development, replace with actual logic
+  emit("proceed");
 };
 </script>
 
@@ -48,6 +49,7 @@ const submitUserInfo = () => {
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
+
 .user-info {
   padding: 1rem;
 }
