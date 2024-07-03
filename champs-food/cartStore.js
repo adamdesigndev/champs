@@ -7,6 +7,7 @@ export const cartStore = reactive({
   items: storedCartItems,
   currentEditItem: null,
   isEditing: false,
+  animationTrigger: 0, // Add this line
 
   addToCart(newItem) {
     const existingItemIndex = this.items.findIndex(
@@ -21,6 +22,7 @@ export const cartStore = reactive({
       const cartItem = { ...newItem };
       this.items.push(cartItem);
     }
+    this.animationTrigger++; // Increment the trigger
   },
 
   removeFromCart(item) {

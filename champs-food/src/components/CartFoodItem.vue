@@ -7,10 +7,7 @@
     <div class="main-cart-item-details">
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
       <div class="wrapper-size-quantity">
-        <p
-          class="size-quantity-header"
-          v-if="item.sizes"
-        >
+        <p class="size-quantity-header" v-if="item.sizes">
           Size: <span>{{ item.size }}</span>
         </p>
         <p class="size-quantity-header">
@@ -44,7 +41,7 @@ const removeFromCart = (item) => {
 
 const editItem = (item) => {
   cartStore.setCurrentEditItem(item);
-  router.push({ name: 'SingleFoodItem', query: { edit: true } });
+  router.push({ name: 'SingleFoodItem', params: { name: item.name }, query: { edit: true } });
 };
 </script>
 
