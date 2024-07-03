@@ -1,3 +1,4 @@
+<!-- UserPayment.vue -->
 <template>
       <div class="user-payment">
         <h2 class="header-4">Payment Info</h2>
