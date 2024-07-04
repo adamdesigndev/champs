@@ -6,7 +6,9 @@
       <h2 class="header-5">Order Summary</h2>
       <div class="wrapper-total-items-in-cart">
         <p class="header-6">{{ totalItems }} item(s)</p>
-        <button class="btn-view-all" @click="toggleViewAll">{{ viewAll ? '^' : 'v' }}</button>
+        <button class="btn-view-all" @click="toggleViewAll">
+          <img class="view-btn" :src="viewAll ? '/images/upArrow.png' : '/images/downArrow.png'" alt="Toggle View" />
+        </button>
       </div>
     </div>
     <div class="panel-list-items" v-show="viewAll">
@@ -17,7 +19,7 @@
       >
         <div class="panel-item-name-size">
           <h6 class="header-6">{{ item.name }}</h6>
-          <p class="size-quantity-details" v-if="item.size">{{ item.size }}</p>
+          <p class="size-quantity-details" v-if="item.sizes">{{ item.size }}</p>
         </div>
         <div class="panel-price-quantity">
           <p class="panel-item-price">
@@ -39,8 +41,12 @@
         <p class="cart-total-details">Tax:</p>
         <p class="cart-total-details">${{ tax.toFixed(2) }}</p>
       </div>
+      <div class="inner-cart-price-order-details" v-if="isCheckoutPage">
+        <p class="cart-total-details">Grand Total:</p>
+        <p class="cart-total-details">${{ total.toFixed(2) }}</p>
+      </div>
     </div>
-    <button class="main-btn add-item-with-price" @click="proceedToCheckout">
+    <button class="main-btn add-item-with-price" @click="proceedToCheckout" v-if="!isCheckoutPage">
       <p>Checkout</p>
       <p>${{ total.toFixed(2) }}</p>
     </button>
@@ -49,6 +55,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { cartStore } from "../../cartStore";
 
 const viewAll = ref(false);
@@ -66,8 +73,12 @@ const subtotal = computed(() =>
 const tax = computed(() => subtotal.value * 0.09);
 const total = computed(() => subtotal.value + tax.value);
 
+const router = useRouter();
+const route = useRoute();
+const isCheckoutPage = computed(() => route.name === 'Checkout');
+
 const proceedToCheckout = () => {
-  console.log("Proceeding to checkout"); // Temporary for development, replace with navigation to checkout
+  router.push({ name: 'Checkout' });
 };
 </script>
 
@@ -137,5 +148,9 @@ const proceedToCheckout = () => {
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.view-btn {
+ max-height: 10px;
 }
 </style>

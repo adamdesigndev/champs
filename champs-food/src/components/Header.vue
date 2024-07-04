@@ -20,8 +20,7 @@
         <li class="cart-icon-wrapper">
           <a href="/Cart">
             <img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart" />
-          </a>
-          <span
+            <span
             v-if="totalItems > 0"
             ref="badge"
             class="cart-notification"
@@ -29,10 +28,11 @@
           >
             {{ totalItems }}
           </span>
+          </a>
         </li>
         <li class="desktop-header">
-          <a class="header-nav-links" href="/Checkout">
-            <button class="main-btn">Checkout</button>
+          <a class="header-nav-links" href="/Menu">
+            <button class="main-btn">Star Order</button>
           </a>
         </li>
       </ul>

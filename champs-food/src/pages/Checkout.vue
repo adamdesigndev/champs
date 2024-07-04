@@ -4,27 +4,34 @@
 <template>
   <div class="wrapper-menu-outer-section">
     <div class="wrapper-general">
-      <h1 class="header-2">Checkout</h1>
+      <h1 class="header-2" v-if="currentStep !== 3">Checkout</h1>
       <div class="wrapper-with-info-card-right">
-        <UserInfo v-if="currentStage === 1" @proceed="nextStage" />
-        <UserPayment v-if="currentStage === 2" @placeOrder="nextStage" />
-        <OrderSummaryPanel v-if="currentStage < 3" />
+        <UserInfo v-if="currentStep === 1" @proceed="nextStep" />
+        <UserPayment v-if="currentStep === 2" @placeOrder="placeOrder" />
+        <OrderSummaryPanel v-if="currentStep !== 3" />
       </div>
-      <OrderConfirmation v-if="currentStage === 3" />
+      <OrderConfirmation v-if="currentStep === 3" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import UserInfo from "../components/UserInfo.vue";
-import OrderSummaryPanel from "../components/OrderSummaryPanel.vue";
-import UserPayment from "../components/UserPayment.vue";
-import OrderConfirmation from "../components/OrderConfirmation.vue";
+import { ref } from 'vue';
+import UserInfo from '../components/UserInfo.vue';
+import UserPayment from '../components/UserPayment.vue';
+import OrderSummaryPanel from '../components/OrderSummaryPanel.vue';
+import OrderConfirmation from '../components/OrderConfirmation.vue';
+import { cartStore } from '../../cartStore';
 
-const currentStage = ref(1);
+const currentStep = ref(1);
 
-const nextStage = () => {
-  currentStage.value++;
+const nextStep = () => {
+  currentStep.value++;
+};
+
+const placeOrder = () => {
+  cartStore.clearCart(); // Clear the cart when order is placed
+  localStorage.clear(); // Clear any saved state
+  nextStep(); // Proceed to the order confirmation step
 };
 </script>
