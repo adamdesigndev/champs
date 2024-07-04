@@ -1,61 +1,91 @@
+<!-- @format -->
+<!-- ThreeColumnSection -->
 <template>
-    <section class="wrapper-basic-outer-section">
-      <div class="wrapper-general">
-        <h2 class="header-2">Daily Specials</h2>
-        <div class="wrapper-three-up">
-        <div class="three-up-card">
-          <img src="/images/grilledClub_colbyJack_PDP.png" alt="">
-          <h3 class="header-5">Big Chick Ranch</h3>
-          <div class="main-copy body-bottom-button">This is s abiog juciy chciken candwich with lots of flavour and heat that you will enjoy!</div>
-          <p class="three-up-price">$5.99</p>
-        </div>
+  <section class="wrapper-basic-outer-section">
+    <div class="wrapper-general">
+      <h2 class="header-2">Featured Specials</h2>
+      <div class="wrapper-three-up">
+        <router-link
+          to="/food/HOMESTYLE%20RANCH%20CHICKEN%20CLUB"
+          class="three-up-card-link"
+        >
+          <div class="three-up-card">
+            <img src="/images/Homestyle-Ranch-Chicken-Club.png" alt="" />
+            <h3 class="header-4">HOMESTYLE RANCH CHICKEN CLUB</h3>
+            <div class="main-copy body-bottom-button">
+              100% all-white meat crispy chicken fillet with melty Swiss style
+              cheese, hickory smoked bacon, lettuce, tomato & buttermilk ranch
+              on a toasted brioche bun.
+            </div>
+            <p class="three-up-price">$5.99</p>
+          </div>
+        </router-link>
 
-        <div class="three-up-card">
-          <img src="/images/grilledClub_colbyJack_PDP.png" alt="">
-          <h3 class="header-5">Big Chick Ranch</h3>
-          <div class="main-copy body-bottom-button">This is s abiog juciy chciken candwich with lots of flavour and heat that you will enjoy!</div>
-          <p class="three-up-price">$5.99</p>
-        </div>
+        <router-link
+          to="/food/SOUTHWEST%20SALAD%20W%2F%20CRISPY%20CHICKEN"
+          class="three-up-card-link"
+        >
+          <div class="three-up-card">
+            <img src="/images/SW-Salad-Crispy-Chicken.png" alt="" />
+            <h3 class="header-4">SOUTHWEST SALAD W/ CRISPY CHICKEN</h3>
+            <div class="main-copy body-bottom-button">
+              Mixed greens with crispy chicken strips, tomatoes, shredded
+              carrots, shredded cheddar, roasted corn, black beans, tortilla
+              strips & Southwest dressing.
+            </div>
+            <p class="three-up-price">$5.99</p>
+          </div>
+        </router-link>
 
-        <div class="three-up-card">
-          <img src="/images/grilledClub_colbyJack_PDP.png" alt="">
-          <h3 class="header-5">Big Chick Ranch</h3>
-          <div class="main-copy body-bottom-button">This is s abiog juciy chciken candwich with lots of flavour and heat that you will enjoy!</div>
-          <p class="three-up-price">$5.99</p>
-        </div>
+        <router-link
+          to="/food/Bacon,%20Egg%20&%20Cheese%20Muffin"
+          class="three-up-card-link"
+        >
+          <div class="three-up-card">
+            <img src="/images/BaconEggCheeseMuffin.png" alt="" />
+            <h3 class="header-4">Bacon, Egg & Cheese Muffin</h3>
+            <div class="main-copy body-bottom-button">
+              Delicious strips of smoked applewood bacon, folded egg and
+              American cheese served on a toasted classic English Muffin.
+            </div>
+            <p class="three-up-price">$5.99</p>
+          </div>
+        </router-link>
       </div>
-      </div>
-    </section>
-  </template>
-  
-  <script setup>
-  </script>
-  
-  <style scoped>
+    </div>
+  </section>
+</template>
+
+<script setup></script>
+
+<style scoped>
 .wrapper-three-up {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .three-up-card {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.three-up-card:hover {
   background-color: var(--clr-accent-creme);
-  padding: 2rem;
-  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.35));
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.35));
 }
 
 .three-up-card img {
-  max-width: 15rem;
+  max-height: 100px;
   margin-bottom: 2rem;
   margin-inline: auto;
-  width: 100%;
 }
 
 .three-up-price {
+  font-size: var(--fs-300);
   color: var(--clr-primary);
 }
-
-  </style>
+</style>
