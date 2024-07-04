@@ -4,6 +4,7 @@
 <template>
   <div class="wrapper-menu-outer-section">
     <div class="wrapper-general">
+      <MiniNavigation v-if="currentStep !== 3" :current-step="currentStep" />
       <h1 class="header-2" v-if="currentStep !== 3">Checkout</h1>
       <div class="wrapper-with-info-card-right">
         <UserInfo v-if="currentStep === 1" @proceed="nextStep" />
@@ -16,22 +17,38 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import UserInfo from '../components/UserInfo.vue';
-import UserPayment from '../components/UserPayment.vue';
-import OrderSummaryPanel from '../components/OrderSummaryPanel.vue';
-import OrderConfirmation from '../components/OrderConfirmation.vue';
-import { cartStore } from '../../cartStore';
+import { ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import UserInfo from "../components/UserInfo.vue";
+import UserPayment from "../components/UserPayment.vue";
+import OrderSummaryPanel from "../components/OrderSummaryPanel.vue";
+import OrderConfirmation from "../components/OrderConfirmation.vue";
+import { cartStore } from "../../cartStore";
+import MiniNavigation from "../components/MiniNavigation.vue";
 
-const currentStep = ref(1);
+const route = useRoute();
+const router = useRouter();
+
+const currentStep = ref(route.query.step ? parseInt(route.query.step) : 1);
+
+watch(
+  () => route.query.step,
+  (newStep) => {
+    if (newStep) {
+      currentStep.value = parseInt(newStep);
+    }
+  }
+);
 
 const nextStep = () => {
   currentStep.value++;
+  router.push({ name: "Checkout", query: { step: currentStep.value } });
 };
 
 const placeOrder = () => {
   cartStore.clearCart(); // Clear the cart when order is placed
   localStorage.clear(); // Clear any saved state
-  nextStep(); // Proceed to the order confirmation step
+  currentStep.value = 3;
+  router.push({ name: "Checkout", query: { step: currentStep.value } });
 };
 </script>
