@@ -125,7 +125,7 @@ body {
 .header-1 {
   font-family: var(--ff-headers);
   font-size: var(--fs-900);
-  line-height: 6rem;
+  line-height: 5rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--clr-body);

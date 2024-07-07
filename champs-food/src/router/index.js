@@ -5,6 +5,7 @@ import Menu from '../pages/Menu.vue';
 import SingleFoodItem from '../pages/SingleFoodItem.vue';
 import Cart from '../pages/Cart.vue';
 import Checkout from '../pages/Checkout.vue';
+import About from '../pages/About.vue';
 
 const routes = [
   {
@@ -32,6 +33,10 @@ const routes = [
     path: '/checkout',
     name: 'Checkout',
     component: Checkout
+  }, {
+    path: '/about',
+    name: 'About',
+    component: About
   }
 ];
 

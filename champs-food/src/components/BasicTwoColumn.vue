@@ -23,7 +23,8 @@
             {{ body }}
           </p>
           <a :href="buttonLink"
-            ><button :class="['main-btn', { 'button-reverse': buttonReverse }]">
+            ><button :class="['main-btn', { 'button-reverse': buttonReverse }, 
+            {'hide-button': hideButton}]">
               {{ buttonText }}
             </button></a
           >
@@ -64,6 +65,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  hideButton: {
+    type: Boolean,
+    default: false,
+  }
 });
 </script>
 
@@ -72,6 +77,7 @@ const props = defineProps({
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 2rem;
+  align-items: center;
 }
 
 .wrapper-reverse .wrapper-inner-left {
@@ -99,5 +105,9 @@ const props = defineProps({
 .app-store {
   max-width: 300px;
   margin-bottom: 1rem;
+}
+
+.hide-button {
+  display: none;
 }
 </style>

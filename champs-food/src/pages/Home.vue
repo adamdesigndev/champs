@@ -69,7 +69,7 @@ const firstTwoColumnImageSrc =
 const firstTwoColumnImageAlt = "";
 const firstTwoColumnHeader = "Who we are";
 const firstTwoColumnBody =
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+  "It’s a responsibility we take seriously ‒ because we know when our communities thrive, so does our business. By thinking globally and acting locally, we are better equipped to effectively support our customers, our employees and the communities we are all part of.";
 const firstTwoColumnButtonText = "Learn More";
 const firstTwoColumnButtonLink = "/About";
 
