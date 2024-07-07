@@ -22,6 +22,7 @@ const props = defineProps({
   buttonLink: String,
   imageSrc: String,
   imageAlt: String
+  
 });
 </script>
 
