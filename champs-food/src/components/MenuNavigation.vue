@@ -19,7 +19,7 @@
 import { ref } from 'vue';
 
 const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'BREAKFAST', 'DRINKS', 'DESSERTS']); 
-const selectedCategory = ref(null);
+const selectedCategory = ref('FEATURED'); // Set initial category to 'FEATURED'
 
 const selectCategory = (category) => {
   selectedCategory.value = category;
@@ -53,7 +53,6 @@ const emit = defineEmits(['update-category']);
   color: var(--clr-body);
 }
 
-
 @media (width < 850px) {
   .menu-navigation {
     display: flex;
@@ -62,3 +61,4 @@ const emit = defineEmits(['update-category']);
   }
 }
 </style>
+
