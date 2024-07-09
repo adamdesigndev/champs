@@ -17,6 +17,7 @@
                 <button
                   class="single-size"
                   :class="{ selected: selectedSize.value === 'small' }"
+                  data-size="small"
                   @click="selectSize('small')"
                 >
                   <div class="size-square"><p>S</p></div>
@@ -25,6 +26,7 @@
                 <button
                   class="single-size"
                   :class="{ selected: selectedSize.value === 'medium' }"
+                  data-size="medium"
                   @click="selectSize('medium')"
                 >
                   <div class="size-square"><p>M</p></div>
@@ -33,6 +35,7 @@
                 <button
                   class="single-size"
                   :class="{ selected: selectedSize.value === 'large' }"
+                  data-size="large"
                   @click="selectSize('large')"
                 >
                   <div class="size-square"><p>L</p></div>
@@ -182,7 +185,6 @@ watch(
 );
 </script>
 
-
 <style scoped>
 .wrapper-size-selecter {
   display: flex;
@@ -264,6 +266,7 @@ watch(
   align-items: center;
   gap: 1rem;
 }
+
 .header-quanitity {
   font-family: var(--ff-headers);
   font-size: var(--fs-300);
@@ -307,3 +310,4 @@ watch(
   gap: 1rem;
 }
 </style>
+

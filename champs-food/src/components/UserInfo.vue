@@ -69,12 +69,12 @@ const submitUserInfo = () => {
 <style scoped>
 .wrapper-contact-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
   gap: 1.5rem;
 }
 
 .user-info {
-  padding: 1rem;
+  padding: 0rem;
 }
 
 .user-info label {

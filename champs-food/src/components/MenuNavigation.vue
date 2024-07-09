@@ -57,8 +57,17 @@ const emit = defineEmits(['update-category']);
   .menu-navigation {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
+
+  .menu-navigation li {
+    font-size: var(--fs-200);
+  cursor: pointer;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  font-weight: normal;
+  color: #828282;
+}
 }
 </style>
 
