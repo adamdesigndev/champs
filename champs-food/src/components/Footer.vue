@@ -1,7 +1,7 @@
 <template>
     <footer>
       <div class="footer-content">
-        <a href="http://"><img class="footer-logo" src="/images/Champs-head.svg" alt="Logo"></a>
+        <a href="http://"><img class="footer-logo" src="/images/champs-full-logo.svg" alt="Logo"></a>
        <div class="wrapper-footer-mid">
         <nav>
           <ul class="footer-nav">
@@ -12,8 +12,8 @@
           </ul>
         </nav>
         <div class="wrapper-social-media">
-        <a href="#"><img src="/images/Champs-head.svg" alt="Facebook"></a>
-        <a href="#"><img src="/images/Champs-head.svg" alt="Twitter"></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="/images/instagram-logo.svg" alt="Instagram"></a>
+        <a href="https://x.com/?lang=en" target="_blank"><img src="/images/x-logo.svg" alt="X"></a>
       </div>
       </div> 
       <div class="wrapper-footer-misc">
@@ -44,6 +44,7 @@
 
 .footer-logo {
   height: 5rem;
+  margin-bottom: 1rem;
 }
 .wrapper-footer-mid {
  display: flex;
@@ -84,7 +85,7 @@ justify-content: center;
 }
 
 .wrapper-social-media img {
-  height: 2.5rem;
+  height: 1.7rem;
 }
 
 .wrapper-footer-misc {
@@ -107,6 +108,15 @@ justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.wrapper-footer-mid {
+ gap: 1rem;
+ margin-bottom: 1rem;
+}
+
+.wrapper-footer-misc {
+  gap: 1rem
 }
 
 .footer-notes {
