@@ -16,8 +16,7 @@
               <div class="wrapper-size-selecter">
                 <button
                   class="single-size"
-                  :class="{ selected: selectedSize.value === 'small' }"
-                  data-size="small"
+                  :class="{ 'selected-size': selectedSize === 'small' }"
                   @click="selectSize('small')"
                 >
                   <div class="size-square"><p>S</p></div>
@@ -25,8 +24,7 @@
                 </button>
                 <button
                   class="single-size"
-                  :class="{ selected: selectedSize.value === 'medium' }"
-                  data-size="medium"
+                  :class="{ 'selected-size': selectedSize === 'medium' }"
                   @click="selectSize('medium')"
                 >
                   <div class="size-square"><p>M</p></div>
@@ -34,8 +32,7 @@
                 </button>
                 <button
                   class="single-size"
-                  :class="{ selected: selectedSize.value === 'large' }"
-                  data-size="large"
+                  :class="{ 'selected-size': selectedSize === 'large' }"
                   @click="selectSize('large')"
                 >
                   <div class="size-square"><p>L</p></div>
@@ -71,7 +68,6 @@
   </div>
   <div v-else>
     <p>Loading...</p>
-    <!-- Optional loading message -->
   </div>
 </template>
 
@@ -91,42 +87,12 @@ const isEditing = ref(false);
 const selectedSize = ref("medium"); // Default to 'medium'
 const quantity = ref(1);
 
-const saveState = () => {
-  localStorage.setItem(
-    `itemState_${props.item.name}`,
-    JSON.stringify({
-      selectedSize: selectedSize.value,
-      quantity: quantity.value,
-      totalPrice: totalPrice.value,
-    })
-  );
-};
-
-const loadState = () => {
-  const savedState = localStorage.getItem(`itemState_${props.item.name}`);
-  if (savedState) {
-    const { selectedSize: savedSize, quantity: savedQuantity } = JSON.parse(
-      savedState
-    );
-    selectedSize.value = savedSize;
-    quantity.value = savedQuantity;
-  }
-};
-
-const resetState = () => {
-  selectedSize.value = "medium"; // Reset to default size
-  quantity.value = 1; // Reset to default quantity
-  localStorage.removeItem(`itemState_${props.item.name}`); // Remove saved state
-};
-
 const selectSize = (size) => {
   selectedSize.value = size;
-  saveState();
 };
 
 const updateQuantity = (amount) => {
   quantity.value = Math.max(1, quantity.value + amount); // Ensure quantity is at least 1
-  saveState();
 };
 
 const totalPrice = computed(() => {
@@ -148,17 +114,13 @@ const addOrUpdateCart = (item) => {
     quantity: quantity.value,
     totalPrice: totalPrice.value,
   };
-  console.log("Adding or updating cart:", cartItem);
   if (isEditing.value) {
     cartStore.updateCartItem(cartItem);
-    cartStore.clearCurrentEditItem();
     router.push({ name: 'Cart' });
   } else {
     cartStore.addToCart(cartItem);
     router.push({ name: 'Menu' });
   }
-  console.log("Current cart items:", cartStore.items);
-  resetState(); // Reset the state after adding/updating the cart
 };
 
 onMounted(() => {
@@ -167,9 +129,6 @@ onMounted(() => {
     selectedSize.value = size;
     quantity.value = editQuantity;
     isEditing.value = true;
-    cartStore.clearCurrentEditItem(); // Clear the edit state after loading
-  } else {
-    resetState(); // Reset to default state if not editing
   }
 });
 
@@ -185,6 +144,7 @@ watch(
 );
 </script>
 
+
 <style scoped>
 .wrapper-size-selecter {
   display: flex;
@@ -198,10 +158,6 @@ watch(
   cursor: pointer;
 }
 
-.size-square-text-below {
-  font-size: var(--fs-200);
-}
-
 .size-square {
   display: flex;
   justify-content: center;
@@ -211,26 +167,16 @@ watch(
   width: 60px;
   color: #000;
   font-weight: 600;
-  border: 2px solid transparent; /* Default transparent border */
+  border: 2px solid transparent;
 }
 
-.single-size.selected .size-square {
+.selected-size .size-square {
+  background-color: var(--clr-primary);
   color: #fff;
 }
 
-.single-size.selected[data-size="small"] .size-square {
-  background-color: blue;
-  border: 2px solid green; /* Green border for selected size */
-}
-
-.single-size.selected[data-size="medium"] .size-square {
-  background-color: blue;
-  border: 2px solid green; /* Green border for selected size */
-}
-
-.single-size.selected[data-size="large"] .size-square {
-  background-color: purple;
-  border: 2px solid green; /* Green border for selected size */
+.size-square-text-below {
+  font-size: var(--fs-200);
 }
 
 .size-square:hover {
@@ -310,4 +256,5 @@ watch(
   gap: 1rem;
 }
 </style>
+
 
