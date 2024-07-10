@@ -25,6 +25,7 @@ import OrderSummaryPanel from "../components/OrderSummaryPanel.vue";
 import OrderConfirmation from "../components/OrderConfirmation.vue";
 import { cartStore } from "../../cartStore";
 import MiniNavigation from "../components/MiniNavigation.vue";
+import { useCheckoutStore } from "../../useCheckoutStore";
 
 const route = useRoute();
 const router = useRouter();
@@ -40,6 +41,8 @@ watch(
   }
 );
 
+const { resetUserInfo, resetUserPayment } = useCheckoutStore();
+
 const nextStep = () => {
   currentStep.value++;
   router.push({ name: "Checkout", query: { step: currentStep.value } });
@@ -47,6 +50,8 @@ const nextStep = () => {
 
 const placeOrder = () => {
   cartStore.clearCart(); // Clear the cart when order is placed
+  resetUserInfo();
+  resetUserPayment();
   localStorage.clear(); // Clear any saved state
   currentStep.value = 3;
   router.push({ name: "Checkout", query: { step: currentStep.value } });
