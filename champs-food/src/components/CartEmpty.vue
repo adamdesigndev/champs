@@ -4,9 +4,9 @@
 <template>
   <div class="wrapper-order-confirmation">
     <p class="main-copy body-bottom-button">
-      Cart is empty, lets take care of that.
+      Cart is empty, lets help with that.
     </p>
-    <button class="main-btn" @click="goHome">Start Order</button>
+    <button class="main-btn" @click="goMenu">Start Order</button>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const goHome = () => {
+const goMenu = () => {
   router.push("/Menu");
 };
 </script>
@@ -27,11 +27,6 @@ const goHome = () => {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.wrapper-order-confirmation img {
-  max-width: 300px;
-  margin-bottom: 2rem;
 }
 
 .wrapper-order-confirmation p {

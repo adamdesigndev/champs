@@ -32,7 +32,7 @@
         </li>
         <li class="desktop-header">
           <a class="header-nav-links" href="/Menu">
-            <button class="main-btn">Star Order</button>
+            <button class="main-btn">Start Order</button>
           </a>
         </li>
       </ul>
