@@ -6,7 +6,7 @@
         <li><a href="/Menu">Menu</a></li>
         <li><a href="/Cart">Bag</a></li>
         <li><a href="/About">About</a></li>
-        <li><a href="/Home">Home</a></li>
+        <li><a href="/">Home</a></li>
       </ul>
     </nav>
     <img class="mobile-menu-logo" src="/images/logo-mobile-menu.svg" alt="">

@@ -10,10 +10,10 @@
         <li><a class="header-nav-links" href="/Menu">Menu</a></li>
         <li><a class="header-nav-links" href="/About">About</a></li>
       </ul>
-      <a class="desktop-header" href="http://">
+      <a class="desktop-header" href="/">
         <img class="header-logo" src="/images/Champs-head.svg" alt="Logo" />
       </a>
-      <a class="mobile-header" href="/Home">
+      <a class="mobile-header" href="/">
         <img src="/images/logo-comb-mobile.svg" alt="Logo" />
       </a>
       <ul class="nav-menu-links">

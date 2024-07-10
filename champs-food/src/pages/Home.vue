@@ -59,8 +59,8 @@ import BasicTwoColumn from "../components/BasicTwoColumn.vue";
 
 const heroHeading = "Chicken for the Champs";
 const heroSubheading = "Delicious food, ready to serve!";
-const heroButtonText = "Add To Order";
-const heroButtonLink = "/SingleFoodItem";
+const heroButtonText = "View Menu";
+const heroButtonLink = "/Menu";
 const heroImageSrc = "/images/Homestyle-Ranch-Chicken-Club.png";
 const heroImageAlt = "Delicious food";
 
@@ -78,12 +78,12 @@ const secondTwoColumnImageAlt = "";
 const secondTwoColumnHeader = "Bigger, Juicier and bolder than ever before";
 const secondTwoColumnBody = "";
 const secondTwoColumnButtonText = "Get It Now";
-const secondTwoColumnButtonLink = "/Services";
+const secondTwoColumnButtonLink = "/food/GRILLED CHICKEN SANDWICH";
 
 const thirdTwoColumnImageSrc = "/images/Champs-app.png";
 const thirdTwoColumnImageAlt = "";
 const thirdTwoColumnHeader = "Free Spicy Chicken w/ $1 min. purchase";
 const thirdTwoColumnBody = "Vist the app store for more deals and offers!";
-const thirdTwoColumnButtonText = "Join Rewards";
-const thirdTwoColumnButtonLink = "/Contact";
+const thirdTwoColumnButtonText = "Learn More";
+const thirdTwoColumnButtonLink = "/About";
 </script>
