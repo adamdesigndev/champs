@@ -1,15 +1,15 @@
 <!-- @format -->
-<!-- ThreeColumnSection -->
+<!-- ThreeColumnSection.vue -->
 <template>
   <section class="wrapper-basic-outer-section">
     <div class="wrapper-general">
-      <h2 class="header-2">Featured Specials</h2>
+      <h2 class="header-2 fade-in-up" ref="header">Featured Specials</h2>
       <div class="wrapper-three-up">
         <router-link
           to="/food/HOMESTYLE%20RANCH%20CHICKEN%20CLUB"
           class="three-up-card-link"
         >
-          <div class="three-up-card">
+          <div class="three-up-card fade-in-up" ref="card1">
             <img src="/images/Homestyle-Ranch-Chicken-Club.png" alt="" />
             <h3 class="header-4">HOMESTYLE RANCH CHICKEN CLUB</h3>
             <div class="main-copy body-bottom-button">
@@ -25,7 +25,7 @@
           to="/food/SOUTHWEST%20SALAD%20W%2F%20CRISPY%20CHICKEN"
           class="three-up-card-link"
         >
-          <div class="three-up-card">
+          <div class="three-up-card fade-in-up" ref="card2">
             <img src="/images/SW-Salad-Crispy-Chicken.png" alt="" />
             <h3 class="header-4">SOUTHWEST SALAD W/ CRISPY CHICKEN</h3>
             <div class="main-copy body-bottom-button">
@@ -41,7 +41,7 @@
           to="/food/Bacon,%20Egg%20&%20Cheese%20Muffin"
           class="three-up-card-link"
         >
-          <div class="three-up-card">
+          <div class="three-up-card fade-in-up" ref="card3">
             <img src="/images/BaconEggCheeseMuffin.png" alt="" />
             <h3 class="header-4">Bacon, Egg & Cheese Muffin</h3>
             <div class="main-copy body-bottom-button">
@@ -56,7 +56,29 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import { onMounted, ref } from 'vue';
+
+const header = ref(null);
+const card1 = ref(null);
+const card2 = ref(null);
+const card3 = ref(null);
+
+onMounted(() => {
+  setTimeout(() => {
+    header.value.classList.add('animate');
+    setTimeout(() => {
+      card1.value.classList.add('animate');
+      setTimeout(() => {
+        card2.value.classList.add('animate');
+        setTimeout(() => {
+          card3.value.classList.add('animate');
+        }, 450);
+      }, 425);
+    }, 400);
+  }, 1600); // 1.5 seconds delay for header animation to complete
+});
+</script>
 
 <style scoped>
 .wrapper-three-up {
@@ -87,5 +109,26 @@
 .three-up-price {
   font-size: var(--fs-300);
   color: var(--clr-primary);
+}
+
+/* Fade-in animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate.fade-in-up {
+  animation: fadeInUp .8s ease-out forwards;
 }
 </style>

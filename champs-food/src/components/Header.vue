@@ -5,32 +5,32 @@
       <button class="hamburger mobile-header" @click="toggleMenu">
         <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
       </button>
-      <ul class="nav-menu-links desktop-header">
+      <ul class="nav-menu-links desktop-header fade-in">
         <li><a class="header-nav-links" href="/">Home</a></li>
         <li><a class="header-nav-links" href="/Menu">Menu</a></li>
         <li><a class="header-nav-links" href="/About">About</a></li>
       </ul>
-      <a class="desktop-header" href="/">
+      <a class="desktop-header fade-in" href="/">
         <img class="header-logo" src="/images/Champs-head.svg" alt="Logo" />
       </a>
-      <a class="mobile-header" href="/">
+      <a class="mobile-header fade-in" href="/">
         <img src="/images/logo-comb-mobile.svg" alt="Logo" />
       </a>
-      <ul class="nav-menu-links">
-        <li class="cart-icon-wrapper">
+      <ul class="nav-menu-links fade-in">
+        <li class="cart-icon-wrapper fade-in">
           <a href="/Cart">
             <img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart" />
             <span
-            v-if="totalItems > 0"
-            ref="badge"
-            class="cart-notification"
-            :class="{ animate: isAnimating }"
-          >
-            {{ totalItems }}
-          </span>
+              v-if="totalItems > 0"
+              ref="badge"
+              class="cart-notification"
+              :class="{ animate: isAnimating }"
+            >
+              {{ totalItems }}
+            </span>
           </a>
         </li>
-        <li class="desktop-header">
+        <li class="desktop-header fade-in">
           <a class="header-nav-links" href="/Menu">
             <button class="main-btn">Start Order</button>
           </a>
@@ -172,5 +172,21 @@ watch(
   .desktop-header {
     display: none;
   }
+}
+
+/* Fade-in animation */
+@keyframes fadeInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInFromTop .8s ease-out;
 }
 </style>
