@@ -1,23 +1,31 @@
 <!-- MobileMenu.vue -->
 <template>
-  <div class="mobile-menu" v-if="isMenuOpen">
-    <nav>
-      <ul>
-        <li><a href="/Menu">Menu</a></li>
-        <li><a href="/Cart">Bag</a></li>
-        <li><a href="/About">About</a></li>
-        <li><a href="/">Home</a></li>
-      </ul>
-    </nav>
-    <img class="mobile-menu-logo" src="/images/logo-mobile-menu.svg" alt="">
-  </div>
+  <transition name="slide">
+    <div v-if="isMenuOpen" class="mobile-menu">
+      <nav>
+        <ul>
+          <li v-for="(item, index) in menuItems" :key="index" class="menu-item" @enter="onEnter" @leave="onLeave">
+            <a :href="item.href">{{ item.text }}</a>
+          </li>
+        </ul>
+      </nav>
+      <img class="mobile-menu-logo" src="/images/logo-mobile-menu.svg" alt="">
+    </div>
+  </transition>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted, inject } from 'vue';
+import { ref, watch, onMounted, onUnmounted, inject, nextTick } from 'vue';
 
 const isMenuOpen = inject('isMenuOpen');
 const toggleMenu = inject('toggleMenu');
+
+const menuItems = [
+  { href: '/Menu', text: 'Menu' },
+  { href: '/Cart', text: 'Bag' },
+  { href: '/About', text: 'About' },
+  { href: '/', text: 'Home' },
+];
 
 const handleResize = () => {
   if (window.innerWidth > 850 && isMenuOpen.value) {
@@ -43,9 +51,17 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
 
-  watch(isMenuOpen, () => {
-    handleResize();
-    toggleNoScrollClass();
+watch(isMenuOpen, async () => {
+  handleResize();
+  toggleNoScrollClass();
+  if (isMenuOpen.value) {
+    await nextTick();
+    document.querySelectorAll('.menu-item').forEach((el, index) => {
+      setTimeout(() => {
+        el.classList.add('fade-in');
+      }, index * 100);
+    });
+  }
 });
 </script>
 
@@ -53,7 +69,7 @@ onUnmounted(() => {
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   background-color: var(--clr-primary);
@@ -87,5 +103,36 @@ onUnmounted(() => {
   left: 50%;
   bottom: -5%;
   transform: translateX(-50%);
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(100%);
+}
+
+.slide-enter-to {
+  transform: translateX(0);
+}
+
+.slide-leave-from {
+  transform: translateX(0);
+}
+
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+.menu-item {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
