@@ -50,19 +50,36 @@ onMounted(() => {
 
 .menu-navigation li {
   cursor: pointer;
-  border-bottom: 2px solid rgba(0,0,0,0);
+  position: relative; /* Needed for pseudo-element positioning */
   font-weight: normal;
   color: #828282;
   opacity: 0; /* Initially hide the list items */
   transform: translateX(-20px); /* Slide from left */
+  overflow: hidden; /* Ensure the expanding border doesn't overflow */
 }
 
-.menu-navigation li:hover {
-  border-bottom: 2px solid var(--clr-primary);
+.menu-navigation li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--clr-primary);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.menu-navigation li:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.menu-navigation li.active::after {
+  width: 100%;
+  left: 0;
 }
 
 .menu-navigation li.active {
-  border-bottom: 2px solid var(--clr-primary);
   font-weight: 600;
   color: var(--clr-body);
 }
@@ -77,10 +94,6 @@ onMounted(() => {
 
   .menu-navigation li {
     font-size: var(--fs-200);
-    cursor: pointer;
-    border-bottom: 2px solid rgba(0,0,0,0);
-    font-weight: normal;
-    color: #828282;
   }
 }
 
