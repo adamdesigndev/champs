@@ -1,10 +1,10 @@
 <!-- @format -->
 <!-- BasicTwoColumn.vue -->
 <template>
-  <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]">
+  <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" ref="section">
     <div class="wrapper-general">
       <div :class="['wrapper-basic-two-up', { 'wrapper-reverse': reverse }]">
-        <div class="wrapper-inner-left">
+        <div class="wrapper-inner-left" :class="{ 'animate': hasHeader && isVisible, 'initial-hidden': hasHeader }">
           <h2 :class="['header-2', { 'white-text': textWhite }]">
             {{ header }}
           </h2>
@@ -22,14 +22,13 @@
           >
             {{ body }}
           </p>
-          <a :href="buttonLink"
-            ><button :class="['main-btn', { 'button-reverse': buttonReverse }, 
-            {'hide-button': hideButton}]">
+          <a :href="buttonLink">
+            <button :class="['main-btn', { 'button-reverse': buttonReverse }, {'hide-button': hideButton}]">
               {{ buttonText }}
-            </button></a
-          >
+            </button>
+          </a>
         </div>
-        <div class="wrapper-inner-right">
+        <div class="wrapper-inner-right" :class="{ 'animate': !hasHeader && isVisible, 'initial-hidden': !hasHeader }">
           <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
         </div>
       </div>
@@ -38,6 +37,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
 const props = defineProps({
   imageSrc: String,
   imageAlt: String,
@@ -69,6 +70,27 @@ const props = defineProps({
     type: Boolean,
     default: false,
   }
+});
+
+const section = ref(null);
+const isVisible = ref(false);
+const hasHeader = ref(!!props.header);
+
+const handleScroll = () => {
+  const rect = section.value.getBoundingClientRect();
+  if (rect.top <= window.innerHeight * 0.6) {
+    isVisible.value = true;
+    window.removeEventListener('scroll', handleScroll);
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
@@ -109,5 +131,27 @@ const props = defineProps({
 
 .hide-button {
   display: none;
+}
+
+/* Initial hidden state */
+.initial-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeInUp 1s ease-out forwards;
 }
 </style>
