@@ -2,12 +2,11 @@
 <template>
   <h1 class="header-2 fade-in-down" ref="header">Menu</h1>
   <nav>
-    <ul class="menu-navigation">
+    <ul class="menu-navigation fade-in-left" ref="menuList">
       <li
-        v-for="(category, index) in categories"
+        v-for="category in categories"
         :key="category"
-        :class="{ active: category === selectedCategory, 'fade-in-left': isLoaded }"
-        :style="{ animationDelay: isLoaded ? `${0.2 * index + 0.5}s` : '0s' }"
+        :class="{ active: category === selectedCategory }"
         @click="selectCategory(category)"
         ref="menuItems"
       >
@@ -31,13 +30,14 @@ const selectCategory = (category) => {
 
 const emit = defineEmits(['update-category']);
 const header = ref(null);
-const menuItems = ref([]);
+const menuList = ref(null);
 
 onMounted(() => {
   setTimeout(() => {
     header.value.classList.add('animate');
+    menuList.value.classList.add('animate');
     isLoaded.value = true;
-  }, 100); // Adjust the delay as needed
+  }, 0); // Adjust the delay as needed
 });
 </script>
 
@@ -46,6 +46,8 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  opacity: 0; /* Initially hide the list */
+  transform: translateX(-20px); /* Slide from left */
 }
 
 .menu-navigation li {
@@ -53,8 +55,6 @@ onMounted(() => {
   position: relative; /* Needed for pseudo-element positioning */
   font-weight: normal;
   color: #828282;
-  opacity: 0; /* Initially hide the list items */
-  transform: translateX(-20px); /* Slide from left */
   overflow: hidden; /* Ensure the expanding border doesn't overflow */
 }
 
@@ -101,7 +101,7 @@ onMounted(() => {
 @keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
   100% {
     opacity: 1;
@@ -111,11 +111,11 @@ onMounted(() => {
 
 .fade-in-down {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-50px);
 }
 
 .animate.fade-in-down {
-  animation: fadeInDown 1s ease-out forwards;
+  animation: fadeInDown .2s ease-out forwards;
 }
 
 /* Slide-left fade-in animation */
@@ -131,6 +131,10 @@ onMounted(() => {
 }
 
 .fade-in-left {
-  animation: fadeInLeft .3s ease-out forwards;
+  animation: fadeInLeft 0.3s ease-out forwards;
+}
+
+.animate.fade-in-left {
+  animation: fadeInLeft 0.3s ease-out forwards;
 }
 </style>

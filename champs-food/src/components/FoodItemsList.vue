@@ -8,7 +8,7 @@
       v-for="(item, index) in filteredItems" 
       :key="`${item.name}-${selectedCategory}`" 
       :item="item" 
-      :delay="initialLoad ? 2.2 + index * 0.2 : index * 0.2"
+      :delay="initialLoad ? .3 + index * 0.2 : index * 0.1"
     />
   </section>
 </template>
@@ -36,10 +36,10 @@ const headerDelay = ref(0);
 
 onMounted(() => {
   if (initialLoad.value) {
-    headerDelay.value = 3; // Set the delay for the initial load
+    headerDelay.value = .05; // Set the delay for the initial load
     setTimeout(() => {
       document.querySelector('.initial-animate').classList.add('animate');
-    }, 500); // Delay before starting the animation
+    }, 220); // Delay before starting the animation
   }
 });
 
@@ -59,7 +59,7 @@ watch(() => props.selectedCategory, () => {
 @keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
   100% {
     opacity: 1;
@@ -74,10 +74,10 @@ watch(() => props.selectedCategory, () => {
 
 .initial-animate {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-10px);
 }
 
 .animate.initial-animate {
-  animation: fadeInDown 1s ease-out forwards;
+  animation: fadeInDown .3s ease-out forwards;
 }
 </style>
