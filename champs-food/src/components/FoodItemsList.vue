@@ -1,14 +1,13 @@
 <!-- FoodItemsList.vue -->
 <template>
-  <h2 class="header-3 fade-in-down" ref="header" :class="{ 'initial-animate': initialLoad }" :style="{ animationDelay: `${headerDelay}s` }">
+  <h2 class="header-3 fade-in-down" ref="header" :class="{ animate: initialLoad }" :style="{ animationDelay: `${headerDelay}s` }">
     {{ selectedCategory || 'Menu' }}
   </h2>
-  <section class="food-items-list">
+  <section class="food-items-list fade-in-up" ref="foodList" :class="{ animate: initialLoad || isLoaded }" :style="{ animationDelay: `${initialLoad ? 0.3 : 0}s` }">
     <FoodItemCard 
-      v-for="(item, index) in filteredItems" 
+      v-for="item in filteredItems" 
       :key="`${item.name}-${selectedCategory}`" 
       :item="item" 
-      :delay="initialLoad ? .3 + index * 0.2 : index * 0.1"
     />
   </section>
 </template>
@@ -32,19 +31,26 @@ const filteredItems = computed(() => {
 });
 
 const initialLoad = ref(true);
+const isLoaded = ref(false);
 const headerDelay = ref(0);
 
 onMounted(() => {
   if (initialLoad.value) {
-    headerDelay.value = .05; // Set the delay for the initial load
+    headerDelay.value = 0.3; // Set the delay for the initial load
     setTimeout(() => {
-      document.querySelector('.initial-animate').classList.add('animate');
-    }, 220); // Delay before starting the animation
+      document.querySelector('.fade-in-down').classList.add('animate');
+      document.querySelector('.fade-in-up').classList.add('animate');
+      isLoaded.value = true;
+    }, 100); // Delay before starting the animation
   }
 });
 
 watch(() => props.selectedCategory, () => {
   initialLoad.value = false;
+  isLoaded.value = false;
+  setTimeout(() => {
+    isLoaded.value = true;
+  }, 0); // Ensure the class is added again on category change
 });
 </script>
 
@@ -53,13 +59,15 @@ watch(() => props.selectedCategory, () => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
+  opacity: 0; /* Initially hide the list */
+  transform: translateY(20px); /* Slide from bottom */
 }
 
 /* Slide-down fade-in animation */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
   100% {
     opacity: 1;
@@ -68,16 +76,33 @@ watch(() => props.selectedCategory, () => {
 }
 
 .fade-in-down {
-  opacity: 1; /* Ensure the h2 stays visible */
-  transform: translateY(0); /* Ensure the h2 stays in place */
-}
-
-.initial-animate {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-20px);
 }
 
-.animate.initial-animate {
-  animation: fadeInDown .3s ease-out forwards;
+.animate.fade-in-down {
+  animation: fadeInDown 0.2s ease-out forwards;
+}
+
+/* Slide-up fade-in animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate.fade-in-up {
+  animation: fadeInUp 0.2s ease-out forwards;
 }
 </style>
+
