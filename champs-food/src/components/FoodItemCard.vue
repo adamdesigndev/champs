@@ -64,6 +64,6 @@ onMounted(() => {
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.4s ease-out forwards;
 }
 </style>

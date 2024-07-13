@@ -8,7 +8,7 @@
       v-for="(item, index) in filteredItems" 
       :key="`${item.name}-${selectedCategory}`" 
       :item="item" 
-      :delay="initialLoad ? 2.5 + index * 0.2 : index * 0.2"
+      :delay="initialLoad ? 2.2 + index * 0.2 : index * 0.2"
     />
   </section>
 </template>
@@ -36,7 +36,7 @@ const headerDelay = ref(0);
 
 onMounted(() => {
   if (initialLoad.value) {
-    headerDelay.value = 2.5; // Set the delay for the initial load
+    headerDelay.value = 3; // Set the delay for the initial load
     setTimeout(() => {
       document.querySelector('.initial-animate').classList.add('animate');
     }, 500); // Delay before starting the animation

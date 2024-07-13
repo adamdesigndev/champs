@@ -37,7 +37,7 @@ onMounted(() => {
   setTimeout(() => {
     header.value.classList.add('animate');
     isLoaded.value = true;
-  }, 500); // Adjust the delay as needed
+  }, 100); // Adjust the delay as needed
 });
 </script>
 
@@ -45,7 +45,7 @@ onMounted(() => {
 .menu-navigation {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .menu-navigation li {
@@ -131,6 +131,6 @@ onMounted(() => {
 }
 
 .fade-in-left {
-  animation: fadeInLeft .35s ease-out forwards;
+  animation: fadeInLeft .3s ease-out forwards;
 }
 </style>
