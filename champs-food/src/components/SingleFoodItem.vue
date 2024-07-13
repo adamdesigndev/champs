@@ -5,13 +5,13 @@
     <div class="wrapper-menu-outer-section">
       <div class="wrapper-general">
         <div class="wrapper-with-info-card-right">
-          <img :src="item.image" :alt="item.name" />
-          <div class="single-food-item-buy-card">
-            <div>
-              <h3 class="header-4">{{ item.name }}</h3>
-              <p class="main-copy">{{ item.description }}</p>
+          <img :src="item.image" :alt="item.name" ref="image" class="fade-in-left" />
+          <div class="single-food-item-buy-card fade-in-down" ref="buyCard">
+            <div ref="buyCardContent" class="content-wrapper">
+              <h3 class="header-4 fade-in-up">{{ item.name }}</h3>
+              <p class="main-copy fade-in-up">{{ item.description }}</p>
             </div>
-            <div v-if="item.sizes">
+            <div v-if="item.sizes" class="fade-in-up">
               <h6 class="header-6">Select size</h6>
               <div class="wrapper-size-selecter">
                 <button
@@ -40,7 +40,7 @@
                 </button>
               </div>
             </div>
-            <div class="wrapper-qauntity-add-to-cart">
+            <div class="wrapper-qauntity-add-to-cart fade-in-up">
               <div class="wrapper-quanitity">
                 <p class="header-quanitity">Quantity</p>
                 <div class="quanitiy-picker">
@@ -86,6 +86,7 @@ const isEditing = ref(false);
 
 const selectedSize = ref("medium"); // Default to 'medium'
 const quantity = ref(1);
+const initialLoad = ref(true);
 
 const selectSize = (size) => {
   selectedSize.value = size;
@@ -124,13 +125,23 @@ const addOrUpdateCart = (item) => {
 };
 
 onMounted(() => {
-  if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
-    const { size, quantity: editQuantity } = cartStore.currentEditItem;
-    selectedSize.value = size;
-    quantity.value = editQuantity;
-    isEditing.value = true;
-  }
+  setTimeout(() => {
+    initialLoad.value = false;
+    document.querySelector('.fade-in-left').classList.add('animate');
+    document.querySelector('.fade-in-down').classList.add('animate');
+    setTimeout(() => {
+      const fadeUpElements = document.querySelectorAll('.fade-in-up');
+      fadeUpElements.forEach(el => el.classList.add('animate'));
+    }, 0); // Delay before starting the child elements animation
+  }, 50); // Delay before starting the animation
 });
+
+if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
+  const { size, quantity: editQuantity } = cartStore.currentEditItem;
+  selectedSize.value = size;
+  quantity.value = editQuantity;
+  isEditing.value = true;
+}
 
 // Watch for changes in the item prop to set the default size
 watch(
@@ -143,7 +154,6 @@ watch(
   }
 );
 </script>
-
 
 <style scoped>
 .wrapper-size-selecter {
@@ -193,10 +203,14 @@ watch(
   border-radius: 10px;
   box-shadow: 0 0.5rem 1rem rgba(73, 73, 73, 0.25);
   align-self: start;
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 .single-food-item img {
   width: 100%;
+  opacity: 0;
+  transform: translateX(-20px);
 }
 
 .wrapper-qauntity-add-to-cart {
@@ -255,6 +269,67 @@ watch(
   justify-content: space-between;
   gap: 1rem;
 }
+
+/* Slide-in fade-in from left animation */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.animate.fade-in-left {
+  animation: fadeInLeft .5s ease-out forwards;
+}
+
+/* Slide-down fade-in animation */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-down {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.animate.fade-in-down {
+  animation: fadeInDown .5s ease-out forwards;
+}
+
+/* Slide-up fade-in animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(0px);
+}
+
+.animate.fade-in-up {
+  animation: fadeInUp .25s ease-out forwards;
+}
 </style>
-
-

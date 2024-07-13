@@ -1,6 +1,6 @@
 <!-- FoodItemsList.vue -->
 <template>
-  <h2 class="header-3 fade-in-down" ref="header" :class="{ animate: initialLoad }" :style="{ animationDelay: `${headerDelay}s` }">
+  <h2 class="header-3 fade-in-down" ref="header" :class="{ animate: initialLoad }" :style="{ animationDelay: `${headerDelay}s`, opacity: initialLoad ? 0 : 1, transform: initialLoad ? 'translateY(-20px)' : 'translateY(0)' }">
     {{ selectedCategory || 'Menu' }}
   </h2>
   <section class="food-items-list fade-in-up" ref="foodList" :class="{ animate: initialLoad || isLoaded }" :style="{ animationDelay: `${initialLoad ? 0.3 : 0}s` }">
@@ -105,4 +105,3 @@ watch(() => props.selectedCategory, () => {
   animation: fadeInUp 0.2s ease-out forwards;
 }
 </style>
-
