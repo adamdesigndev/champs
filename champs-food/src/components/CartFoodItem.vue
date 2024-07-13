@@ -2,7 +2,7 @@
 
 <!-- CartFoodItem.vue -->
 <template>
-  <div class="wrapper-cart-single-item">
+  <div class="wrapper-cart-single-item" ref="cartItem">
     <img :src="item.image" :alt="item.name" />
     <div class="main-cart-item-details">
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
@@ -16,9 +16,7 @@
       </div>
       <div class="wrapper-cart-item-buttons">
         <button class="cart-item-buttons" @click="editItem(item)">Edit</button>
-        <button class="cart-item-buttons" @click="removeFromCart(item)">
-          Remove
-        </button>
+        <button class="cart-item-buttons" @click="handleRemove">Remove</button>
       </div>
     </div>
     <p class="cart-item-price">${{ item.totalPrice.toFixed(2) }}</p>
@@ -26,6 +24,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { cartStore } from "../../cartStore";
 
@@ -34,6 +33,7 @@ const props = defineProps({
 });
 
 const router = useRouter();
+const cartItem = ref(null);
 
 const removeFromCart = (item) => {
   cartStore.removeFromCart(item);
@@ -43,8 +43,14 @@ const editItem = (item) => {
   cartStore.setCurrentEditItem(item);
   router.push({ name: 'SingleFoodItem', params: { name: item.name }, query: { edit: true } });
 };
-</script>
 
+const handleRemove = () => {
+  cartItem.value.classList.add('slide-out');
+  setTimeout(() => {
+    removeFromCart(props.item);
+  },800); // Match the duration of the animation
+};
+</script>
 
 <style scoped>
 .wrapper-cart-single-item {
@@ -53,6 +59,12 @@ const editItem = (item) => {
   gap: 1.5rem;
   border-bottom: 1px solid #eaeaea;
   padding-bottom: 1.5rem;
+  transition: transform 0.3s ease-out, opacity 0.8s ease-out;
+}
+
+.wrapper-cart-single-item.slide-out {
+  transform: translateX(10px);
+  opacity: 0;
 }
 
 .main-cart-item-details {
@@ -98,4 +110,3 @@ const editItem = (item) => {
   line-height: 1rem;
 }
 </style>
-
