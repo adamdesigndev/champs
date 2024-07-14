@@ -73,10 +73,10 @@ onMounted(() => {
         card2.value.classList.add('animate');
         setTimeout(() => {
           card3.value.classList.add('animate');
-        }, 450);
-      }, 425);
-    }, 400);
-  }, 1600); // 1.5 seconds delay for header animation to complete
+        }, 200);
+      }, 250);
+    }, 300);
+  }, 1000); // 1.5 seconds delay for header animation to complete
 });
 </script>
 
@@ -129,6 +129,6 @@ onMounted(() => {
 }
 
 .animate.fade-in-up {
-  animation: fadeInUp .8s ease-out forwards;
+  animation: fadeInUp .6s ease-out forwards;
 }
 </style>

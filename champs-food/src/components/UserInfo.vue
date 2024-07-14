@@ -76,7 +76,7 @@ onMounted(() => {
         element.classList.add('staggered');
       }, index * 100); // Stagger each element by 100ms
     });
-  }, 750); // Delay the start of the stagger by 0.75 seconds
+  }, 1100); // Delay the start of the stagger by 0.75 seconds
 });
 </script>
 

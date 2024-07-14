@@ -192,6 +192,6 @@ watch(
 }
 
 .fade-in {
-  animation: fadeInFromTop .8s ease-out;
+  animation: fadeInFromTop .5s ease-out;
 }
 </style>

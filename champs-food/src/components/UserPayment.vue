@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <!-- UserPayment.vue -->
 <template>
   <div class="user-payment">

@@ -35,7 +35,7 @@ onMounted(() => {
   setTimeout(() => {
     heroLeft.value.classList.add('animate');
     heroRight.value.classList.add('animate');
-  }, 800); // 1 second delay to allow header animation to complete
+  }, 500); // 1 second delay to allow header animation to complete
 });
 </script>
 
@@ -93,10 +93,10 @@ onMounted(() => {
 }
 
 .animate.fade-in-top {
-  animation: fadeInFromTop 1s ease-out forwards;
+  animation: fadeInFromTop .5s ease-out forwards;
 }
 
 .animate.fade-in-left {
-  animation: fadeInFromLeft 1s ease-out forwards;
+  animation: fadeInFromLeft .5s ease-out forwards;
 }
 </style>

@@ -152,6 +152,6 @@ onBeforeUnmount(() => {
 }
 
 .animate {
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 400ms ease-out forwards;
 }
 </style>
