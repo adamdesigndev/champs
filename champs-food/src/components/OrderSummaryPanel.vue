@@ -1,10 +1,10 @@
 <!-- @format -->
 <!-- OrderSummaryPanel.vue -->
 <template>
-  <aside class="menu-cart-card-right cart-summary">
+  <aside class="menu-cart-card-right cart-summary fade-in">
     <div class="card-header-cart">
-      <h2 class="header-5">Order Summary</h2>
-      <div class="wrapper-total-items-in-cart">
+      <h2 class="header-5 order-summary-stagger">Order Summary</h2>
+      <div class="wrapper-total-items-in-cart order-summary-stagger">
         <p class="header-6">{{ totalItems }} item(s)</p>
         <button class="btn-view-all" @click="toggleViewAll">
           <img class="view-btn" :src="viewAll ? '/images/upArrow.png' : '/images/downArrow.png'" alt="Toggle View" />
@@ -15,7 +15,7 @@
       <div
         v-for="item in cartStore.items"
         :key="item.name + item.size"
-        class="panel-item"
+        class="panel-item order-summary-stagger"
       >
         <div class="panel-item-name-size">
           <h6 class="header-6">{{ item.name }}</h6>
@@ -33,20 +33,20 @@
     </div>
 
     <div class="cart-price-order-details">
-      <div class="inner-cart-price-order-details">
+      <div class="inner-cart-price-order-details order-summary-stagger">
         <p class="cart-total-details">Subtotal:</p>
         <p class="cart-total-details">${{ subtotal.toFixed(2) }}</p>
       </div>
-      <div class="inner-cart-price-order-details">
+      <div class="inner-cart-price-order-details order-summary-stagger">
         <p class="cart-total-details">Tax:</p>
         <p class="cart-total-details">${{ tax.toFixed(2) }}</p>
       </div>
-      <div class="inner-cart-price-order-details" v-if="isCheckoutPage">
+      <div class="inner-cart-price-order-details order-summary-stagger" v-if="isCheckoutPage">
         <p class="cart-total-details">Grand Total:</p>
         <p class="cart-total-details">${{ total.toFixed(2) }}</p>
       </div>
     </div>
-    <button class="main-btn add-item-with-price" @click="proceedToCheckout" v-if="!isCheckoutPage">
+    <button class="main-btn add-item-with-price order-summary-stagger" @click="proceedToCheckout" v-if="!isCheckoutPage">
       <p>Checkout</p>
       <p>${{ total.toFixed(2) }}</p>
     </button>
@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { cartStore } from "../../cartStore";
 
@@ -80,9 +80,54 @@ const isCheckoutPage = computed(() => route.name === 'Checkout');
 const proceedToCheckout = () => {
   router.push({ name: 'Checkout' });
 };
+
+onMounted(() => {
+  // Stagger element animation with a 2-second delay
+  setTimeout(() => {
+    const elements = document.querySelectorAll('.order-summary-stagger');
+    elements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add('staggered');
+      }, index * 50); // Stagger each element by 200ms
+    });
+  }, 250); // 2-second delay before starting the stagger
+});
 </script>
 
 <style scoped>
+@keyframes fadeInUpOrderSummary {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInContainer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeInContainer 0.5s forwards; /* Immediate fade-in animation for the container */
+}
+
+.order-summary-stagger {
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.order-summary-stagger.staggered {
+  animation: fadeInUpOrderSummary 0.5s forwards;
+}
+
 .cart-summary {
   gap: 2rem; 
 }

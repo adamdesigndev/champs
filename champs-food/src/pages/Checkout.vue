@@ -4,8 +4,8 @@
 <template>
   <div class="wrapper-menu-outer-section">
     <div class="wrapper-general">
-      <MiniNavigation v-if="currentStep !== 3" :current-step="currentStep" />
-      <h1 class="header-2" v-if="currentStep !== 3">Checkout</h1>
+      <MiniNavigation v-if="currentStep !== 3" :current-step="currentStep" class="fade-in" />
+      <h1 class="header-2 fade-in" v-if="currentStep !== 3">Checkout</h1>
       <div class="wrapper-with-info-card-right">
         <UserInfo v-if="currentStep === 1" @proceed="nextStep" />
         <UserPayment v-if="currentStep === 2" @placeOrder="placeOrder" />
@@ -57,3 +57,18 @@ const placeOrder = () => {
   router.push({ name: "Checkout", query: { step: currentStep.value } });
 };
 </script>
+
+<style scoped>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+</style>
