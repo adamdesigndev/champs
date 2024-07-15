@@ -6,9 +6,15 @@
         <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
       </button>
       <ul :class="['nav-menu-links', 'desktop-header', { 'fade-in': isHomePage }]">
-        <li><a class="header-nav-links" href="/">Home</a></li>
-        <li><a class="header-nav-links" href="/Menu">Menu</a></li>
-        <li><a class="header-nav-links" href="/About">About</a></li>
+        <li>
+          <router-link class="header-nav-links nav-link" :class="{ active: isActive('/') }" to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link class="header-nav-links nav-link" :class="{ active: isActive('/Menu') }" to="/Menu">Menu</router-link>
+        </li>
+        <li>
+          <router-link class="header-nav-links nav-link" :class="{ active: isActive('/About') }" to="/About">About</router-link>
+        </li>
       </ul>
       <a class="desktop-header" :class="{ 'fade-in': isHomePage }" href="/">
         <img class="header-logo" src="/images/Champs-head.svg" alt="Logo" />
@@ -18,7 +24,7 @@
       </a>
       <ul class="nav-menu-links">
         <li class="cart-icon-wrapper" :class="{ 'fade-in': isHomePage }">
-          <a href="/Cart">
+          <router-link to="/Cart">
             <img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart" />
             <span
               v-if="totalItems > 0"
@@ -28,12 +34,12 @@
             >
               {{ totalItems }}
             </span>
-          </a>
+          </router-link>
         </li>
         <li class="desktop-header" :class="{ 'fade-in': isHomePage }">
-          <a class="header-nav-links" href="/Menu">
+          <router-link class="" to="/Menu">
             <button class="main-btn">Start Order</button>
-          </a>
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -76,6 +82,8 @@ watch(
     lastCartLength.value = newLength;
   }
 );
+
+const isActive = (path) => route.path === path;
 </script>
 
 <style scoped>
@@ -106,6 +114,27 @@ watch(
 .header-nav-links {
   font-size: var(--fs-300);
   font-weight: 500;
+  position: relative; /* Needed for the border-bottom effect */
+  padding-bottom: 5px; /* Space for the border-bottom */
+}
+
+.header-nav-links::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--clr-primary);
+  transition: width 0.3s ease-in-out;
+}
+
+.header-nav-links:hover::after {
+  width: 100%;
+}
+
+.header-nav-links.active::after {
+  width: 100%;
 }
 
 .header-logo {
