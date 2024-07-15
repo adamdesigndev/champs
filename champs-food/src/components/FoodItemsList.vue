@@ -3,12 +3,11 @@
   <h2 class="header-3 fade-in-down" ref="header" :class="{ 'initial-animate': initialLoad }" :style="{ animationDelay: `${headerDelay}s` }">
     {{ selectedCategory || 'Menu' }}
   </h2>
-  <section class="food-items-list">
+  <section class="food-items-list fade-in-up" :class="{ 'initial-animate': initialLoad }">
     <FoodItemCard 
       v-for="(item, index) in filteredItems" 
       :key="`${item.name}-${selectedCategory}`" 
-      :item="item" 
-      :delay="initialLoad ? .3 + index * 0.2 : index * 0.1"
+      :item="item"
     />
   </section>
 </template>
@@ -38,7 +37,8 @@ onMounted(() => {
   if (initialLoad.value) {
     headerDelay.value = .05; // Set the delay for the initial load
     setTimeout(() => {
-      document.querySelector('.initial-animate').classList.add('animate');
+      document.querySelector('.header-3.initial-animate').classList.add('animate');
+      document.querySelector('.food-items-list.initial-animate').classList.add('animate');
     }, 220); // Delay before starting the animation
   }
 });
@@ -55,7 +55,7 @@ watch(() => props.selectedCategory, () => {
   gap: 1rem;
 }
 
-/* Slide-down fade-in animation */
+/* Slide-down fade-in animation for header */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -79,5 +79,31 @@ watch(() => props.selectedCategory, () => {
 
 .animate.initial-animate {
   animation: fadeInDown .3s ease-out forwards;
+}
+
+/* Slide-up fade-in animation for food items */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 1; /* Ensure the section stays visible */
+  transform: translateY(0); /* Ensure the section stays in place */
+}
+
+.initial-animate {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate.initial-animate {
+  animation: fadeInUp .3s ease-out forwards;
 }
 </style>
