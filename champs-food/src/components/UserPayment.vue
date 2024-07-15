@@ -1,30 +1,28 @@
 <!-- UserPayment.vue -->
 <template>
-  <transition name="fade-slide" mode="out-in" @before-enter="beforeEnter" @after-enter="afterEnter">
-    <div class="user-payment">
-      <h2 class="header-4 user-payment-stagger">Payment Info</h2>
-      <form class="wrapper-user-payment body-bottom-button" @submit.prevent="submitPaymentInfo">
+  <div class="user-payment">
+    <h2 class="header-4 user-payment-stagger">Payment Info</h2>
+    <form class="wrapper-user-payment body-bottom-button" @submit.prevent="submitPaymentInfo">
+      <label class="form-label user-payment-stagger">
+        Card Number
+        <input class="form-input" type="text" v-model="userPayment.cardNumber" required maxlength="16" @input="validateCardNumber">
+        <span v-if="!isCardNumberValid && showErrors" class="error-message">Please input a valid card number</span>
+      </label>
+      <div class="user-payment-date-ccv">
         <label class="form-label user-payment-stagger">
-          Card Number
-          <input class="form-input" type="text" v-model="userPayment.cardNumber" required maxlength="16" @input="validateCardNumber">
-          <span v-if="!isCardNumberValid && showErrors" class="error-message">Please input a valid card number</span>
+          Expiration Date
+          <input class="form-input" type="text" v-model="userPayment.expirationDate" required maxlength="4" @input="validateExpirationDate">
+          <span v-if="!isExpirationDateValid && showErrors" class="error-message">Please input a valid expiration date</span>
         </label>
-        <div class="user-payment-date-ccv">
-          <label class="form-label user-payment-stagger">
-            Expiration Date
-            <input class="form-input" type="text" v-model="userPayment.expirationDate" required maxlength="4" @input="validateExpirationDate">
-            <span v-if="!isExpirationDateValid && showErrors" class="error-message">Please input a valid expiration date</span>
-          </label>
-          <label class="form-label user-payment-stagger">
-            CCV
-            <input class="form-input" type="text" v-model="userPayment.ccv" required maxlength="3" @input="validateCCV">
-            <span v-if="!isCCVValid && showErrors" class="error-message">Please input a valid CCV</span>
-          </label>
-        </div>
-        <button class="main-btn user-payment-stagger" type="submit">Place Order</button>
-      </form>
-    </div>
-  </transition>
+        <label class="form-label user-payment-stagger">
+          CCV
+          <input class="form-input" type="text" v-model="userPayment.ccv" required maxlength="3" @input="validateCCV">
+          <span v-if="!isCCVValid && showErrors" class="error-message">Please input a valid CCV</span>
+        </label>
+      </div>
+      <button class="main-btn user-payment-stagger" type="submit">Place Order</button>
+    </form>
+  </div>
 </template>
 
 <script setup>
@@ -67,14 +65,6 @@ const submitPaymentInfo = () => {
   if (isCardNumberValid.value && isExpirationDateValid.value && isCCVValid.value) {
     emit('placeOrder');
   }
-};
-
-const beforeEnter = (el) => {
-  // Ensure the previous component has fully left
-};
-
-const afterEnter = (el) => {
-  // Cleanup after enter transition
 };
 
 onMounted(() => {

@@ -1,33 +1,31 @@
 <!-- UserInfo.vue -->
 <template>
-  <transition name="fade-slide" mode="out-in" @before-leave="beforeLeave" @after-leave="afterLeave">
-    <div class="user-info" v-if="isVisible">
-      <h2 class="header-4 user-info-stagger">Contact Info</h2>
-      <form class="wrapper-contact-form body-bottom-button" @submit.prevent="submitUserInfo">
-        <label class="form-label user-info-stagger">
-          First Name
-          <input class="form-input" type="text" v-model="userInfo.firstName" required maxlength="40">
-          <span v-if="!isFirstNameValid && showErrors" class="error-message">Please input a valid first name</span>
-        </label>
-        <label class="form-label user-info-stagger">
-          Last Name
-          <input class="form-input" type="text" v-model="userInfo.lastName" required maxlength="40">
-          <span v-if="!isLastNameValid && showErrors" class="error-message">Please input a valid last name</span>
-        </label>
-        <label class="form-label user-info-stagger">
-          Phone
-          <input class="form-input" type="tel" v-model="userInfo.phone" required maxlength="12" @input="validatePhone">
-          <span v-if="!isPhoneValid && showErrors" class="error-message">Please input a valid phone number</span>
-        </label>
-        <label class="form-label user-info-stagger">
-          Email
-          <input class="form-input" type="email" v-model="userInfo.email" required maxlength="40">
-          <span v-if="!isEmailValid && showErrors" class="error-message">Please input a valid email</span>
-        </label>
-        <button class="main-btn user-info-stagger" type="submit">Proceed to Payment</button>
-      </form>
-    </div>
-  </transition>
+  <div class="user-info">
+    <h2 class="header-4 user-info-stagger">Contact Info</h2>
+    <form class="wrapper-contact-form body-bottom-button" @submit.prevent="submitUserInfo">
+      <label class="form-label user-info-stagger">
+        First Name
+        <input class="form-input" type="text" v-model="userInfo.firstName" required maxlength="40">
+        <span v-if="!isFirstNameValid && showErrors" class="error-message">Please input a valid first name</span>
+      </label>
+      <label class="form-label user-info-stagger">
+        Last Name
+        <input class="form-input" type="text" v-model="userInfo.lastName" required maxlength="40">
+        <span v-if="!isLastNameValid && showErrors" class="error-message">Please input a valid last name</span>
+      </label>
+      <label class="form-label user-info-stagger">
+        Phone
+        <input class="form-input" type="tel" v-model="userInfo.phone" required maxlength="12" @input="validatePhone">
+        <span v-if="!isPhoneValid && showErrors" class="error-message">Please input a valid phone number</span>
+      </label>
+      <label class="form-label user-info-stagger">
+        Email
+        <input class="form-input" type="email" v-model="userInfo.email" required maxlength="40">
+        <span v-if="!isEmailValid && showErrors" class="error-message">Please input a valid email</span>
+      </label>
+      <button class="main-btn user-info-stagger" type="submit">Proceed to Payment</button>
+    </form>
+  </div>
 </template>
 
 <script setup>
@@ -41,7 +39,6 @@ const isLastNameValid = ref(true);
 const isPhoneValid = ref(true);
 const isEmailValid = ref(true);
 const showErrors = ref(false);
-const isVisible = ref(true);
 
 const emit = defineEmits(['proceed']);
 
@@ -59,19 +56,8 @@ const submitUserInfo = () => {
   isEmailValid.value = userInfo.email.length > 0 && userInfo.email.length <= 40;
 
   if (isFirstNameValid.value && isLastNameValid.value && isPhoneValid.value && isEmailValid.value) {
-    isVisible.value = false;
-    setTimeout(() => {
-      emit('proceed');
-    }, 300); // Match this to the animation duration
+    emit('proceed');
   }
-};
-
-const beforeLeave = (el) => {
-  // Any setup before leaving can go here
-};
-
-const afterLeave = (el) => {
-  // Cleanup after leave transition
 };
 
 onMounted(() => {
