@@ -1,8 +1,6 @@
-<!-- @format -->
-
 <!-- UserInfo.vue -->
 <template>
-  <transition name="fade-slide">
+  <transition name="fade-slide" mode="out-in" @before-leave="beforeLeave" @after-leave="afterLeave">
     <div class="user-info" v-if="isVisible">
       <h2 class="header-4 user-info-stagger">Contact Info</h2>
       <form class="wrapper-contact-form body-bottom-button" @submit.prevent="submitUserInfo">
@@ -68,15 +66,35 @@ const submitUserInfo = () => {
   }
 };
 
+const beforeLeave = (el) => {
+  // Any setup before leaving can go here
+};
+
+const afterLeave = (el) => {
+  // Cleanup after leave transition
+};
+
 onMounted(() => {
-  setTimeout(() => {
+  const firstLoad = localStorage.getItem('cartFirstLoad') === 'true';
+
+  if (firstLoad) {
+    localStorage.removeItem('cartFirstLoad');
+    setTimeout(() => {
+      const elements = document.querySelectorAll('.user-info-stagger');
+      elements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add('staggered');
+        }, index * 100); // Stagger each element by 100ms
+      });
+    }, 700); // Delay the start of the stagger by 0.75 seconds
+  } else {
     const elements = document.querySelectorAll('.user-info-stagger');
     elements.forEach((element, index) => {
       setTimeout(() => {
         element.classList.add('staggered');
       }, index * 100); // Stagger each element by 100ms
     });
-  }, 700); // Delay the start of the stagger by 0.75 seconds
+  }
 });
 </script>
 
