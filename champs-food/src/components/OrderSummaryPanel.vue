@@ -76,21 +76,30 @@ const total = computed(() => subtotal.value + tax.value);
 const router = useRouter();
 const route = useRoute();
 const isCheckoutPage = computed(() => route.name === 'Checkout');
+const isCartPage = computed(() => route.name === 'Cart');
 
 const proceedToCheckout = () => {
   router.push({ name: 'Checkout' });
 };
 
 onMounted(() => {
-  // Stagger element animation with a 2-second delay
-  setTimeout(() => {
+  if (isCartPage.value) {
+    // Apply fade-in without movement
     const elements = document.querySelectorAll('.order-summary-stagger');
-    elements.forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.add('staggered');
-      }, index * 50); // Stagger each element by 200ms
+    elements.forEach((element) => {
+      element.classList.add('fade-in-no-move');
     });
-  }, 250); // 2-second delay before starting the stagger
+  } else {
+    // Original staggered animation with movement
+    setTimeout(() => {
+      const elements = document.querySelectorAll('.order-summary-stagger');
+      elements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add('staggered');
+        }, index * 50); // Stagger each element by 50ms
+      });
+    }, 250); // Delay before starting the stagger
+  }
 });
 </script>
 
@@ -117,6 +126,11 @@ onMounted(() => {
 
 .fade-in {
   animation: fadeInContainer 0.5s forwards; /* Immediate fade-in animation for the container */
+}
+
+.fade-in-no-move {
+  opacity: 0;
+  animation: fadeInContainer 0.5s forwards;
 }
 
 .order-summary-stagger {
