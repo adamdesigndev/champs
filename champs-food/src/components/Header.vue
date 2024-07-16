@@ -5,7 +5,7 @@
       <button class="hamburger mobile-header" @click="toggleMenu">
         <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
       </button>
-      <ul :class="['nav-menu-links', 'desktop-header', { 'fade-in': isHomePage }]">
+      <ul :class="['nav-menu-links', 'desktop-header', { 'fade-in': shouldAnimate }]">
         <li>
           <router-link class="header-nav-links nav-link" :class="{ active: isActive('/') }" to="/">Home</router-link>
         </li>
@@ -16,14 +16,14 @@
           <router-link class="header-nav-links nav-link" :class="{ active: isActive('/About') }" to="/About">About</router-link>
         </li>
       </ul>
-      <a class="desktop-header" :class="{ 'fade-in': isHomePage }" href="/">
+      <a class="desktop-header" :class="{ 'fade-in': shouldAnimate }" href="/">
         <img class="header-logo" src="/images/Champs-head.svg" alt="Logo" />
       </a>
-      <a class="mobile-header" :class="{ 'fade-in': isHomePage }" href="/">
+      <a class="mobile-header" href="/">
         <img src="/images/logo-comb-mobile.svg" alt="Logo" />
       </a>
       <ul class="nav-menu-links">
-        <li class="cart-icon-wrapper" :class="{ 'fade-in': isHomePage }">
+        <li class="cart-icon-wrapper" :class="{ 'fade-in': shouldAnimate }">
           <router-link to="/Cart">
             <img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart" />
             <span
@@ -36,7 +36,7 @@
             </span>
           </router-link>
         </li>
-        <li class="desktop-header" :class="{ 'fade-in': isHomePage }">
+        <li class="desktop-header" :class="{ 'fade-in': shouldAnimate }">
           <router-link class="" to="/Menu">
             <button class="main-btn">Start Order</button>
           </router-link>
@@ -47,16 +47,15 @@
 </template>
 
 <script setup>
-import { inject, computed, ref, watch } from "vue";
-import { cartStore } from "../../cartStore";
-import { useRoute } from "vue-router";
+import { inject, computed, ref, watch, onMounted } from 'vue';
+import { cartStore } from '../../cartStore';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
+const isHomePage = computed(() => route.path === '/');
 
-const isHomePage = computed(() => route.path === "/");
-
-const toggleMenu = inject("toggleMenu");
-const isMenuOpen = inject("isMenuOpen");
+const toggleMenu = inject('toggleMenu');
+const isMenuOpen = inject('isMenuOpen');
 
 const totalItems = computed(() => {
   return cartStore.items.reduce((sum, item) => sum + item.quantity, 0);
@@ -84,6 +83,17 @@ watch(
 );
 
 const isActive = (path) => route.path === path;
+
+const shouldAnimate = ref(false);
+
+onMounted(() => {
+  if (window.innerWidth > 850 && isHomePage.value) {
+    shouldAnimate.value = true;
+    setTimeout(() => {
+      shouldAnimate.value = false;
+    }, 500); // Set to the duration of the animation
+  }
+});
 </script>
 
 <style scoped>
