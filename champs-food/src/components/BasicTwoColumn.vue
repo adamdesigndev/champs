@@ -4,7 +4,7 @@
   <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" ref="section">
     <div class="wrapper-general">
       <div :class="['wrapper-basic-two-up', { 'wrapper-reverse': reverse }]">
-        <div class="wrapper-inner-left" :class="{ 'animate': hasHeader && isVisible, 'initial-hidden': hasHeader }">
+        <div class="wrapper-inner-left" :class="[fadeInClass, { 'animate': !isAboutPage && hasHeader && isVisible, 'initial-hidden': !isAboutPage && hasHeader }]">
           <h2 :class="['header-2', { 'white-text': textWhite }]">
             {{ header }}
           </h2>
@@ -28,7 +28,7 @@
             </button>
           </a>
         </div>
-        <div class="wrapper-inner-right" :class="{ 'animate': !hasHeader && isVisible, 'initial-hidden': !hasHeader }">
+        <div class="wrapper-inner-right" :class="[fadeInClass, { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }]">
           <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
         </div>
       </div>
@@ -38,6 +38,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRoute } from 'vue-router';
 
 const props = defineProps({
   imageSrc: String,
@@ -72,25 +73,36 @@ const props = defineProps({
   }
 });
 
+const route = useRoute();
 const section = ref(null);
 const isVisible = ref(false);
 const hasHeader = ref(!!props.header);
+const isAboutPage = ref(route.path === '/About');
+const fadeInClass = ref('');
+
+onMounted(() => {
+  if (isAboutPage.value) {
+    fadeInClass.value = 'fade-in';
+  }
+  
+  if (!isAboutPage.value) {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  }
+});
 
 const handleScroll = () => {
   const rect = section.value.getBoundingClientRect();
-  if (rect.top <= window.innerHeight * 0.6) {
+  if (rect.top <= window.innerHeight * 0.65) {
     isVisible.value = true;
     window.removeEventListener('scroll', handleScroll);
   }
 };
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
-});
-
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll);
+  if (!isAboutPage.value) {
+    window.removeEventListener('scroll', handleScroll);
+  }
 });
 </script>
 
@@ -152,6 +164,24 @@ onBeforeUnmount(() => {
 }
 
 .animate {
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 400ms ease-out forwards;
+}
+
+/* Fade-in without movement for About page */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 </style>

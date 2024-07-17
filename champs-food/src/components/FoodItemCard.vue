@@ -1,6 +1,6 @@
 <!-- FoodItemCard.vue -->
 <template>
-  <div class="food-item-card fade-in-up" :style="{ animationDelay: `${delay}s` }">
+  <div class="food-item-card">
     <router-link :to="{ name: 'SingleFoodItem', params: { name: item.name } }">
       <img :src="item.image" :alt="item.name">
       <h6 class="header-6">{{ item.name }}</h6>
@@ -14,8 +14,7 @@
 import { ref, onMounted } from 'vue';
 
 const props = defineProps({
-  item: Object,
-  delay: Number
+  item: Object
 });
 
 const isLoaded = ref(false);
@@ -36,8 +35,8 @@ onMounted(() => {
   justify-content: center;
   min-height: 300px;
   text-align: center;
-  opacity: 0; /* Initially hide the card */
-  transform: translateY(20px); /* Slide from bottom */
+  opacity: 1; /* Ensure the card stays visible */
+  transform: translateY(0); /* Ensure the card stays in place */
 }
 
 .food-item-card:hover {
@@ -49,21 +48,5 @@ onMounted(() => {
   max-height: 150px;
   margin-inline: auto;
   margin-bottom: 2rem;
-}
-
-/* Fade-in and slide-up animation */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.3s ease-out forwards;
 }
 </style>

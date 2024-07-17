@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <!-- Cart.vue -->
 <template>
   <div class="wrapper-menu-outer-section">
@@ -17,8 +15,18 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import CartListItems from "../components/CartListItems.vue";
 import OrderSummaryPanel from "../components/OrderSummaryPanel.vue";
 import CartEmpty from "../components/CartEmpty.vue";
 import { cartStore } from "../../cartStore";
+
+const firstLoad = ref(true);
+
+onMounted(() => {
+  if (firstLoad.value) {
+    firstLoad.value = false;
+    localStorage.setItem('cartFirstLoad', 'true');
+  }
+});
 </script>

@@ -125,23 +125,13 @@ const addOrUpdateCart = (item) => {
 };
 
 onMounted(() => {
-  setTimeout(() => {
-    initialLoad.value = false;
-    document.querySelector('.fade-in-left').classList.add('animate');
-    document.querySelector('.fade-in-down').classList.add('animate');
-    setTimeout(() => {
-      const fadeUpElements = document.querySelectorAll('.fade-in-up');
-      fadeUpElements.forEach(el => el.classList.add('animate'));
-    }, 0); // Delay before starting the child elements animation
-  }, 50); // Delay before starting the animation
+  if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
+    const { size, quantity: editQuantity } = cartStore.currentEditItem;
+    selectedSize.value = size;
+    quantity.value = editQuantity;
+    isEditing.value = true;
+  }
 });
-
-if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
-  const { size, quantity: editQuantity } = cartStore.currentEditItem;
-  selectedSize.value = size;
-  quantity.value = editQuantity;
-  isEditing.value = true;
-}
 
 // Watch for changes in the item prop to set the default size
 watch(
@@ -268,68 +258,5 @@ watch(
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
-}
-
-/* Slide-in fade-in from left animation */
-@keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.fade-in-left {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.animate.fade-in-left {
-  animation: fadeInLeft .5s ease-out forwards;
-}
-
-/* Slide-down fade-in animation */
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-down {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.animate.fade-in-down {
-  animation: fadeInDown .5s ease-out forwards;
-}
-
-/* Slide-up fade-in animation */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(0px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(0px);
-}
-
-.animate.fade-in-up {
-  animation: fadeInUp .25s ease-out forwards;
 }
 </style>

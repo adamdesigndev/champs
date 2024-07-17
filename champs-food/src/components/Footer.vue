@@ -1,38 +1,39 @@
+<!-- Footer.nav -->
 <template>
-    <footer>
-      <div class="footer-content">
-        <a href="http://"><img class="footer-logo" src="/images/champs-full-logo.svg" alt="Logo"></a>
-       <div class="wrapper-footer-mid">
+  <footer>
+    <div class="footer-content">
+      <router-link to="/"><img class="footer-logo" src="/images/champs-full-logo.svg" alt="Logo"></router-link>
+      <div class="wrapper-footer-mid">
         <nav>
           <ul class="footer-nav">
-            <li><a class="footer-menu-link" href="/">Home</a></li>
-            <li><a class="footer-menu-link" href="/menu">Menu</a></li>
-            <li><a class="footer-menu-link" href="/about">About</a></li>
-            <li><a class="footer-menu-link" href="/cart">Cart</a></li>
+            <li><router-link class="footer-menu-link" to="/">Home</router-link></li>
+            <li><router-link class="footer-menu-link" to="/Menu">Menu</router-link></li>
+            <li><router-link class="footer-menu-link" to="/About">About</router-link></li>
+            <li><router-link class="footer-menu-link" to="/Cart">Cart</router-link></li>
           </ul>
         </nav>
         <div class="wrapper-social-media">
-        <a href="https://www.instagram.com/" target="_blank"><img src="/images/instagram-logo.svg" alt="Instagram"></a>
-        <a href="https://x.com/?lang=en" target="_blank"><img src="/images/x-logo.svg" alt="X"></a>
+          <a href="https://www.instagram.com/" target="_blank"><img src="/images/instagram-logo.svg" alt="Instagram"></a>
+          <a href="https://x.com/?lang=en" target="_blank"><img src="/images/x-logo.svg" alt="X"></a>
+        </div>
       </div>
-      </div> 
       <div class="wrapper-footer-misc">
         <ul class="misc-links">
-            <li>Terms</li>
-            <li>Privacy</li>
-            <li>Sales</li>
-            <li>Cookies</li>
-          </ul>
-          <p class="footer-notes">Copyright 2024 Champs<br/>All Rights Reserved</p>
+          <li>Terms</li>
+          <li>Privacy</li>
+          <li>Sales</li>
+          <li>Cookies</li>
+        </ul>
+        <p class="footer-notes">Copyright 2024 Champs<br/>All Rights Reserved</p>
       </div>
     </div>
-    </footer>
-  </template>
-  
-  <script setup>
-  </script>
-  
-  <style scoped>
+  </footer>
+</template>
+
+<script setup>
+</script>
+
+<style scoped>
 .footer-content {
   max-width: 2400px;
   margin-inline: auto;
@@ -123,4 +124,4 @@ justify-content: center;
   text-align: center;
 }
 }
-  </style>
+</style>
