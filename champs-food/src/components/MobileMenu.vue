@@ -5,7 +5,7 @@
       <nav>
         <ul>
           <li v-for="(item, index) in menuItems" :key="index" class="menu-item" @enter="onEnter" @leave="onLeave">
-            <a :href="item.href">{{ item.text }}</a>
+            <router-link :to="item.href" @click.native="closeMenu">{{ item.text }}</router-link>
           </li>
         </ul>
       </nav>
@@ -39,6 +39,10 @@ const toggleNoScrollClass = () => {
   } else {
     document.documentElement.classList.remove('no-scroll');
   }
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
 };
 
 onMounted(() => {
@@ -87,7 +91,7 @@ watch(isMenuOpen, async () => {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: .8rem;
 }
 
 .mobile-menu nav a {
@@ -101,8 +105,9 @@ watch(isMenuOpen, async () => {
 .mobile-menu-logo {
   position: absolute;
   left: 50%;
-  bottom: -5%;
+  bottom: -25px;
   transform: translateX(-50%);
+  max-height: 15rem;
 }
 
 .slide-enter-active, .slide-leave-active {

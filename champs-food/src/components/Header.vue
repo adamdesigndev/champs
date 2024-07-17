@@ -130,6 +130,12 @@ watch(route, (newRoute, oldRoute) => {
   padding: 1.5rem;
 }
 
+@media (width < 850px) {
+  .wrapper-nav-inner {
+  padding: 1rem 1.5rem 1rem 1.5rem;
+}
+}
+
 .nav-menu-links {
   display: flex;
   flex-direction: row;

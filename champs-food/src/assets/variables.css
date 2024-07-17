@@ -18,21 +18,21 @@
   --fs-500: 1.625rem;
   --fs-600: 2rem;
   --fs-700: 2.325rem;
-  --fs-800: 2.7rem;
-  --fs-900: 4.5rem;
+  --fs-800: 2.5rem;
+  --fs-900: 3.5rem;
 
 
   /* wrappers */
   --inner-content-max-width-v1: 1260px;
-  --padding-inline-v1: 2rem;
-  --wrapper-outer-padding-tb: 6rem;
-  --content-gap: 3rem;
-
-  --wrapper-outer-menu-padding-tb: 3rem;
+  --padding-inline-v1: 1.2rem;
+  --wrapper-outer-padding-tb: 3rem;
+  --content-gap: 2rem;
+  --wrapper-outer-menu-padding-tb: 1.2rem;
 }
 
 /* Font size */
 @media (width > 850px) {
+  /* Font size */
   :root {
     --fs-100: .7rem;
     --fs-200: .9rem;
@@ -43,5 +43,12 @@
     --fs-700: 2.5rem;
     --fs-800: 3.5rem;
     --fs-900: 6rem;
+
+ /* wrappers */
+ --inner-content-max-width-v1: 1260px;
+ --padding-inline-v1: 2rem;
+ --wrapper-outer-padding-tb: 6rem;
+ --content-gap: 3rem;
+ --wrapper-outer-menu-padding-tb: 3rem;
   }
 }

@@ -205,18 +205,18 @@ body {
 
 @media (width < 850px) {
   .header-1 {
-    line-height: 4rem;
-    margin-bottom: 2rem;
+    line-height: 3.2rem;
+    margin-bottom: 1.8rem;
   }
   
   .header-2 {
-    line-height: 2.8rem;
-    margin-bottom: 1.8rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.2rem;
   }
   
   .header-3 {
     line-height: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .header-4 {
