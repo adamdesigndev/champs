@@ -1,4 +1,5 @@
 <!-- UserInfo.vue -->
+<!-- UserInfo.vue -->
 <template>
   <div class="user-info">
     <h2 class="header-4 user-info-stagger">Contact Info</h2>
@@ -62,24 +63,26 @@ const submitUserInfo = () => {
 
 onMounted(() => {
   const firstLoad = localStorage.getItem('cartFirstLoad') === 'true';
+  const screenWidth = window.innerWidth;
 
-  if (firstLoad) {
-    localStorage.removeItem('cartFirstLoad');
-    setTimeout(() => {
-      const elements = document.querySelectorAll('.user-info-stagger');
-      elements.forEach((element, index) => {
-        setTimeout(() => {
-          element.classList.add('staggered');
-        }, index * 100); // Stagger each element by 100ms
-      });
-    }, 700); // Delay the start of the stagger by 0.75 seconds
-  } else {
+  const applyStaggerEffect = (delay) => {
     const elements = document.querySelectorAll('.user-info-stagger');
     elements.forEach((element, index) => {
       setTimeout(() => {
         element.classList.add('staggered');
       }, index * 100); // Stagger each element by 100ms
     });
+  };
+
+  if (firstLoad) {
+    localStorage.removeItem('cartFirstLoad');
+    if (screenWidth < 850) {
+      applyStaggerEffect(0); // No initial delay
+    } else {
+      setTimeout(() => applyStaggerEffect(700), 700); // Delay the start of the stagger by 0.75 seconds
+    }
+  } else {
+    applyStaggerEffect(0); // No initial delay for subsequent loads
   }
 });
 </script>

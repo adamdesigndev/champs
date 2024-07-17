@@ -1,3 +1,4 @@
+<!-- Footer.nav -->
 <template>
     <footer>
       <div class="footer-content">

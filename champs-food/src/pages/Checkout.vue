@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <!-- Checkout.vue -->
 <template>
   <div class="wrapper-menu-outer-section">
