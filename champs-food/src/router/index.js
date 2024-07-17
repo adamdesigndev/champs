@@ -33,7 +33,8 @@ const routes = [
     path: '/checkout',
     name: 'Checkout',
     component: Checkout
-  }, {
+  },
+  {
     path: '/about',
     name: 'About',
     component: About
@@ -42,7 +43,14 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  }
 });
 
 export default router;
