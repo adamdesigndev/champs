@@ -42,7 +42,7 @@
             </div>
             <div class="wrapper-qauntity-add-to-cart fade-in-up">
               <div class="wrapper-quanitity">
-                <p class="header-quanitity">Quantity</p>
+                <h6 class="header-6 header-quanitity">Quantity</h6>
                 <div class="quanitiy-picker">
                   <button class="minus-qty" @click="updateQuantity(-1)">
                     -
@@ -207,6 +207,16 @@ watch(
   transform: translateY(-20px);
 }
 
+@media (width < 850px) {
+  .single-food-item-buy-card {
+  gap: 1.5rem;
+  background-color: rgb(0, 0, 0, 0);
+  padding: 0rem;
+  box-shadow: none;
+
+}
+}
+
 .single-food-item img {
   width: 100%;
   opacity: 0;
@@ -228,11 +238,7 @@ watch(
 }
 
 .header-quanitity {
-  font-family: var(--ff-headers);
-  font-size: var(--fs-300);
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--clr-body);
+  margin-bottom: 0rem;
 }
 
 .quanitiy-picker {
@@ -247,11 +253,15 @@ watch(
   border: none;
   background-color: rgb(0, 0, 0, 0);
   font-size: var(--fs-500);
+  font-weight: 500;
+  color: var(--clr-body);
+  cursor: pointer;
 }
 
 .food-item-amount-number {
   text-align: center;
-  font-size: var(--fs-400);
+  font-size: var(--fs-500);
+  margin: auto;
 }
 
 .single-food-item button {

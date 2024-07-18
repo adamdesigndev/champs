@@ -83,7 +83,7 @@ body {
 
 @media (width < 850px) {
   .with-sidebar {
-    --gap: 2.5rem;
+    --gap: 2rem;
 }
 }
 
@@ -201,6 +201,7 @@ body {
   text-transform: uppercase;
   color: var(--clr-body);
   margin-bottom: .8rem;
+  letter-spacing: .04rem;
 }
 
 @media (width < 850px) {
@@ -226,7 +227,7 @@ body {
     font-weight: 900;
     text-transform: uppercase;
     color: var(--clr-body);
-    margin-bottom: 1rem;
+    margin-bottom: .6rem;
   }
   
   .header-5 {
@@ -236,7 +237,7 @@ body {
   
   .header-6 {
     line-height: 1rem;
-    margin-bottom: .8rem;
+    margin-bottom: .4rem;
   }
   }
 

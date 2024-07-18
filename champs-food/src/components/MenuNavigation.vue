@@ -8,7 +8,6 @@
         :key="category"
         :class="{ active: category === selectedCategory }"
         @click="selectCategory(category)"
-        ref="menuItems"
       >
         {{ category }}
       </li>
@@ -17,27 +16,48 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, nextTick, watch } from 'vue';
 
-const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'BREAKFAST', 'DRINKS', 'DESSERTS']); 
+const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'BREAKFAST', 'DRINKS', 'DESSERTS']);
 const selectedCategory = ref('FEATURED'); // Set initial category to 'FEATURED'
-const isLoaded = ref(false);
+const menuItems = ref([]);
+const header = ref(null);
+const menuList = ref(null);
+
+const emit = defineEmits(['update-category']);
 
 const selectCategory = (category) => {
   selectedCategory.value = category;
   emit('update-category', category);
 };
 
-const emit = defineEmits(['update-category']);
-const header = ref(null);
-const menuList = ref(null);
+const validateActiveState = () => {
+  menuItems.value.forEach((item) => {
+    const itemText = item.textContent.trim();
+    if (itemText === selectedCategory.value) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+};
 
 onMounted(() => {
+  nextTick(() => {
+    menuItems.value = Array.from(menuList.value.children);
+    validateActiveState();
+  });
+
   setTimeout(() => {
     header.value.classList.add('animate');
     menuList.value.classList.add('animate');
-    isLoaded.value = true;
   }, 0); // Adjust the delay as needed
+});
+
+watch(selectedCategory, () => {
+  nextTick(() => {
+    validateActiveState();
+  });
 });
 </script>
 
@@ -89,7 +109,7 @@ onMounted(() => {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: .8rem;
   }
 
   .menu-navigation li {
