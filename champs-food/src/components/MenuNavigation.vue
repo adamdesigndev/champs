@@ -19,7 +19,7 @@
 <script setup>
 import { ref, onMounted, nextTick, watch } from 'vue';
 
-const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'BREAKFAST', 'DRINKS', 'DESSERTS']);
+const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'DRINKS', 'DESSERTS']);
 const selectedCategory = ref('FEATURED'); // Set initial category to 'FEATURED'
 const menuItems = ref([]);
 const header = ref(null);

@@ -1,18 +1,21 @@
 // Data.js
 export const foodItems = [
   // Drinks
-    {
-      name: 'Coca-Cola®',
-      description: 'The Original Coca-Cola® crisp & refreshing.',
-      sizes: {
-        small: 0.99,
-        medium: 1.09,
-        large: 1.19
-      },
-      image: '/images/Coca-Cola.png',
-      featured: false,
-      category: 'DRINKS'
+  {
+    name: 'Coca-Cola®',
+    description: 'The Original Coca-Cola® crisp & refreshing.',
+    sizes: {
+      small: 0.99,
+      medium: 1.09,
+      large: 1.19
     },
+    images: {
+      small: '/images/food/Coca-Cola-small.png',
+      large: '/images/food/Coca-Cola-large.png'
+    },
+    featured: false,
+    category: 'DRINKS'
+  },
     {
       name: 'Sprite®',
       description: 'Lemon-lime soda with 100% natural flavors.',
@@ -21,7 +24,10 @@ export const foodItems = [
         medium: 1.09,
         large: 1.19
       },
-      image: '/images/Sprite.png',
+      images: {
+        small: '/images/food/Sprite-small.png',
+        large: '/images/food/Sprite-large.png'
+      },
       featured: false,
       category: 'DRINKS'
     },
@@ -33,7 +39,10 @@ export const foodItems = [
         medium: 1.09,
         large: 1.19
       },
-      image: '/images/Lemonade.png',
+      images: {
+        small: '/images/food/MM_Lemonade_small.png',
+        large: '/images/food/MM_Lemonade_large.png'
+      },
       featured: false,
       category: 'DRINKS'
     },
@@ -45,19 +54,25 @@ export const foodItems = [
         medium: 1.09,
         large: 1.19
       },
-      image: '/images/Dr_Pepper.png',
+      images: {
+        small: '/images/food/Dr_Pepper-small.png',
+        large: '/images/food/Dr_Pepper-large.png'
+      },
       featured: false,
       category: 'DRINKS'
     },
     {
-      name: 'Simply Orange®',
-      description: '100% pure-squeezed pasteurized orange juice.',
+      name: 'Vanilla Sweet Cream Iced Coffee',
+      description: 'Enjoy our chilled, High Mountain Arabica coffee with sweetened cream & vanilla, served over ice for a delightful pick me up day OR night.',
       sizes: {
         small: 0.99,
         medium: 1.09,
         large: 1.19
       },
-      image: '/images/SimplyOrange.png',
+      images: {
+        small: '/images/food/Vanilla-Sweet-Cream-Iced-Coffee-small.png',
+        large: '/images/food/Vanilla-Sweet-Cream-Iced-Coffee-large.png'
+      },
       featured: false,
       category: 'DRINKS'
     },
@@ -69,7 +84,10 @@ export const foodItems = [
         medium: 1.09,
         large: 1.19
       },
-      image: '/images/Fanta.png',
+      images: {
+        small: '/images/food/Fanta-small.png',
+        large: '/images/food/Fanta-large.png'
+      },
       featured: false,
       category: 'DRINKS'
     },
@@ -82,7 +100,10 @@ export const foodItems = [
         medium: 4.99,
         large: 5.99
       },
-      image: '/images/Oreo-Shake.png',
+      images: {
+        small: '/images/food/Oreo-Shake-small.png',
+        large: '/images/food/Oreo-Shake-large.png'
+      },
       featured: true,
       category: 'DESSERTS'
     },
@@ -94,7 +115,10 @@ export const foodItems = [
         medium: 4.99,
         large: 5.99
       },
-      image: '/images/Chocolate-Shake.png',
+      images: {
+        small: '/images/food/Chocolate-Shake-small.png',
+        large: '/images/food/Chocolate-Shake-large.png'
+      },
       featured: false,
       category: 'DESSERTS'
     },
@@ -106,7 +130,10 @@ export const foodItems = [
         medium: 4.99,
         large: 5.99
       },
-      image: '/images/Vanilla-Shake.png',
+      images: {
+        small: '/images/food/Vanilla-Shake-small.png',
+        large: '/images/food/Vanilla-Shake-large.png'
+      },
       featured: false,
       category: 'DESSERTS'
     },
@@ -118,7 +145,10 @@ export const foodItems = [
         medium: 4.99,
         large: 5.99
       },
-      image: '/images/Strawberry-Shake.png',
+      images: {
+        small: '/images/food/Strawberry-Shake-small.png',
+        large: '/images/food/Strawberry-Shake-large.png'
+      },
       featured: false,
       category: 'DESSERTS'
     },
@@ -130,7 +160,10 @@ export const foodItems = [
         medium: 4.99,
         large: 5.99
       },
-      image: '/images/Pineapple-Shake.png',
+      images: {
+        small: '/images/food/Pineapple_Express_Shake_small.png',
+        large: '/images/food/Pineapple_Express_Shake_large.png'
+      },
       featured: false,
       category: 'DESSERTS'
     },
@@ -142,7 +175,10 @@ export const foodItems = [
         medium: 4.99,
         large: 5.99
       },
-      image: '/images/Vanilla-Shake-Boba.png',
+      images: {
+        small: '/images/food/Vanilla_Shake_Boba_small.png',
+        large: '/images/food/Vanilla_Shake_Boba_large.png'
+      },
       featured: true,
       category: 'DESSERTS'
     },
@@ -151,7 +187,10 @@ export const foodItems = [
       name: 'HOMESTYLE RANCH CHICKEN CLUB',
       description: '100% all-white meat crispy chicken fillet with melty Swiss style cheese, hickory smoked bacon, lettuce, tomato & buttermilk ranch on a toasted brioche bun.',
       price: 5.99,
-      image: '/images/Homestyle-Ranch-Chicken-Club.png',
+      images: {
+        small: '/images/food/Homestyle-Ranch-Chicken-Club-small.png',
+        large: '/images/food/Homestyle-Ranch-Chicken-Club-large.png'
+      },
       featured: true,
       category: 'ENTRÉES'
     },
@@ -159,7 +198,10 @@ export const foodItems = [
       name: 'SPICY CHICKEN® W/ CHEESE',
       description: '100% all white meat spicy crispy chicken fillet with melty Swiss style cheese, tomato, lettuce & mayo on a toasted buttery bakery bun.',
       price: 5.99,
-      image: '/images/Spicy-Chicken-W-Cheese.png',
+      images: {
+        small: '/images/food/Spicy_Chicken_W_Cheese_small.png',
+        large: '/images/food/Spicy_Chicken_W_Cheese_large.png'
+      },
       featured: false,
       category: 'ENTRÉES'
     },
@@ -167,7 +209,10 @@ export const foodItems = [
       name: 'SPICY CHICKEN',
       description: 'A boneless breast of chicken seasoned with a spicy blend of peppers, freshly breaded, pressure cooked in 100% refined peanut oil and served on a toasted, buttered bun with dill pickle chips. ',
       price: 5.99,
-      image: '/images/Spicy-Chicken.png',
+      images: {
+        small: '/images/food/Spicy_Chicken_small.png',
+        large: '/images/food/Spicy_Chicken_large.png'
+      },
       featured: true,
       category: 'ENTRÉES'
     },
@@ -175,7 +220,10 @@ export const foodItems = [
       name: 'CLUCK SANDWICH',
       description: '100% all-white meat crispy chicken fillet with pickles & sauce on a toasted brioche bun. There is nothing not awesome about this.',
       price: 5.99,
-      image: '/images/Cluck-Sandwich.png',
+      images: {
+        small: '/images/food/Cluck_Sandwich_small.png',
+        large: '/images/food/Cluck_Sandwich_large.png'
+      },
       featured: false,
       category: 'ENTRÉES'
     },
@@ -183,7 +231,10 @@ export const foodItems = [
       name: 'GRILLED CHICKEN SANDWICH',
       description: 'A lemon-herb marinated boneless breast of chicken, grilled for a tender and juicy backyard-smoky taste, served on a toasted multigrain bun with green leaf lettuce and tomato.',
       price: 5.99,
-      image: '/images/Grilled-Chicken-Sandwich.png',
+      images: {
+        small: '/images/food/Grilled-Chicken-Sandwich-small.png',
+        large: '/images/food/Grilled-Chicken-Sandwich-large.png'
+      },
       featured: false,
       category: 'ENTRÉES'
     },
@@ -191,7 +242,10 @@ export const foodItems = [
       name: 'CRISPY CHICKEN STRIPS',
       description: 'Boneless chicken tenders seasoned to perfection, freshly breaded and pressure cooked in 100% refined peanut oil.',
       price: 5.99,
-      image: '/images/Crispy-Chicken-Strips.png',
+      images: {
+        small: '/images/food/Crispy_Chicken_Strips_small.png',
+        large: '/images/food/Crispy_Chicken_Strips_large.png'
+      },
       featured: false,
       category: 'ENTRÉES'
     },
@@ -200,7 +254,10 @@ export const foodItems = [
       name: 'GARDEN SALAD W/ GRILLED CHICKEN',
       description: 'Mixed greens topped with grilled chicken strips, grape tomatoes, shredded carrots, shredded cheddar, croutons & buttermilk ranch dressing.',
       price: 5.99,
-      image: '/images/Garden-Salad-Grilled-Chicken.png',
+      images: {
+        small: '/images/food/Garden_Salad_Grilled_Chicken_small.png',
+        large: '/images/food/Garden_Salad_Grilled_Chicken_large.png'
+      },
       featured: false,
       category: 'SALADS'
     },
@@ -208,7 +265,10 @@ export const foodItems = [
       name: 'GARDEN SALAD W/ CRISPY CHICKEN',
       description: 'Mixed greens topped with crispy chicken strips, grape tomatoes, shredded carrots, shredded cheddar, croutons & buttermilk ranch dressing.',
       price: 5.99,
-      image: '/images/Garden-Salad-Crispy-Chicken.png',
+      images: {
+        small: '/images/food/Garden_Salad_Crispy_Chicken_small.png',
+        large: '/images/food/Garden_Salad_Crispy_Chicken_large.png'
+      },
       featured: false,
       category: 'SALADS'
     },
@@ -216,7 +276,10 @@ export const foodItems = [
       name: 'SOUTHWEST SALAD W/ GRILLED CHICKEN',
       description: 'Mixed greens with grilled chicken strips, tomatoes, shredded carrots, shredded cheddar, roasted corn, black beans, tortilla strips & Southwest dressing.',
       price: 5.99,
-      image: '/images/SW-Salad-Grilled-Chicken.png',
+      images: {
+        small: '/images/food/SW_Salad_Grilled_Chicken_small.png',
+        large: '/images/food/SW_Salad_Grilled_Chicken_large.png'
+      },
       featured: false,
       category: 'SALADS'
     },
@@ -224,7 +287,10 @@ export const foodItems = [
       name: 'SOUTHWEST SALAD W/ CRISPY CHICKEN',
       description: 'Mixed greens with crispy chicken strips, tomatoes, shredded carrots, shredded cheddar, roasted corn, black beans, tortilla strips & Southwest dressing.',
       price: 5.99,
-      image: '/images/SW-Salad-Crispy-Chicken.png',
+      images: {
+        small: '/images/food/SW_Salad_Crispy_Chicken_small.png',
+        large: '/images/food/SW_Salad_Crispy_Chicken_large.png'
+      },
       featured: true,
       category: 'SALADS'
     },
@@ -232,7 +298,10 @@ export const foodItems = [
       name: 'SIDE SALAD',
       description: 'Crisp iceberg and romaine lettuce, grape tomatoes & carrots with Champs Famous Buttermilk Ranch dressing. Champs Buttermilk Ranch on a salad? Sign me up.',
       price: 5.99,
-      image: '/images/Side-Salad.png',
+      images: {
+        small: '/images/food/Side_Salad_small.png',
+        large: '/images/food/Side_Salad_large.png'
+      },
       featured: false,
       category: 'SALADS'
     },
@@ -245,7 +314,10 @@ export const foodItems = [
         medium: 2.99,
         large: 3.99
       },
-      image: '/images/French-Fry.png',
+      images: {
+        small: '/images/food/French_Fry-small.png',
+        large: '/images/food/French_Fry-large.png'
+      },
       featured: false,
       category: 'SIDES'
     },
@@ -257,19 +329,25 @@ export const foodItems = [
         medium: 2.99,
         large: 3.99
       },
-      image: '/images/Curly-Fry.png',
+      images: {
+        small: '/images/food/Curly-Fry-small.png',
+        large: '/images/food/Curly-Fry-large.png'
+      },
       featured: false,
       category: 'SIDES'
     },
     {
-      name: 'ONION RINGS',
-      description: 'Panko breaded and fried to perfection..',
+      name: 'Spicy Crispy Wrap',
+      description: 'A chicken strip, shredded lettuce, shredded cheddar, jalapenos, Spicy Good Good sauce & buttermilk ranch wrapped up in a warm tortilla. A spicy good snack!',
       sizes: {
         small: 1.99,
         medium: 2.99,
         large: 3.99
       },
-      image: '/images/Onion-Rings.png',
+      images: {
+        small: '/images/food/Spicy_Crispy_Wrap_small.png',
+        large: '/images/food/Spicy_Crispy_Wrap_large.png'
+      },
       featured: false,
       category: 'SIDES'
     },
@@ -277,7 +355,10 @@ export const foodItems = [
       name: 'CLASSIC GRILLED WRAP',
       description: 'Grilled chicken strips, shredded lettuce, shredded cheddar, jalapenos, Spicy Good Good sauce & buttermilk ranch in a warm tortilla.',
       price: 4.99,
-      image: '/images/Classic-Grilled-Wrap.png',
+      images: {
+        small: '/images/food/CLASSIC GRILLED WRAP-small.png',
+        large: '/images/food/CLASSIC GRILLED WRAP-large.png'
+      },
       featured: false,
       category: 'SIDES'
     },
@@ -285,7 +366,10 @@ export const foodItems = [
       name: 'CLASSIC CRISPY WRAP',
       description: 'A chicken strip, shredded lettuce, shredded cheddar, pickles, Good Good sauce & buttermilk ranch dressing wrapped up in a warm tortilla.',
       price: 5.99,
-      image: '/images/Classic-Crispy-Wrap.png',
+      images: {
+        small: '/images/food/Classic_Crispy_Wrap_small.png',
+        large: '/images/food/Classic_Crispy_Wrap_large.png'
+      },
       featured: false,
       category: 'SIDES'
     },
@@ -293,57 +377,11 @@ export const foodItems = [
       name: 'SPICY GRILLED WRAP ',
       description: 'Grilled chicken strips, shredded lettuce, shredded cheddar, jalapenos, Spicy Good Good sauce & buttermilk ranch in a warm tortilla.',
       price: 5.99,
-      image: '/images/Spicy-Grilled-Wrap.png',
+      images: {
+        small: '/images/food/Spicy_Grilled_Wrap_small.png',
+        large: '/images/food/Spicy_Grilled_Wrap_large.png'
+      },
       featured: false,
       category: 'SIDES'
-    },
-    // Breakfast
-    {
-      name: 'Chicken Biscuit',
-      description: 'A breakfast portion of our famous boneless breast of chicken, seasoned to perfection, hand-breaded, pressure cooked in 100% refined peanut oil and served on a buttermilk biscuit baked fresh at each Restaurant.',
-      price: 5.99,
-      image: '/images/Biscuit-Chicken.png',
-      featured: false,
-      category: 'BREAKFAST'
-    },
-    {
-      name: 'Egg White Grill',
-      description: 'A breakfast portion of grilled chicken with a hint of citrus, served on a toasted classic English Muffin with egg whites and American cheese.',
-      price: 5.99,
-      image: '/images/eggWHTchk.png',
-      featured: false,
-      category: 'Breakfast'
-    },
-    {
-      name: 'Bacon, Egg & Cheese Muffin',
-      description: 'Delicious strips of smoked applewood bacon, folded egg and American cheese served on a toasted classic English Muffin.',
-      price: 4.99,
-      image: '/images/BaconEggCheeseMuffin.png',
-      featured: true,
-      category: 'BREAKFAST'
-    },
-    {
-      name: 'Chicken, Egg & Cheese Biscuit',
-      description: 'A breakfast portion of our famous boneless breast of chicken, seasoned to perfection, freshly breaded, pressure cooked in 100% refined peanut oil, a folded egg and cheese, served on a buttermilk biscuit baked fresh at each Restaurant.',
-      price: 4.99,
-      image: '/images/Biscuit_ChickenEggCheese.png',
-      featured: false,
-      category: 'BREAKFAST'
-    },
-    {
-      name: 'Small Hash Browns',
-      description: 'Crispy potato medallions cooked in canola oil.',
-      price: 2.99,
-      image: '/images/Breakfast-Hashbrowns.png',
-      featured: false,
-      category: 'BREAKFAST'
-    },
-    {
-      name: 'Hash Brown Scramble Bowl',
-      description: 'A hearty morning meal of sliced Chick-fil-A Nuggets, crispy Hash Browns, scrambled eggs and a blend of Monterey Jack and Cheddar cheeses. Made fresh each morning. Served in a convenient bowl. Served with Jalapeño Salsa.',
-      price: 3.99,
-      image: '/images/ChickenHashbrownBreakfastBowl.png',
-      featured: false,
-      category: 'BREAKFAST'
     },
   ];

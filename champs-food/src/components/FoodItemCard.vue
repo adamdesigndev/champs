@@ -2,7 +2,7 @@
 <template>
   <div class="food-item-card">
     <router-link :to="{ name: 'SingleFoodItem', params: { name: item.name } }">
-      <img :src="item.image" :alt="item.name">
+      <img :src="item.images.small" :alt="item.name">
       <h6 class="header-6">{{ item.name }}</h6>
       <p v-if="item.price">${{ item.price }}</p>
       <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
