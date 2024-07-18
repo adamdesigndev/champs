@@ -91,23 +91,23 @@ watch(isMenuOpen, async () => {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: .8rem;
+  gap: 1.5rem;
 }
 
 .mobile-menu nav a {
   color: #fff;
   text-decoration: none;
-  font-size: var(--fs-900);
+  font-size: 5rem;
   font-weight: 600;
-  line-height: 4rem;
+  line-height: 2rem;
 }
 
 .mobile-menu-logo {
   position: absolute;
   left: 50%;
-  bottom: -25px;
+  bottom: -35px;
   transform: translateX(-50%);
-  max-height: 15rem;
+  max-height: 17rem;
 }
 
 .slide-enter-active, .slide-leave-active {

@@ -1,4 +1,5 @@
 <!-- MenuNavigation.vue -->
+<!-- MenuNavigation.vue -->
 <template>
   <h1 class="header-2 fade-in-down" ref="header">Menu</h1>
   <nav>
@@ -6,7 +7,7 @@
       <li
         v-for="category in categories"
         :key="category"
-        :class="{ active: category === selectedCategory }"
+        :class="{ active: category === selectedCategory, 'animate-active': category === selectedCategory && animateActiveItem }"
         @click="selectCategory(category)"
       >
         {{ category }}
@@ -23,12 +24,16 @@ const selectedCategory = ref('FEATURED'); // Set initial category to 'FEATURED'
 const menuItems = ref([]);
 const header = ref(null);
 const menuList = ref(null);
+const animateActiveItem = ref(false);
 
 const emit = defineEmits(['update-category']);
 
 const selectCategory = (category) => {
   selectedCategory.value = category;
   emit('update-category', category);
+  nextTick(() => {
+    validateActiveState();
+  });
 };
 
 const validateActiveState = () => {
@@ -46,12 +51,17 @@ onMounted(() => {
   nextTick(() => {
     menuItems.value = Array.from(menuList.value.children);
     validateActiveState();
+    
+    // Ensuring animation classes are added only after mounting and validation
+    setTimeout(() => {
+      header.value.classList.add('animate');
+      menuList.value.classList.add('animate');
+      animateActiveItem.value = true;
+      nextTick(() => {
+        validateActiveState(); // Re-validate after animations
+      });
+    }, 300); // Adjust the delay as needed to ensure animations are complete
   });
-
-  setTimeout(() => {
-    header.value.classList.add('animate');
-    menuList.value.classList.add('animate');
-  }, 0); // Adjust the delay as needed
 });
 
 watch(selectedCategory, () => {
@@ -89,7 +99,8 @@ watch(selectedCategory, () => {
   transition: width 0.4s ease, left 0.4s ease;
 }
 
-.menu-navigation li:hover::after {
+.menu-navigation li:hover::after,
+.menu-navigation li.animate-active::after {
   width: 100%;
   left: 0;
 }
