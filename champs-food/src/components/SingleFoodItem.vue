@@ -187,6 +187,7 @@ watch(
 
 .size-square-text-below {
   font-size: var(--fs-200);
+  color: var(--clr-body);
 }
 
 .size-square:hover {

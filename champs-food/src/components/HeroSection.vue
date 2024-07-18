@@ -5,9 +5,11 @@
       <div class="wrapper-inner-hero-left fade-in" ref="heroLeft">
         <h1 class="header-1">{{ heading }}</h1>
         <p class="body-bottom-button">{{ subheading }}</p>
-        <button class="main-btn">
-          <a class="" :href="buttonLink">{{ buttonText }}</a>
-        </button>
+        <router-link :to="buttonLink">
+            <button class="main-btn">
+              {{ buttonText }}
+            </button>
+          </router-link>
       </div>
       <div class="wrapper-inner-hero-right fade-in" ref="heroRight">
         <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />

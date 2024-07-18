@@ -1,4 +1,3 @@
-<!-- @format -->
 <!-- BasicTwoColumn.vue -->
 <template>
   <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" ref="section">
@@ -22,11 +21,11 @@
           >
             {{ body }}
           </p>
-          <a :href="buttonLink">
+          <router-link :to="buttonLink">
             <button :class="['main-btn', { 'button-reverse': buttonReverse }, {'hide-button': hideButton}]">
               {{ buttonText }}
             </button>
-          </a>
+          </router-link>
         </div>
         <div class="wrapper-inner-right" :class="[fadeInClass, { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }]">
           <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
