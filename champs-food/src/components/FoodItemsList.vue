@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import FoodItemCard from './FoodItemCard.vue';
 import { foodItems } from '../data';
 
@@ -33,18 +33,32 @@ const filteredItems = computed(() => {
 const initialLoad = ref(true);
 const headerDelay = ref(0);
 
+const triggerAnimation = () => {
+  headerDelay.value = 0.05; // Set the delay for the initial load
+  setTimeout(() => {
+    const headerElement = document.querySelector('.header-3.initial-animate');
+    const listElement = document.querySelector('.food-items-list.initial-animate');
+
+    if (headerElement) {
+      headerElement.classList.add('animate');
+    }
+    if (listElement) {
+      listElement.classList.add('animate');
+    }
+  }, 600); // Delay before starting the animation
+};
+
 onMounted(() => {
   if (initialLoad.value) {
-    headerDelay.value = .05; // Set the delay for the initial load
-    setTimeout(() => {
-      document.querySelector('.header-3.initial-animate').classList.add('animate');
-      document.querySelector('.food-items-list.initial-animate').classList.add('animate');
-    }, 220); // Delay before starting the animation
+    triggerAnimation();
   }
 });
 
-watch(() => props.selectedCategory, () => {
+watch(() => props.selectedCategory, async () => {
   initialLoad.value = false;
+  await nextTick(); // Wait for the DOM to update
+  initialLoad.value = true;
+  triggerAnimation();
 });
 </script>
 
