@@ -1,9 +1,7 @@
-<!-- @format -->
-
 <!-- CartFoodItem.vue -->
 <template>
   <div class="wrapper-cart-single-item" ref="cartItem">
-    <img :src="item.image" :alt="item.name" />
+    <img :src="item.images.small" :alt="item.name" />
     <div class="main-cart-item-details">
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
       <div class="wrapper-size-quantity">
