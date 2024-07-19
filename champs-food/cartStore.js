@@ -10,19 +10,20 @@ export const cartStore = reactive({
   animationTrigger: 0,
 
   addToCart(newItem) {
-    const existingItemIndex = this.items.findIndex(
-      (item) => item.name === newItem.name && item.size === newItem.size
-    );
+  const existingItemIndex = this.items.findIndex(
+    (item) => item.name === newItem.name && item.size === newItem.size
+  );
 
-    if (existingItemIndex !== -1) {
-      // If the item already exists, update the quantity and total price
-      this.items[existingItemIndex].quantity += newItem.quantity;
-      this.items[existingItemIndex].totalPrice += newItem.totalPrice;
-    } else {
-      this.items.push({ ...newItem });
-    }
-    this.animationTrigger++;
-  },
+  if (existingItemIndex !== -1) {
+    // If the item already exists, update the quantity and total price
+    this.items[existingItemIndex].quantity += newItem.quantity;
+    this.items[existingItemIndex].totalPrice += newItem.totalPrice;
+  } else {
+    this.items.push({ ...newItem, images: newItem.images || { small: '/images/food/default-small.png', large: '/images/food/default-large.png' } });
+  }
+  this.animationTrigger++;
+}
+,
 
   removeFromCart(item) {
     const index = this.items.indexOf(item);

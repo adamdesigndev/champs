@@ -33,7 +33,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 300px;
+  min-height: 275px;
   text-align: center;
   opacity: 1; /* Ensure the card stays visible */
   transform: translateY(0); /* Ensure the card stays in place */
@@ -45,7 +45,6 @@ onMounted(() => {
 }
 
 .food-item-card img {
-  max-height: 150px;
   margin-inline: auto;
   margin-bottom: 2rem;
 }

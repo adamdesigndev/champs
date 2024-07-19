@@ -10,7 +10,7 @@
           class="three-up-card-link"
         >
           <div class="three-up-card fade-in-up" ref="card1">
-            <img src="/images/Homestyle-Ranch-Chicken-Club.png" alt="" />
+            <img src="/images/food/Homestyle-Ranch-Chicken-Club-small.png" alt="" />
             <h3 class="header-4">HOMESTYLE RANCH CHICKEN CLUB</h3>
             <div class="main-copy body-bottom-button">
               100% all-white meat crispy chicken fillet with melty Swiss style
@@ -26,7 +26,7 @@
           class="three-up-card-link"
         >
           <div class="three-up-card fade-in-up" ref="card2">
-            <img src="/images/SW-Salad-Crispy-Chicken.png" alt="" />
+            <img src="/images/food/SW_Salad_Crispy_Chicken_small.png" alt="" />
             <h3 class="header-4">SOUTHWEST SALAD W/ CRISPY CHICKEN</h3>
             <div class="main-copy body-bottom-button">
               Mixed greens with crispy chicken strips, tomatoes, shredded
@@ -42,13 +42,12 @@
           class="three-up-card-link"
         >
           <div class="three-up-card fade-in-up" ref="card3">
-            <img src="/images/BaconEggCheeseMuffin.png" alt="" />
-            <h3 class="header-4">Bacon, Egg & Cheese Muffin</h3>
+            <img src="/images/food/Oreo-Shake-small.png" alt="" />
+            <h3 class="header-4">Oreo® Shake</h3>
             <div class="main-copy body-bottom-button">
-              Delicious strips of smoked applewood bacon, folded egg and
-              American cheese served on a toasted classic English Muffin.
+              Classic OREO® cookies pieces make this thick and creamy shake one of the best ways to have your milk and cookies.
             </div>
-            <p class="three-up-price">$5.99</p>
+            <p class="three-up-price">$4.99</p>
           </div>
         </router-link>
       </div>
