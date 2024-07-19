@@ -11,7 +11,8 @@ export const foodItems = [
     },
     images: {
       small: '/images/food/Coca-Cola-small.png',
-      large: '/images/food/Coca-Cola-large.png'
+      large: '/images/food/Coca-Cola-large.png',
+      medium: '/images/food/Coca-Cola-medium.png'
     },
     featured: false,
     category: 'DRINKS'
@@ -26,7 +27,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Sprite-small.png',
-        large: '/images/food/Sprite-large.png'
+        large: '/images/food/Sprite-large.png',
+         medium: '/images/food/Sprite-medium.png'
       },
       featured: false,
       category: 'DRINKS'
@@ -41,7 +43,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/MM_Lemonade_small.png',
-        large: '/images/food/MM_Lemonade_large.png'
+        large: '/images/food/MM_Lemonade_large.png',
+         medium: '/images/food/MM_Lemonade_medium.png'
       },
       featured: false,
       category: 'DRINKS'
@@ -56,7 +59,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Dr_Pepper-small.png',
-        large: '/images/food/Dr_Pepper-large.png'
+        large: '/images/food/Dr_Pepper-large.png',
+         medium: '/images/food/Dr_Pepper-medium.png'
       },
       featured: false,
       category: 'DRINKS'
@@ -71,7 +75,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Vanilla-Sweet-Cream-Iced-Coffee-small.png',
-        large: '/images/food/Vanilla-Sweet-Cream-Iced-Coffee-large.png'
+        large: '/images/food/Vanilla-Sweet-Cream-Iced-Coffee-large.png',
+        medium: '/images/food/Vanilla-Sweet-Cream-Iced-Coffee-medium.png'
       },
       featured: false,
       category: 'DRINKS'
@@ -86,7 +91,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Fanta-small.png',
-        large: '/images/food/Fanta-large.png'
+        large: '/images/food/Fanta-large.png',
+        medium: '/images/food/Fanta-medium.png'
       },
       featured: false,
       category: 'DRINKS'
@@ -102,7 +108,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Oreo-Shake-small.png',
-        large: '/images/food/Oreo-Shake-large.png'
+        large: '/images/food/Oreo-Shake-large.png',
+        medium: '/images/food/Oreo-Shake-medium.png'
       },
       featured: true,
       category: 'DESSERTS'
@@ -117,7 +124,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Chocolate-Shake-small.png',
-        large: '/images/food/Chocolate-Shake-large.png'
+        large: '/images/food/Chocolate-Shake-large.png',
+        medium: '/images/food/Chocolate-Shake-medium.png'
       },
       featured: false,
       category: 'DESSERTS'
@@ -132,7 +140,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Vanilla-Shake-small.png',
-        large: '/images/food/Vanilla-Shake-large.png'
+        large: '/images/food/Vanilla-Shake-large.png',
+        medium: '/images/food/Vanilla-Shake-medium.png'
       },
       featured: false,
       category: 'DESSERTS'
@@ -147,7 +156,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Strawberry-Shake-small.png',
-        large: '/images/food/Strawberry-Shake-large.png'
+        large: '/images/food/Strawberry-Shake-large.png',
+        medium: '/images/food/Strawberry-Shake-medium.png'
       },
       featured: false,
       category: 'DESSERTS'
@@ -162,7 +172,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Pineapple_Express_Shake_small.png',
-        large: '/images/food/Pineapple_Express_Shake_large.png'
+        large: '/images/food/Pineapple_Express_Shake_large.png',
+        medium: '/images/food/Pineapple_Express_Shake_medium.png'
       },
       featured: false,
       category: 'DESSERTS'
@@ -177,7 +188,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Vanilla_Shake_Boba_small.png',
-        large: '/images/food/Vanilla_Shake_Boba_large.png'
+        large: '/images/food/Vanilla_Shake_Boba_large.png',
+        medium: '/images/food/Vanilla_Shake_Boba_medium.png'
       },
       featured: true,
       category: 'DESSERTS'
@@ -189,7 +201,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Homestyle-Ranch-Chicken-Club-small.png',
-        large: '/images/food/Homestyle-Ranch-Chicken-Club-large.png'
+        large: '/images/food/Homestyle-Ranch-Chicken-Club-large.png',
+        medium: '/images/food/Homestyle-Ranch-Chicken-Club-medium.png'
       },
       featured: true,
       category: 'ENTRÉES'
@@ -200,7 +213,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Spicy_Chicken_W_Cheese_small.png',
-        large: '/images/food/Spicy_Chicken_W_Cheese_large.png'
+        large: '/images/food/Spicy_Chicken_W_Cheese_large.png',
+        medium: '/images/food/Spicy_Chicken_W_Cheese_medium.png'
       },
       featured: false,
       category: 'ENTRÉES'
@@ -211,7 +225,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Spicy_Chicken_small.png',
-        large: '/images/food/Spicy_Chicken_large.png'
+        large: '/images/food/Spicy_Chicken_large.png',
+        medium: '/images/food/Spicy_Chicken_medium.png'
       },
       featured: true,
       category: 'ENTRÉES'
@@ -222,7 +237,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Cluck_Sandwich_small.png',
-        large: '/images/food/Cluck_Sandwich_large.png'
+        large: '/images/food/Cluck_Sandwich_large.png',
+        medium: '/images/food/Cluck_Sandwich_medium.png'
       },
       featured: false,
       category: 'ENTRÉES'
@@ -233,7 +249,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Grilled-Chicken-Sandwich-small.png',
-        large: '/images/food/Grilled-Chicken-Sandwich-large.png'
+        large: '/images/food/Grilled-Chicken-Sandwich-large.png',
+        medium: '/images/food/Grilled-Chicken-Sandwich-medium.png'
       },
       featured: false,
       category: 'ENTRÉES'
@@ -244,7 +261,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Crispy_Chicken_Strips_small.png',
-        large: '/images/food/Crispy_Chicken_Strips_large.png'
+        large: '/images/food/Crispy_Chicken_Strips_large.png',
+        medium: '/images/food/Crispy_Chicken_Strips_medium.png'
       },
       featured: false,
       category: 'ENTRÉES'
@@ -256,7 +274,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Garden_Salad_Grilled_Chicken_small.png',
-        large: '/images/food/Garden_Salad_Grilled_Chicken_large.png'
+        large: '/images/food/Garden_Salad_Grilled_Chicken_large.png',
+        medium: '/images/food/Garden_Salad_Grilled_Chicken_medium.png'
       },
       featured: false,
       category: 'SALADS'
@@ -267,7 +286,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Garden_Salad_Crispy_Chicken_small.png',
-        large: '/images/food/Garden_Salad_Crispy_Chicken_large.png'
+        large: '/images/food/Garden_Salad_Crispy_Chicken_large.png',
+        medium: '/images/food/Garden_Salad_Crispy_Chicken_medium.png'
       },
       featured: false,
       category: 'SALADS'
@@ -278,7 +298,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/SW_Salad_Grilled_Chicken_small.png',
-        large: '/images/food/SW_Salad_Grilled_Chicken_large.png'
+        large: '/images/food/SW_Salad_Grilled_Chicken_large.png',
+        medium: '/images/food/SW_Salad_Grilled_Chicken_medium.png'
       },
       featured: false,
       category: 'SALADS'
@@ -289,7 +310,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/SW_Salad_Crispy_Chicken_small.png',
-        large: '/images/food/SW_Salad_Crispy_Chicken_large.png'
+        large: '/images/food/SW_Salad_Crispy_Chicken_large.png',
+        medium: '/images/food/SW_Salad_Crispy_Chicken_medium.png'
       },
       featured: true,
       category: 'SALADS'
@@ -300,7 +322,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Side_Salad_small.png',
-        large: '/images/food/Side_Salad_large.png'
+        large: '/images/food/Side_Salad_large.png',
+        medium: '/images/food/Side_Salad_medium.png'
       },
       featured: false,
       category: 'SALADS'
@@ -316,7 +339,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/French_Fry-small.png',
-        large: '/images/food/French_Fry-large.png'
+        large: '/images/food/French_Fry-large.png',
+        medium: '/images/food/French_Fry-medium.png'
       },
       featured: false,
       category: 'SIDES'
@@ -331,7 +355,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Curly-Fry-small.png',
-        large: '/images/food/Curly-Fry-large.png'
+        large: '/images/food/Curly-Fry-large.png',
+        medium: '/images/food/Curly-Fry-medium.png'
       },
       featured: false,
       category: 'SIDES'
@@ -346,7 +371,8 @@ export const foodItems = [
       },
       images: {
         small: '/images/food/Spicy_Crispy_Wrap_small.png',
-        large: '/images/food/Spicy_Crispy_Wrap_large.png'
+        large: '/images/food/Spicy_Crispy_Wrap_large.png',
+        medium: '/images/food/Spicy_Crispy_Wrap_medium.png'
       },
       featured: false,
       category: 'SIDES'
@@ -357,7 +383,8 @@ export const foodItems = [
       price: 4.99,
       images: {
         small: '/images/food/CLASSIC GRILLED WRAP-small.png',
-        large: '/images/food/CLASSIC GRILLED WRAP-large.png'
+        large: '/images/food/CLASSIC GRILLED WRAP-large.png',
+        medium: '/images/food/CLASSIC GRILLED WRAP-medium.png'
       },
       featured: false,
       category: 'SIDES'
@@ -368,7 +395,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Classic_Crispy_Wrap_small.png',
-        large: '/images/food/Classic_Crispy_Wrap_large.png'
+        large: '/images/food/Classic_Crispy_Wrap_large.png',
+        medium: '/images/food/Classic_Crispy_Wrap_medium.png'
       },
       featured: false,
       category: 'SIDES'
@@ -379,7 +407,8 @@ export const foodItems = [
       price: 5.99,
       images: {
         small: '/images/food/Spicy_Grilled_Wrap_small.png',
-        large: '/images/food/Spicy_Grilled_Wrap_large.png'
+        large: '/images/food/Spicy_Grilled_Wrap_large.png',
+        medium: '/images/food/Spicy_Grilled_Wrap_medium.png'
       },
       featured: false,
       category: 'SIDES'

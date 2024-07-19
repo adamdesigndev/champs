@@ -4,7 +4,10 @@
     <div class="wrapper-menu-outer-section">
       <div class="wrapper-general">
         <div class="wrapper-with-info-card-right">
-          <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left" />
+          <picture>
+            <source :srcset="item.images.medium" media="(max-width: 850px)" />
+            <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left" />
+          </picture>
           <div class="single-food-item-buy-card fade-in-down" ref="buyCard">
             <div ref="buyCardContent" class="content-wrapper">
               <h3 class="header-4 fade-in-up">{{ item.name }}</h3>

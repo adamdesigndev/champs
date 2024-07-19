@@ -10,7 +10,7 @@
           class="three-up-card-link"
         >
           <div class="three-up-card fade-in-up" ref="card1">
-            <img src="/images/food/Homestyle-Ranch-Chicken-Club-small.png" alt="" />
+            <img src="/images/food/Homestyle-Ranch-Chicken-Club-medium.png" alt="" />
             <h3 class="header-4">HOMESTYLE RANCH CHICKEN CLUB</h3>
             <div class="main-copy body-bottom-button">
               100% all-white meat crispy chicken fillet with melty Swiss style
@@ -26,7 +26,7 @@
           class="three-up-card-link"
         >
           <div class="three-up-card fade-in-up" ref="card2">
-            <img src="/images/food/SW_Salad_Crispy_Chicken_small.png" alt="" />
+            <img src="/images/food/SW_Salad_Crispy_Chicken_medium.png" alt="" />
             <h3 class="header-4">SOUTHWEST SALAD W/ CRISPY CHICKEN</h3>
             <div class="main-copy body-bottom-button">
               Mixed greens with crispy chicken strips, tomatoes, shredded
@@ -38,11 +38,11 @@
         </router-link>
 
         <router-link
-          to="/food/Bacon,%20Egg%20&%20Cheese%20Muffin"
+          to="/food/Oreo® Shake"
           class="three-up-card-link"
         >
           <div class="three-up-card fade-in-up" ref="card3">
-            <img src="/images/food/Oreo-Shake-small.png" alt="" />
+            <img src="/images/food/Oreo-Shake-medium.png" alt="" />
             <h3 class="header-4">Oreo® Shake</h3>
             <div class="main-copy body-bottom-button">
               Classic OREO® cookies pieces make this thick and creamy shake one of the best ways to have your milk and cookies.
@@ -100,7 +100,7 @@ onMounted(() => {
 }
 
 .three-up-card img {
-  max-height: 100px;
+  max-height: 175px;
   margin-bottom: 2rem;
   margin-inline: auto;
 }

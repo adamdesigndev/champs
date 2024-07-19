@@ -61,7 +61,7 @@ const heroHeading = "Chicken for the Champs";
 const heroSubheading = "Delicious food, ready to serve!";
 const heroButtonText = "View Menu";
 const heroButtonLink = "/Menu";
-const heroImageSrc = "/images/Homestyle-Ranch-Chicken-Club.png";
+const heroImageSrc = "/images/food/Homestyle-Ranch-Chicken-Club-medium.png";
 const heroImageAlt = "Delicious food";
 
 const firstTwoColumnImageSrc =
@@ -73,7 +73,7 @@ const firstTwoColumnBody =
 const firstTwoColumnButtonText = "Learn More";
 const firstTwoColumnButtonLink = "/About";
 
-const secondTwoColumnImageSrc = "/images/Grilled-Chicken-Sandwich.png";
+const secondTwoColumnImageSrc = "/images/food/Grilled-Chicken-Sandwich-medium.png";
 const secondTwoColumnImageAlt = "";
 const secondTwoColumnHeader = "Bigger, Juicier and bolder than ever before";
 const secondTwoColumnBody = "";
