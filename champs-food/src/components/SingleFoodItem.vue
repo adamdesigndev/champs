@@ -4,10 +4,13 @@
     <div class="wrapper-menu-outer-section">
       <div class="wrapper-general">
         <div class="wrapper-with-info-card-right">
-          <picture>
+          <div>
+            <router-link :to="'/menu'" class="back-menu"><span class="back-arrow"><</span> Back to Menu</router-link>
+            <picture>
             <source :srcset="item.images.medium" media="(max-width: 850px)" />
             <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left" />
           </picture>
+          </div>
           <div class="single-food-item-buy-card fade-in-down" ref="buyCard">
             <div ref="buyCardContent" class="content-wrapper">
               <h3 class="header-4 fade-in-up">{{ item.name }}</h3>
@@ -281,6 +284,15 @@ watch(
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
+}
+.back-menu{
+ font-size: var(--fs-300);
+ font-weight: 600;
+ color: var(--clr-body);
+}
+.back-arrow {
+  font-size: var(--fs-400);
+  color: var(--clr-primary);
 }
 
 /* Slide-in fade-in from left animation */

@@ -9,7 +9,7 @@
             <button class="main-btn">
               {{ buttonText }}
             </button>
-          </router-link>
+        </router-link>
       </div>
       <div class="wrapper-inner-hero-right fade-in" ref="heroRight">
         <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
@@ -59,7 +59,7 @@ onMounted(() => {
 
 .wrapper-inner-hero-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(375px, 100%), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--content-gap);
 }
 
@@ -120,5 +120,20 @@ onMounted(() => {
 .fade-in-left {
   opacity: 0;
   transform: translateX(-20px);
+}
+
+/* Media query for mobile devices */
+@media (width < 850px) {
+  .wrapper-inner-hero-left {
+    order: 2;
+  }
+  .wrapper-inner-hero-right {
+    order: 1;
+  }
+
+  .wrapper-inner-hero-content {
+  grid-template-columns: 1fr;
+  
+}
 }
 </style>

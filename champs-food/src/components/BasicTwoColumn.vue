@@ -183,4 +183,14 @@ onBeforeUnmount(() => {
 .fade-in.fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
+
+/* Media query for mobile devices */
+@media (max-width: 850px) {
+  .wrapper-inner-left {
+    order: 2;
+  }
+  .wrapper-inner-right {
+    order: 1;
+  }
+}
 </style>
