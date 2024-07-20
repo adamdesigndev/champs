@@ -6,13 +6,14 @@
         <h1 class="header-1">{{ heading }}</h1>
         <p class="body-bottom-button">{{ subheading }}</p>
         <router-link :to="buttonLink">
-            <button class="main-btn">
-              {{ buttonText }}
-            </button>
+          <button class="main-btn">{{ buttonText }}</button>
         </router-link>
       </div>
       <div class="wrapper-inner-hero-right fade-in" ref="heroRight">
-        <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
+        <picture>
+          <source :media="'(max-width: 850px)'" :srcset="imageSrcSmall">
+          <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
+        </picture>
       </div>
     </div>
   </section>
@@ -28,6 +29,7 @@ const props = defineProps({
   buttonText: String,
   buttonLink: String,
   imageSrc: String,
+  imageSrcSmall: String,
   imageAlt: String,
 });
 
@@ -123,7 +125,7 @@ onMounted(() => {
 }
 
 /* Media query for mobile devices */
-@media (width < 850px) {
+@media (width < 851px) {
   .wrapper-inner-hero-left {
     order: 2;
   }

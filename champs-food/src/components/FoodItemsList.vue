@@ -45,7 +45,7 @@ const triggerAnimation = () => {
     if (listElement) {
       listElement.classList.add('animate');
     }
-  }, 600); // Delay before starting the animation
+  }, 500); // Delay before starting the animation
 };
 
 onMounted(() => {

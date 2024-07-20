@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <!-- Home.vue -->
 <template>
   <div>
@@ -9,6 +7,7 @@
       :buttonText="heroButtonText"
       :buttonLink="heroButtonLink"
       :imageSrc="heroImageSrc"
+      :imageSrcSmall="heroImageSrcSmall"
       :imageAlt="heroImageAlt"
     />
     <ThreeColumnSection />
@@ -61,7 +60,8 @@ const heroHeading = "Chicken for the Champs";
 const heroSubheading = "Delicious food, ready to serve!";
 const heroButtonText = "View Menu";
 const heroButtonLink = "/Menu";
-const heroImageSrc = "/images/food/Homestyle-Ranch-Chicken-Club-medium.png";
+const heroImageSrc = "/images/Spicy_Chicken_W_Cheese_Hero.png";
+const heroImageSrcSmall = "/images/Spicy_Chicken_W_Cheese_hero-mobile.png";
 const heroImageAlt = "Delicious food";
 
 const firstTwoColumnImageSrc =

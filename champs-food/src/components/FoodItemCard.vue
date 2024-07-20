@@ -46,6 +46,24 @@ onMounted(() => {
 
 .food-item-card img {
   margin-inline: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media (width < 570px) {
+  .food-item-card {
+  padding: 0rem;
+  min-width: 200px;
+  min-height: 250px;
+}
+
+.food-item-card img {
+  margin-bottom: .3rem;
+}
+
+
+  .food-item-card:hover {
+  background-color: rgba(0,0,0,0);
+  filter: none;
+}
 }
 </style>

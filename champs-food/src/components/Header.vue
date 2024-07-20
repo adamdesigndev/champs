@@ -25,7 +25,7 @@
       <ul class="nav-menu-links">
         <li class="cart-icon-wrapper" :class="{ 'fade-in': shouldAnimate && isHomePage }">
           <router-link to="/Cart">
-            <img class="cart-icon" src="/images/Bag-champs.svg" alt="Cart" />
+            <img class="cart-icon" src="/images/Bag-champs-thick.svg" alt="Cart" />
             <span
               v-if="totalItems > 0"
               ref="badge"
@@ -130,7 +130,7 @@ watch(route, (newRoute, oldRoute) => {
   padding: 1.5rem;
 }
 
-@media (width < 850px) {
+@media (width < 851px) {
   .wrapper-nav-inner {
   padding: 1rem 1.5rem 1rem 1.5rem;
 }
@@ -178,7 +178,8 @@ watch(route, (newRoute, oldRoute) => {
 }
 
 .cart-icon {
-  width: 1.2rem;
+  width: 1.5rem;
+  padding-right: .2rem;
 }
 
 .cart-notification {
@@ -191,7 +192,7 @@ watch(route, (newRoute, oldRoute) => {
   border-radius: 50%;
   padding: 1px;
   min-width: 32px;
-  min-height: 32px;
+  min-height: 28px;
   font-weight: 500;
   display: flex;
   justify-content: center;
@@ -229,7 +230,7 @@ watch(route, (newRoute, oldRoute) => {
   width: 25px;
 }
 
-@media (width < 850px) {
+@media (width < 851px) {
   .mobile-header {
     display: flex;
     flex-direction: row;

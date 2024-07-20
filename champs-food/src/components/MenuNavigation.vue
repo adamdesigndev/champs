@@ -115,7 +115,7 @@ watch(selectedCategory, () => {
   color: var(--clr-body);
 }
 
-@media (width < 850px) {
+@media (width < 851px) {
   .menu-navigation {
     display: flex;
     flex-direction: row;
