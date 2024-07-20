@@ -6,6 +6,7 @@
       :buttonText="heroButtonText"
       :buttonLink="heroButtonLink"
       :imageSrc="heroImageSrc"
+      :imageSrcSmall="heroImageSrcSmall"
       :imageAlt="heroImageAlt"
     />
     <BasicTwoColumn
@@ -46,6 +47,7 @@ const heroSubheading = "Eating on the go can be a challenge, but we want to help
 const heroButtonText = "View Menu";
 const heroButtonLink = "/Menu";
 const heroImageSrc = "/images/Champs-About.jpg";
+const heroImageSrcSmall = "/images/Champs-About-mobile.jpg";
 const heroImageAlt = "Delicious food";
 
 const firstTwoColumnImageSrc =

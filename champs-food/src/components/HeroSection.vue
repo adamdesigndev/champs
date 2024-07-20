@@ -11,7 +11,7 @@
       </div>
       <div class="wrapper-inner-hero-right fade-in" ref="heroRight">
         <picture>
-          <source :media="'(max-width: 850px)'" :srcset="imageSrcSmall">
+          <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
           <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
         </picture>
       </div>
