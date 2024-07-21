@@ -27,11 +27,13 @@ const goHome = () => {
 };
 
 onMounted(() => {
-  const img = document.querySelector('.order-confirmed-img');
-  const text = document.querySelector('.order-confirmed-text');
+  setTimeout(() => {
+    const img = document.querySelector('.order-confirmed-img');
+    const text = document.querySelector('.order-confirmed-text');
 
-  img.classList.add('fade-in-slide-down');
-  text.classList.add('fade-in-slide-up');
+    img.classList.add('fade-in-slide-down');
+    text.classList.add('fade-in-slide-up');
+  }, 200); // 1-second delay before starting the animation
 });
 </script>
 
