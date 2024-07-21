@@ -1,5 +1,4 @@
 <!-- UserInfo.vue -->
-<!-- UserInfo.vue -->
 <template>
   <div class="user-info">
     <h2 class="header-4 user-info-stagger">Contact Info</h2>
@@ -34,6 +33,10 @@ import { ref, onMounted } from 'vue';
 import { useCheckoutStore } from '../../useCheckoutStore.js';
 
 const { userInfo } = useCheckoutStore();
+
+userInfo.lastName = "Doe";
+userInfo.phone = "226 6645";
+userInfo.email = "jdoe@gmail.com";
 
 const isFirstNameValid = ref(true);
 const isLastNameValid = ref(true);

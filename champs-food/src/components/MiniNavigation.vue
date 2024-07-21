@@ -1,25 +1,19 @@
-<!-- @format -->
-
 <!-- MiniNavigation.vue -->
 <template>
   <nav v-if="currentStep !== 3" class="mini-nav">
     <ul class="mini-nav-list">
       <li>
-        <router-link :to="{ name: 'Cart' }" class="mini-nav-link"
-          >Cart <span>/</span></router-link
-        >
+        <router-link :to="{ name: 'Cart' }" class="mini-nav-link">Cart <span>/</span></router-link>
       </li>
       <li :class="{ active: currentStep === 1 }">
         <router-link
           :to="currentStep > 1 ? { name: 'Checkout', query: { step: 1 } } : '#'"
-          >Contact <span v-if="currentStep < 3">/</span></router-link
+          >Contact<span v-if="currentStep === 2"> /</span></router-link
         >
       </li>
-      <li :class="{ active: currentStep === 2 }">
+      <li v-if="currentStep >= 2" :class="{ active: currentStep === 2 }">
         <router-link
-          :to="
-            currentStep >= 2 ? { name: 'Checkout', query: { step: 2 } } : '#'
-          "
+          :to="{ name: 'Checkout', query: { step: 2 } }"
           >Payment</router-link
         >
       </li>
@@ -28,7 +22,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { defineProps } from 'vue';
 
 const props = defineProps({
   currentStep: {

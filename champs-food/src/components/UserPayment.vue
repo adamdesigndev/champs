@@ -5,13 +5,13 @@
     <form class="wrapper-user-payment body-bottom-button" @submit.prevent="submitPaymentInfo">
       <label class="form-label user-payment-stagger">
         Card Number
-        <input class="form-input" type="text" v-model="userPayment.cardNumber" required maxlength="16" @input="validateCardNumber">
+        <input class="form-input" type="text" v-model="formattedCardNumber" required maxlength="19" @input="validateCardNumber">
         <span v-if="!isCardNumberValid && showErrors" class="error-message">Please input a valid card number</span>
       </label>
       <div class="user-payment-date-ccv">
         <label class="form-label user-payment-stagger">
           Expiration Date
-          <input class="form-input" type="text" v-model="userPayment.expirationDate" required maxlength="4" @input="validateExpirationDate">
+          <input class="form-input" type="text" v-model="formattedExpirationDate" required maxlength="5" @input="validateExpirationDate">
           <span v-if="!isExpirationDateValid && showErrors" class="error-message">Please input a valid expiration date</span>
         </label>
         <label class="form-label user-payment-stagger">
@@ -26,26 +26,48 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useCheckoutStore } from '../../useCheckoutStore.js';
 
 const { userPayment } = useCheckoutStore();
+
+userPayment.cardNumber = "1085268432574025";
+userPayment.expirationDate = "0105";
+userPayment.ccv = "558";
 
 const isCardNumberValid = ref(true);
 const isExpirationDateValid = ref(true);
 const isCCVValid = ref(true);
 const showErrors = ref(false);
 
+const formattedCardNumber = computed({
+  get() {
+    return userPayment.cardNumber.replace(/(\d{4})(?=\d)/g, '$1 ');
+  },
+  set(value) {
+    userPayment.cardNumber = value.replace(/\s+/g, '').slice(0, 16);
+  }
+});
+
+const formattedExpirationDate = computed({
+  get() {
+    return userPayment.expirationDate.replace(/(\d{2})(?=\d)/, '$1/');
+  },
+  set(value) {
+    userPayment.expirationDate = value.replace(/\D/g, '').slice(0, 4);
+  }
+});
+
 const emit = defineEmits(['placeOrder']);
 
 const validateCardNumber = (event) => {
-  const value = event.target.value.replace(/[^0-9]/g, '').slice(0, 16);
+  const value = event.target.value.replace(/\s+/g, '').slice(0, 16);
   userPayment.cardNumber = value;
   isCardNumberValid.value = value.length === 16;
 };
 
 const validateExpirationDate = (event) => {
-  const value = event.target.value.replace(/[^0-9]/g, '').slice(0, 4);
+  const value = event.target.value.replace(/\D/g, '').slice(0, 4);
   userPayment.expirationDate = value;
   isExpirationDateValid.value = value.length === 4;
 };

@@ -9,8 +9,7 @@
     <div class="order-confirmed-text">
       <h1 class="header-2">Order Complete!</h1>
       <p class="main-copy body-bottom-button">
-        Thank you for your order. You will receive a confirmation at
-        example@gmail.com shortly.
+        Thank you for your order. You will receive a confirmation shortly.
       </p>
       <button class="main-btn" @click="goHome">Back to Home</button>
     </div>
