@@ -28,7 +28,10 @@
           </router-link>
         </div>
         <div class="wrapper-inner-right" :class="[fadeInClass, { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }]">
+          <picture>
+          <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
           <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
+        </picture>
         </div>
       </div>
     </div>
@@ -41,6 +44,7 @@ import { useRoute } from 'vue-router';
 
 const props = defineProps({
   imageSrc: String,
+  imageSrcSmall: String,
   imageAlt: String,
   header: String,
   body: String,
@@ -108,7 +112,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .wrapper-basic-two-up {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(385px, 1fr));
   gap: 2rem;
   align-items: center;
 }
@@ -185,7 +189,7 @@ onBeforeUnmount(() => {
 }
 
 /* Media query for mobile devices */
-@media (max-width: 850px) {
+@media (max-width: 880px) {
   .wrapper-inner-left {
     order: 2;
   }

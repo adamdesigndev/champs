@@ -25,6 +25,7 @@
     />
     <BasicTwoColumn
       :imageSrc="secondTwoColumnImageSrc"
+      :imageSrcSmall="imageSrcSmall"
       :imageAlt="secondTwoColumnImageAlt"
       :header="secondTwoColumnHeader"
       :body="secondTwoColumnBody"
@@ -73,7 +74,8 @@ const firstTwoColumnBody =
 const firstTwoColumnButtonText = "Learn More";
 const firstTwoColumnButtonLink = "/About";
 
-const secondTwoColumnImageSrc = "/images/food/Grilled-Chicken-Sandwich-medium.png";
+const secondTwoColumnImageSrc = "/images/Grilled-Chicken-Sandwich-home.png";
+const imageSrcSmall = "/images/Grilled-Chicken-Sandwich-mobile.png";
 const secondTwoColumnImageAlt = "";
 const secondTwoColumnHeader = "Bigger, Juicier and bolder than ever before";
 const secondTwoColumnBody = "";
