@@ -24,7 +24,7 @@
           <li>Sales</li>
           <li>Cookies</li>
         </ul>
-        <p class="footer-notes">Copyright 2024 Champs<br/>All Rights Reserved</p>
+        <p class="footer-notes">Copyright 2024 Champs<br/>Developed & Designed by Adam Flores</p>
       </div>
     </div>
   </footer>
