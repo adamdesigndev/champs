@@ -121,6 +121,10 @@ onMounted(() => {
   animation: fadeInUpUserPayment 0.3s forwards;
 }
 
+.user-payment label {
+  margin-bottom: 0.5rem;
+}
+
 .wrapper-user-payment {
   display: flex;
   flex-direction: column;

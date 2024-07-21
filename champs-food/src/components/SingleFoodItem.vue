@@ -138,7 +138,7 @@ onMounted(() => {
       const fadeUpElements = document.querySelectorAll('.fade-in-up');
       fadeUpElements.forEach(el => el.classList.add('animate'));
     }, 0); // Delay before starting the child elements animation
-  }, 0); // Delay before starting the animation
+  }, 400); // 1-second delay before starting the animation
 });
 
 if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
