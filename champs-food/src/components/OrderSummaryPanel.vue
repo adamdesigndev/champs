@@ -1,4 +1,3 @@
-<!-- @format -->
 <!-- OrderSummaryPanel.vue -->
 <template>
   <aside class="menu-cart-card-right cart-summary fade-in">
@@ -19,7 +18,7 @@
       >
         <div class="panel-item-name-size">
           <h6 class="header-6">{{ item.name }}</h6>
-          <p class="size-quantity-details" v-if="item.sizes">{{ item.size }}</p>
+          <p class="size-quantity-details" v-if="item.sizes">{{ capitalizeFirstLetter(item.size) }}</p>
         </div>
         <div class="panel-price-quantity">
           <p class="panel-item-price">
@@ -80,6 +79,11 @@ const isCartPage = computed(() => route.name === 'Cart');
 
 const proceedToCheckout = () => {
   router.push({ name: 'Checkout' });
+};
+
+const capitalizeFirstLetter = (string) => {
+  if (!string) return '';
+  return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 onMounted(() => {
@@ -211,5 +215,12 @@ onMounted(() => {
 
 .view-btn {
  max-height: 10px;
+}
+
+
+@media (width < 851px) {
+  .inner-cart-price-order-details {
+  gap: .5rem;
+}
 }
 </style>

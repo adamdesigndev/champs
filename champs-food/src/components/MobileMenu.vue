@@ -110,6 +110,16 @@ watch(isMenuOpen, async () => {
   max-height: 17rem;
 }
 
+@media (width < 400px) {
+  .mobile-menu-logo {
+  position: absolute;
+  left: 50%;
+  bottom: -35px;
+  transform: translateX(-50%);
+  max-height: 10rem;
+}
+}
+
 .slide-enter-active, .slide-leave-active {
   transition: transform 0.3s ease;
 }

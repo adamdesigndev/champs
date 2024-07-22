@@ -33,7 +33,7 @@ onMounted(() => {
 
     img.classList.add('fade-in-slide-down');
     text.classList.add('fade-in-slide-up');
-  }, 200); // 1-second delay before starting the animation
+  }, 350); // 1-second delay before starting the animation
 });
 </script>
 

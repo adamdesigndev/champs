@@ -189,7 +189,7 @@ onBeforeUnmount(() => {
 }
 
 /* Media query for mobile devices */
-@media (max-width: 880px) {
+@media (width < 880px) {
   .wrapper-inner-left {
     order: 2;
   }

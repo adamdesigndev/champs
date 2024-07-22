@@ -6,7 +6,7 @@
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
       <div class="wrapper-size-quantity">
         <p class="size-quantity-header" v-if="item.sizes">
-          Size: <span>{{ item.size }}</span>
+          Size: <span>{{ capitalizeFirstLetter(item.size) }}</span>
         </p>
         <p class="size-quantity-header">
           Qty: <span>{{ item.quantity }}</span>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { cartStore } from "../../cartStore";
 
@@ -41,6 +41,11 @@ const editItem = (item) => {
   cartStore.setCurrentEditItem(item);
   router.push({ name: 'SingleFoodItem', params: { name: item.name }, query: { edit: true } });
 };
+
+const capitalizeFirstLetter = (string) => {
+  if (!string) return '';
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}; 
 
 const handleRemove = () => {
   cartItem.value.classList.add('slide-out');
@@ -106,5 +111,11 @@ const handleRemove = () => {
   font-weight: 600;
   text-align: right;
   line-height: 1rem;
+}
+
+@media (width < 500px) {
+  .main-cart-item-details {
+  gap: 0.3rem;
+}
 }
 </style>
