@@ -20,6 +20,11 @@ textarea:focus,
 select:focus {
     outline: none;
 }
+
+input {
+  border-radius: 0px;
+  background-color: rgba(0,0,0,0);
+}
   
   /* resets only if it has a class */
   ul[class] {
