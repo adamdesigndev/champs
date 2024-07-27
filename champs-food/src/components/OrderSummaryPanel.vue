@@ -34,20 +34,20 @@
     <div class="cart-price-order-details">
       <div class="inner-cart-price-order-details order-summary-stagger">
         <p class="cart-total-details">Subtotal:</p>
-        <p class="cart-total-details">${{ subtotal.toFixed(2) }}</p>
+        <p class="cart-total-details cart-sub-total-js">${{ subtotal.toFixed(2) }}</p>
       </div>
       <div class="inner-cart-price-order-details order-summary-stagger">
         <p class="cart-total-details">Tax:</p>
-        <p class="cart-total-details">${{ tax.toFixed(2) }}</p>
+        <p class="cart-total-details cart-tax-js">${{ tax.toFixed(2) }}</p>
       </div>
       <div class="inner-cart-price-order-details order-summary-stagger" v-if="isCheckoutPage">
         <p class="cart-total-details">Grand Total:</p>
-        <p class="cart-total-details">${{ total.toFixed(2) }}</p>
+        <p class="cart-total-details cart-grand-js">${{ total.toFixed(2) }}</p>
       </div>
     </div>
     <button class="main-btn add-item-with-price order-summary-stagger" @click="proceedToCheckout" v-if="!isCheckoutPage">
       <p>Checkout</p>
-      <p>${{ total.toFixed(2) }}</p>
+      <p class="cart-grand-js">${{ total.toFixed(2) }}</p>
     </button>
   </aside>
 </template>
