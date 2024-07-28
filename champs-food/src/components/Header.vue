@@ -1,10 +1,14 @@
 <!-- Header.vue -->
 <template>
+  <!-- Main header wrapper -->
   <header class="wrapper-header-outer">
+    <!-- Navigation bar inner wrapper -->
     <nav class="wrapper-nav-inner">
+      <!-- Hamburger menu for mobile view -->
       <button class="hamburger mobile-header" @click="toggleMenu" :class="{ 'fade-in': shouldAnimate && isHomePage }">
         <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
       </button>
+      <!-- Navigation links for desktop view -->
       <ul :class="['nav-menu-links', 'desktop-header', { 'fade-in': shouldAnimate && isHomePage }]">
         <li>
           <router-link class="header-nav-links nav-link" :class="{ active: isActive('/') }" to="/">Home</router-link>
@@ -16,12 +20,14 @@
           <router-link class="header-nav-links nav-link" :class="{ active: isActive('/About') }" to="/About">About</router-link>
         </li>
       </ul>
+      <!-- Logo for desktop and mobile views -->
       <a class="desktop-header" :class="{ 'fade-in': shouldAnimate && isHomePage }" href="/">
         <img class="header-logo" src="/images/Champs-head.svg" alt="Logo" />
       </a>
       <a class="mobile-header" :class="{ 'fade-in': shouldAnimate && isHomePage }" href="/">
         <img src="/images/logo-comb-mobile.svg" alt="Logo" />
       </a>
+      <!-- Navigation links for cart and order button -->
       <ul class="nav-menu-links">
         <li class="cart-icon-wrapper" :class="{ 'fade-in': shouldAnimate && isHomePage }">
           <router-link to="/Cart">
@@ -51,21 +57,28 @@ import { inject, computed, ref, watch, onMounted } from 'vue';
 import { cartStore } from '../../cartStore';
 import { useRoute, useRouter } from 'vue-router';
 
+// Router setup
 const route = useRoute();
 const router = useRouter();
+
+// Check if the current route is the home page
 const isHomePage = computed(() => route.path === '/');
 
+// Inject menu toggle functions
 const toggleMenu = inject('toggleMenu');
 const isMenuOpen = inject('isMenuOpen');
 
+// Compute total items in the cart
 const totalItems = computed(() => {
   return cartStore.items.reduce((sum, item) => sum + item.quantity, 0);
 });
 
+// Badge animation
 const badgeRef = ref(null);
 const lastCartLength = ref(cartStore.items.length);
 const isAnimating = ref(false);
 
+// Trigger animation on the badge when the cart is updated
 const triggerBadgeAnimation = () => {
   isAnimating.value = true;
   setTimeout(() => {
@@ -73,6 +86,7 @@ const triggerBadgeAnimation = () => {
   }, 300);
 };
 
+// Watch for changes in the cart items length
 watch(
   () => cartStore.items.length,
   (newLength, oldLength) => {
@@ -83,20 +97,24 @@ watch(
   }
 );
 
+// Check if a path is active
 const isActive = (path) => route.path === path;
 
+// Animation control for the header
 const shouldAnimate = ref(false);
 const hasAnimated = ref(false);
 
+// Handle route change for animation
 const handleRouteChange = () => {
   if (isHomePage.value) {
     shouldAnimate.value = true;
     setTimeout(() => {
       shouldAnimate.value = false;
-    }, 500); // Set to the duration of the animation
+    }, 500); // Duration of the animation
   }
 };
 
+// Lifecycle hooks
 onMounted(() => {
   if (isHomePage.value) {
     handleRouteChange();

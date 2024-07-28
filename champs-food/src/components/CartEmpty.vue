@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <!-- CartEmpty.vue -->
 <template>
   <div class="wrapper-order-confirmation">

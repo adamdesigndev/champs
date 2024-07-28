@@ -1,31 +1,41 @@
 <!-- CartFoodItem.vue -->
 <template>
+  <!-- Wrapper for a single cart item -->
   <div class="wrapper-cart-single-item" ref="cartItem">
+    <!-- Image of the cart item -->
     <img :src="item.images.small" :alt="item.name" />
+    <!-- Main details of the cart item -->
     <div class="main-cart-item-details">
+      <!-- Item name -->
       <h4 class="header-6 cart-item-name">{{ item.name }}</h4>
+      <!-- Wrapper for size and quantity details -->
       <div class="wrapper-size-quantity">
+        <!-- Display item size if available -->
         <p class="size-quantity-header" v-if="item.sizes">
           Size: <span>{{ capitalizeFirstLetter(item.size) }}</span>
         </p>
+        <!-- Display item quantity -->
         <p class="size-quantity-header">
           Qty: <span>{{ item.quantity }}</span>
         </p>
       </div>
+      <!-- Wrapper for action buttons (Edit and Remove) -->
       <div class="wrapper-cart-item-buttons">
         <button class="cart-item-buttons" @click="editItem(item)">Edit</button>
         <button class="cart-item-buttons" @click="handleRemove">Remove</button>
       </div>
     </div>
+    <!-- Item total price -->
     <p class="cart-item-price">${{ item.totalPrice.toFixed(2) }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { cartStore } from "../../cartStore";
 
+// Define props for the component
 const props = defineProps({
   item: Object,
 });
@@ -33,25 +43,29 @@ const props = defineProps({
 const router = useRouter();
 const cartItem = ref(null);
 
+// Function to remove an item from the cart
 const removeFromCart = (item) => {
   cartStore.removeFromCart(item);
 };
 
+// Function to edit an item in the cart
 const editItem = (item) => {
   cartStore.setCurrentEditItem(item);
   router.push({ name: 'SingleFoodItem', params: { name: item.name }, query: { edit: true } });
 };
 
+// Function to capitalize the first letter of a string
 const capitalizeFirstLetter = (string) => {
   if (!string) return '';
   return string.charAt(0).toUpperCase() + string.slice(1);
 }; 
 
+// Handle the removal of a cart item with animation
 const handleRemove = () => {
   cartItem.value.classList.add('slide-out');
   setTimeout(() => {
     removeFromCart(props.item);
-  },800); // Match the duration of the animation
+  }, 800); // Match the duration of the animation
 };
 </script>
 

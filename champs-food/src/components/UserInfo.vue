@@ -32,26 +32,32 @@
 import { ref, onMounted } from 'vue';
 import { useCheckoutStore } from '../../useCheckoutStore.js';
 
+// Retrieve the userInfo state from the checkout store
 const { userInfo } = useCheckoutStore();
 
+// Initialize user information
 userInfo.lastName = "Doe";
 userInfo.phone = "226 6645";
 userInfo.email = "jdoe@gmail.com";
 
+// Validation flags
 const isFirstNameValid = ref(true);
 const isLastNameValid = ref(true);
 const isPhoneValid = ref(true);
 const isEmailValid = ref(true);
 const showErrors = ref(false);
 
+// Event emitter for 'proceed'
 const emit = defineEmits(['proceed']);
 
+// Function to validate phone input
 const validatePhone = (event) => {
   const value = event.target.value.replace(/[^0-9]/g, '').slice(0, 12);
   userInfo.phone = value;
   isPhoneValid.value = value.length >= 7;
 };
 
+// Function to handle form submission
 const submitUserInfo = () => {
   showErrors.value = true;
   isFirstNameValid.value = userInfo.firstName.length > 0 && userInfo.firstName.length <= 40;
@@ -64,6 +70,7 @@ const submitUserInfo = () => {
   }
 };
 
+// Add staggered animation to elements on mount
 onMounted(() => {
   const firstLoad = localStorage.getItem('cartFirstLoad') === 'true';
   const screenWidth = window.innerWidth;

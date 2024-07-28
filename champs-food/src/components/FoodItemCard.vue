@@ -1,9 +1,14 @@
 <!-- FoodItemCard.vue -->
 <template>
+  <!-- Food item card container -->
   <div class="food-item-card">
+    <!-- Router link to navigate to the single food item page -->
     <router-link :to="{ name: 'SingleFoodItem', params: { name: item.name } }">
+      <!-- Food item image -->
       <img :src="item.images.small" :alt="item.name">
+      <!-- Food item name -->
       <h6 class="header-6">{{ item.name }}</h6>
+      <!-- Food item price (single price or minimum price from sizes) -->
       <p v-if="item.price">${{ item.price }}</p>
       <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
     </router-link>
@@ -13,12 +18,15 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+// Define props for the component
 const props = defineProps({
   item: Object
 });
 
+// State variable to track if the component is loaded
 const isLoaded = ref(false);
 
+// Lifecycle hook to set isLoaded to true when the component is mounted
 onMounted(() => {
   isLoaded.value = true;
 });

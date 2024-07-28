@@ -10,6 +10,8 @@
         </button>
       </div>
     </div>
+
+    <!-- List of items in the cart, shown when viewAll is true -->
     <div class="panel-list-items" v-show="viewAll">
       <div
         v-for="item in cartStore.items"
@@ -31,6 +33,7 @@
       </div>
     </div>
 
+    <!-- Order summary details -->
     <div class="cart-price-order-details">
       <div class="inner-cart-price-order-details order-summary-stagger">
         <p class="cart-total-details">Subtotal:</p>
@@ -45,6 +48,8 @@
         <p class="cart-total-details cart-grand-js">${{ total.toFixed(2) }}</p>
       </div>
     </div>
+    
+    <!-- Checkout button, shown only if not on the checkout page -->
     <button class="main-btn add-item-with-price order-summary-stagger" @click="proceedToCheckout" v-if="!isCheckoutPage">
       <p>Checkout</p>
       <p class="cart-grand-js">${{ total.toFixed(2) }}</p>
@@ -57,12 +62,15 @@ import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { cartStore } from "../../cartStore";
 
+// State for toggling the visibility of the cart items
 const viewAll = ref(false);
 
+// Function to toggle the viewAll state
 const toggleViewAll = () => {
   viewAll.value = !viewAll.value;
 };
 
+// Computed properties for various cart totals
 const totalItems = computed(() =>
   cartStore.items.reduce((sum, item) => sum + item.quantity, 0)
 );
@@ -72,20 +80,26 @@ const subtotal = computed(() =>
 const tax = computed(() => subtotal.value * 0.09);
 const total = computed(() => subtotal.value + tax.value);
 
+// Router and route objects
 const router = useRouter();
 const route = useRoute();
+
+// Computed properties to determine the current page
 const isCheckoutPage = computed(() => route.name === 'Checkout');
 const isCartPage = computed(() => route.name === 'Cart');
 
+// Function to navigate to the checkout page
 const proceedToCheckout = () => {
   router.push({ name: 'Checkout' });
 };
 
+// Helper function to capitalize the first letter of a string
 const capitalizeFirstLetter = (string) => {
   if (!string) return '';
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+// Lifecycle hook to apply animations on mount
 onMounted(() => {
   if (isCartPage.value) {
     // Apply fade-in without movement

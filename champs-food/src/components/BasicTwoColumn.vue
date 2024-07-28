@@ -1,8 +1,10 @@
 <!-- BasicTwoColumn.vue -->
 <template>
+  <!-- Section container with conditional classes -->
   <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" ref="section">
     <div class="wrapper-general">
       <div :class="['wrapper-basic-two-up', { 'wrapper-reverse': reverse }]">
+        <!-- Left inner wrapper with conditional animation classes -->
         <div class="wrapper-inner-left" :class="[fadeInClass, { 'animate': !isAboutPage && hasHeader && isVisible, 'initial-hidden': !isAboutPage && hasHeader }]">
           <h2 :class="['header-2', { 'white-text': textWhite }]">
             {{ header }}
@@ -27,11 +29,12 @@
             </button>
           </router-link>
         </div>
+        <!-- Right inner wrapper with conditional animation classes -->
         <div class="wrapper-inner-right" :class="[fadeInClass, { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }]">
           <picture>
-          <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
-          <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
-        </picture>
+            <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
+            <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
+          </picture>
         </div>
       </div>
     </div>
@@ -42,6 +45,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 
+// Define props for the component
 const props = defineProps({
   imageSrc: String,
   imageSrcSmall: String,
@@ -76,6 +80,7 @@ const props = defineProps({
   }
 });
 
+// Get the current route
 const route = useRoute();
 const section = ref(null);
 const isVisible = ref(false);
@@ -83,6 +88,7 @@ const hasHeader = ref(!!props.header);
 const isAboutPage = ref(route.path === '/About');
 const fadeInClass = ref('');
 
+// Lifecycle hook to handle mounted logic
 onMounted(() => {
   if (isAboutPage.value) {
     fadeInClass.value = 'fade-in';
@@ -94,6 +100,7 @@ onMounted(() => {
   }
 });
 
+// Function to handle scroll event for visibility animation
 const handleScroll = () => {
   const rect = section.value.getBoundingClientRect();
   if (rect.top <= window.innerHeight * 0.65) {
@@ -102,6 +109,7 @@ const handleScroll = () => {
   }
 };
 
+// Lifecycle hook to clean up scroll event listener before unmount
 onBeforeUnmount(() => {
   if (!isAboutPage.value) {
     window.removeEventListener('scroll', handleScroll);

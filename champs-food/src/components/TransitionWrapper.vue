@@ -1,36 +1,45 @@
+<!-- TransitionWrapper.vue -->
 <template>
-    <transition name="fade-slide" mode="out-in" @after-leave="afterLeave">
-      <component :is="currentComponent" @proceed="goToPayment" @placeOrder="placeOrder" :key="currentComponentKey"></component>
-    </transition>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  import UserInfo from './UserInfo.vue';
-  import UserPayment from './UserPayment.vue';
-  
-  const currentComponent = ref('UserInfo');
-  const currentComponentKey = ref(0);
-  
-  const goToPayment = () => {
-    currentComponent.value = 'UserPayment';
-    currentComponentKey.value++;
-  };
-  
-  const placeOrder = () => {
-    // Handle placing the order
-  };
-  
-  const afterLeave = () => {
-    setTimeout(() => {
-      if (currentComponent.value === 'UserInfo') {
-        currentComponent.value = 'UserPayment';
-      } else {
-        currentComponent.value = 'UserInfo';
-      }
-    }, 200); // Add a small delay to ensure the previous component is fully removed
-  };
-  </script>
+  <!-- Transition component to manage transitions between child components -->
+  <transition name="fade-slide" mode="out-in" @after-leave="afterLeave">
+    <!-- Dynamically render the current component (UserInfo or UserPayment) -->
+    <component :is="currentComponent" @proceed="goToPayment" @placeOrder="placeOrder" :key="currentComponentKey"></component>
+  </transition>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import UserInfo from './UserInfo.vue';
+import UserPayment from './UserPayment.vue';
+
+// Ref to store the current component being displayed
+const currentComponent = ref('UserInfo');
+// Ref to store the key for the current component to force re-render
+const currentComponentKey = ref(0);
+
+// Function to switch to the UserPayment component
+const goToPayment = () => {
+  currentComponent.value = 'UserPayment';
+  currentComponentKey.value++;
+};
+
+// Placeholder function to handle order placement
+const placeOrder = () => {
+  // Handle placing the order
+};
+
+// Function to handle actions after the component leave transition is complete
+const afterLeave = () => {
+  setTimeout(() => {
+    // Toggle between UserInfo and UserPayment components with a small delay
+    if (currentComponent.value === 'UserInfo') {
+      currentComponent.value = 'UserPayment';
+    } else {
+      currentComponent.value = 'UserInfo';
+    }
+  }, 200); // Add a small delay to ensure the previous component is fully removed
+};
+</script>
   
   <style scoped>
   @keyframes fadeInUp {

@@ -1,9 +1,11 @@
 <!-- MenuNavigation.vue -->
-<!-- MenuNavigation.vue -->
 <template>
+  <!-- Page header -->
   <h1 class="header-2 fade-in-down" ref="header">Menu</h1>
+  <!-- Navigation menu -->
   <nav>
     <ul class="menu-navigation fade-in-left" ref="menuList">
+      <!-- Render categories dynamically from the categories array -->
       <li
         v-for="category in categories"
         :key="category"
@@ -19,15 +21,18 @@
 <script setup>
 import { ref, onMounted, nextTick, watch } from 'vue';
 
+// Categories for the menu
 const categories = ref(['FEATURED', 'ENTRÉES', 'SIDES', 'SALADS', 'DRINKS', 'DESSERTS']);
-const selectedCategory = ref('FEATURED'); // Set initial category to 'FEATURED'
+const selectedCategory = ref('FEATURED'); // Initial category
 const menuItems = ref([]);
 const header = ref(null);
 const menuList = ref(null);
 const animateActiveItem = ref(false);
 
+// Emit event to notify parent component of the selected category
 const emit = defineEmits(['update-category']);
 
+// Function to select a category
 const selectCategory = (category) => {
   selectedCategory.value = category;
   emit('update-category', category);
@@ -36,6 +41,7 @@ const selectCategory = (category) => {
   });
 };
 
+// Validate and apply active state to the selected category
 const validateActiveState = () => {
   menuItems.value.forEach((item) => {
     const itemText = item.textContent.trim();
@@ -47,12 +53,13 @@ const validateActiveState = () => {
   });
 };
 
+// Lifecycle hook to initialize menu items and apply animations
 onMounted(() => {
   nextTick(() => {
     menuItems.value = Array.from(menuList.value.children);
     validateActiveState();
     
-    // Ensuring animation classes are added only after mounting and validation
+    // Apply animations after a delay to ensure elements are mounted
     setTimeout(() => {
       header.value.classList.add('animate');
       menuList.value.classList.add('animate');
@@ -64,6 +71,7 @@ onMounted(() => {
   });
 });
 
+// Watch for changes in the selectedCategory to update active state
 watch(selectedCategory, () => {
   nextTick(() => {
     validateActiveState();

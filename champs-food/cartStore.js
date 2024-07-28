@@ -1,30 +1,46 @@
 // cartStore.js
+
 import { reactive, watchEffect } from 'vue';
 
+// Retrieve stored cart items from local storage, or initialize as an empty array if none exist
 const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
+// Define the reactive cart store
 export const cartStore = reactive({
-  items: storedCartItems,
-  currentEditItem: null,
-  isEditing: false,
-  animationTrigger: 0,
+  // State properties
+  items: storedCartItems,      // Array of items in the cart
+  currentEditItem: null,       // Currently selected item for editing
+  isEditing: false,            // Boolean flag to indicate if an item is being edited
+  animationTrigger: 0,         // Counter to trigger animations
 
+  // Methods
+
+  // Add a new item to the cart or update an existing one
   addToCart(newItem) {
-  const existingItemIndex = this.items.findIndex(
-    (item) => item.name === newItem.name && item.size === newItem.size
-  );
+    // Check if the item already exists in the cart
+    const existingItemIndex = this.items.findIndex(
+      (item) => item.name === newItem.name && item.size === newItem.size
+    );
 
-  if (existingItemIndex !== -1) {
-    // If the item already exists, update the quantity and total price
-    this.items[existingItemIndex].quantity += newItem.quantity;
-    this.items[existingItemIndex].totalPrice += newItem.totalPrice;
-  } else {
-    this.items.push({ ...newItem, images: newItem.images || { small: '/images/food/default-small.png', large: '/images/food/default-large.png' } });
-  }
-  this.animationTrigger++;
-}
-,
+    if (existingItemIndex !== -1) {
+      // If the item already exists, update the quantity and total price
+      this.items[existingItemIndex].quantity += newItem.quantity;
+      this.items[existingItemIndex].totalPrice += newItem.totalPrice;
+    } else {
+      // If the item does not exist, add it to the cart with default images if not provided
+      this.items.push({ 
+        ...newItem, 
+        images: newItem.images || { 
+          small: '/images/food/default-small.png', 
+          large: '/images/food/default-large.png' 
+        } 
+      });
+    }
+    // Trigger animation
+    this.animationTrigger++;
+  },
 
+  // Remove an item from the cart
   removeFromCart(item) {
     const index = this.items.indexOf(item);
     if (index > -1) {
@@ -32,6 +48,7 @@ export const cartStore = reactive({
     }
   },
 
+  // Update an existing cart item
   updateCartItem(updatedItem) {
     // Find the original item in the cart
     const originalItemIndex = this.items.findIndex(
@@ -54,26 +71,32 @@ export const cartStore = reactive({
         this.items[originalItemIndex] = updatedItem;
       }
     } else {
+      // If the original item does not exist, add the updated item to the cart
       this.addToCart(updatedItem);
     }
+    // Clear the current edit item after update
     this.clearCurrentEditItem();
   },
 
+  // Set the current item for editing
   setCurrentEditItem(item) {
     this.currentEditItem = { ...item };
     this.isEditing = true;
   },
 
+  // Clear the current item being edited
   clearCurrentEditItem() {
     this.currentEditItem = null;
     this.isEditing = false;
   },
 
+  // Clear all items from the cart
   clearCart() {
     this.items.length = 0;
   }
 });
 
+// Watch for changes in the cart items and update local storage
 watchEffect(() => {
   localStorage.setItem('cartItems', JSON.stringify(cartStore.items));
 });

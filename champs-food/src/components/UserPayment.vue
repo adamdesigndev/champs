@@ -29,17 +29,21 @@
 import { ref, computed, onMounted } from 'vue';
 import { useCheckoutStore } from '../../useCheckoutStore.js';
 
+// Retrieve the userPayment state from the checkout store
 const { userPayment } = useCheckoutStore();
 
+// Initialize user payment details
 userPayment.cardNumber = "1085268432574025";
 userPayment.expirationDate = "0105";
 userPayment.ccv = "558";
 
+// Validation flags
 const isCardNumberValid = ref(true);
 const isExpirationDateValid = ref(true);
 const isCCVValid = ref(true);
 const showErrors = ref(false);
 
+// Computed property for formatted card number with spaces
 const formattedCardNumber = computed({
   get() {
     return userPayment.cardNumber.replace(/(\d{4})(?=\d)/g, '$1 ');
@@ -49,6 +53,7 @@ const formattedCardNumber = computed({
   }
 });
 
+// Computed property for formatted expiration date
 const formattedExpirationDate = computed({
   get() {
     return userPayment.expirationDate.replace(/(\d{2})(?=\d)/, '$1/');
@@ -58,26 +63,31 @@ const formattedExpirationDate = computed({
   }
 });
 
+// Event emitter for 'placeOrder'
 const emit = defineEmits(['placeOrder']);
 
+// Function to validate card number input
 const validateCardNumber = (event) => {
   const value = event.target.value.replace(/\s+/g, '').slice(0, 16);
   userPayment.cardNumber = value;
   isCardNumberValid.value = value.length === 16;
 };
 
+// Function to validate expiration date input
 const validateExpirationDate = (event) => {
   const value = event.target.value.replace(/\D/g, '').slice(0, 4);
   userPayment.expirationDate = value;
   isExpirationDateValid.value = value.length === 4;
 };
 
+// Function to validate CCV input
 const validateCCV = (event) => {
   const value = event.target.value.replace(/[^0-9]/g, '').slice(0, 3);
   userPayment.ccv = value;
   isCCVValid.value = value.length === 3;
 };
 
+// Function to handle form submission
 const submitPaymentInfo = () => {
   showErrors.value = true;
   validateCardNumber({ target: { value: userPayment.cardNumber } });
@@ -89,8 +99,8 @@ const submitPaymentInfo = () => {
   }
 };
 
+// Add staggered animation to elements on mount
 onMounted(() => {
-  // Start animation immediately without delay
   const elements = document.querySelectorAll('.user-payment-stagger');
   elements.forEach((element, index) => {
     setTimeout(() => {
@@ -99,6 +109,7 @@ onMounted(() => {
   });
 });
 </script>
+
 
 <style scoped>
 @keyframes fadeInUpUserPayment {

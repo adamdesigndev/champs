@@ -5,12 +5,15 @@
       <div class="wrapper-general">
         <div class="wrapper-with-info-card-right">
           <div>
+            <!-- Link to go back to the menu -->
             <router-link :to="'/menu'" class="back-menu"><span class="back-arrow"><</span> Menu</router-link>
+            <!-- Picture element for responsive images -->
             <picture>
-            <source :srcset="item.images.medium" media="(max-width: 850px)" />
-            <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left" />
-          </picture>
+              <source :srcset="item.images.medium" media="(max-width: 850px)" />
+              <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left" />
+            </picture>
           </div>
+          <!-- Buy card with food item details and actions -->
           <div class="single-food-item-buy-card fade-in-down" ref="buyCard">
             <div ref="buyCardContent" class="content-wrapper">
               <h3 class="header-4 fade-in-up">{{ item.name }}</h3>
@@ -19,6 +22,7 @@
             <div v-if="item.sizes" class="fade-in-up">
               <h6 class="header-6">Select size</h6>
               <div class="wrapper-size-selecter">
+                <!-- Buttons to select the size of the food item -->
                 <button
                   class="single-size"
                   :class="{ 'selected-size': selectedSize === 'small' }"
@@ -49,13 +53,13 @@
               <div class="wrapper-quanitity">
                 <h6 class="header-6 header-quanitity">Quantity</h6>
                 <div class="quanitiy-picker">
-                  <button class="minus-qty" @click="updateQuantity(-1)">
-                    -
-                  </button>
+                  <!-- Buttons to adjust the quantity of the food item -->
+                  <button class="minus-qty" @click="updateQuantity(-1)">-</button>
                   <p class="food-item-amount-number">{{ quantity }}</p>
                   <button class="plus-qty" @click="updateQuantity(1)">+</button>
                 </div>
               </div>
+              <!-- Button to add or update the cart with the selected food item -->
               <button
                 class="main-btn add-item-with-price"
                 @click="addOrUpdateCart(item)"
@@ -81,6 +85,7 @@ import { ref, computed, watch, onMounted } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import { cartStore } from "../../cartStore";
 
+// Props definition
 const props = defineProps({
   item: Object,
 });
@@ -89,18 +94,22 @@ const route = useRoute();
 const router = useRouter();
 const isEditing = ref(false);
 
-const selectedSize = ref("medium"); // Default to 'medium'
+// Default selected size and quantity
+const selectedSize = ref("medium");
 const quantity = ref(1);
 const initialLoad = ref(true);
 
+// Function to select size
 const selectSize = (size) => {
   selectedSize.value = size;
 };
 
+// Function to update quantity
 const updateQuantity = (amount) => {
   quantity.value = Math.max(1, quantity.value + amount); // Ensure quantity is at least 1
 };
 
+// Computed property for total price based on selected size and quantity
 const totalPrice = computed(() => {
   if (props.item.sizes) {
     return quantity.value * props.item.sizes[selectedSize.value];
@@ -109,10 +118,12 @@ const totalPrice = computed(() => {
   }
 });
 
+// Computed property for formatted total price
 const totalPriceFormatted = computed(() => {
   return `$${totalPrice.value.toFixed(2)}`;
 });
 
+// Function to add or update cart with the current item
 const addOrUpdateCart = (item) => {
   const cartItem = {
     ...item,
@@ -129,6 +140,7 @@ const addOrUpdateCart = (item) => {
   }
 };
 
+// Mounted hook to handle animations and initialize the component state
 onMounted(() => {
   setTimeout(() => {
     initialLoad.value = false;
@@ -141,6 +153,7 @@ onMounted(() => {
   }, 500); // 1-second delay before starting the animation
 });
 
+// Watch for route query and initialize editing state if applicable
 if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
   const { size, quantity: editQuantity } = cartStore.currentEditItem;
   selectedSize.value = size;
@@ -159,6 +172,7 @@ watch(
   }
 );
 </script>
+
 
 <style scoped>
 .wrapper-size-selecter {

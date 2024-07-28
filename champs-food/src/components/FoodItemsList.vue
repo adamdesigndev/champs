@@ -1,9 +1,17 @@
 <!-- FoodItemsList.vue -->
 <template>
-  <h2 class="header-3 fade-in-down" ref="header" :class="{ 'initial-animate': initialLoad }" :style="{ animationDelay: `${headerDelay}s` }">
+  <!-- Header for the food items list -->
+  <h2 
+    class="header-3 fade-in-down" 
+    ref="header" 
+    :class="{ 'initial-animate': initialLoad }" 
+    :style="{ animationDelay: `${headerDelay}s` }"
+  >
     {{ selectedCategory || 'Menu' }}
   </h2>
+  <!-- Section containing the list of food items -->
   <section class="food-items-list fade-in-up" :class="{ 'initial-animate': initialLoad }">
+    <!-- Render FoodItemCard for each filtered item -->
     <FoodItemCard 
       v-for="(item, index) in filteredItems" 
       :key="`${item.name}-${selectedCategory}`" 
@@ -17,10 +25,12 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import FoodItemCard from './FoodItemCard.vue';
 import { foodItems } from '../data';
 
+// Define props for the component
 const props = defineProps({
   selectedCategory: String
 });
 
+// Compute the filtered items based on the selected category
 const filteredItems = computed(() => {
   if (props.selectedCategory === 'FEATURED') {
     return foodItems.filter(item => item.featured);
@@ -30,9 +40,11 @@ const filteredItems = computed(() => {
     : foodItems;
 });
 
+// State variables for initial load and animation delay
 const initialLoad = ref(true);
 const headerDelay = ref(0);
 
+// Function to trigger the initial animation
 const triggerAnimation = () => {
   headerDelay.value = 0.05; // Set the delay for the initial load
   setTimeout(() => {
@@ -48,12 +60,14 @@ const triggerAnimation = () => {
   }, 500); // Delay before starting the animation
 };
 
+// Lifecycle hook to trigger the animation on mount
 onMounted(() => {
   if (initialLoad.value) {
     triggerAnimation();
   }
 });
 
+// Watcher to re-trigger animation when the selected category changes
 watch(() => props.selectedCategory, async () => {
   initialLoad.value = false;
   await nextTick(); // Wait for the DOM to update
