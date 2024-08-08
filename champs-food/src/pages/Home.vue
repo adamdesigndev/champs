@@ -22,6 +22,8 @@
       :red="false"
       :textWhite="false"
       :buttonReverse="false"
+      backgroundImage="/path/to/your/background-image.jpg"
+      :largeHeader="false"
     />
     <BasicTwoColumn
       :imageSrc="secondTwoColumnImageSrc"
@@ -35,6 +37,8 @@
       :red="true"
       :textWhite="true"
       :buttonReverse="true"
+      backgroundImage="public/images/Champs-pattern-3.png"
+      :largeHeader="true"
     />
     <BasicTwoColumn
       :imageSrc="thirdTwoColumnImageSrc"
@@ -48,6 +52,8 @@
       :textWhite="false"
       :buttonReverse="false"
       :showAppStore="true"
+      backgroundImage="/path/to/yet-another-background-image.jpg"
+      :largeHeader="false"
     />
   </div>
 </template>
@@ -77,7 +83,7 @@ const firstTwoColumnButtonLink = "/About";
 const secondTwoColumnImageSrc = "/images/Grilled-Chicken-Sandwich-home.png";
 const imageSrcSmall = "/images/Grilled-Chicken-Sandwich-mobile.png";
 const secondTwoColumnImageAlt = "";
-const secondTwoColumnHeader = "Bigger, Juicier and bolder than ever before";
+const secondTwoColumnHeader = "Bigger Bolder Louder";
 const secondTwoColumnBody = "";
 const secondTwoColumnButtonText = "Get It Now";
 const secondTwoColumnButtonLink = "/food/GRILLED CHICKEN SANDWICH";

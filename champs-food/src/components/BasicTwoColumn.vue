@@ -1,10 +1,10 @@
 <!-- BasicTwoColumn.vue -->
 <template>
-  <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" ref="section">
+  <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" :style="backgroundImageStyle" ref="section">
     <div class="wrapper-general">
       <div :class="['wrapper-basic-two-up', { 'wrapper-reverse': reverse }]">
         <div class="wrapper-inner-left" :class="[fadeInClass, { 'animate': !isAboutPage && hasHeader && isVisible, 'initial-hidden': !isAboutPage && hasHeader }]">
-          <h2 :class="['header-2', { 'white-text': textWhite }]">
+          <h2 :class="['header-2', { 'white-text': textWhite, 'header-2-large': largeHeader }]">
             {{ header }}
           </h2>
           <img
@@ -29,9 +29,9 @@
         </div>
         <div class="wrapper-inner-right" :class="[fadeInClass, { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }]">
           <picture>
-          <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
-          <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
-        </picture>
+            <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
+            <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
+          </picture>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 const props = defineProps({
@@ -73,6 +73,14 @@ const props = defineProps({
   hideButton: {
     type: Boolean,
     default: false,
+  },
+  backgroundImage: {
+    type: String,
+    default: ''
+  },
+  largeHeader: {
+    type: Boolean,
+    default: false,
   }
 });
 
@@ -82,6 +90,16 @@ const isVisible = ref(false);
 const hasHeader = ref(!!props.header);
 const isAboutPage = ref(route.path === '/About');
 const fadeInClass = ref('');
+
+const backgroundImageStyle = computed(() => {
+  return props.backgroundImage ? { 
+    backgroundImage: `url(${props.backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+
+  } : {};
+});
 
 onMounted(() => {
   if (isAboutPage.value) {
@@ -115,6 +133,7 @@ onBeforeUnmount(() => {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   align-items: center;
+  /* Remove background styles here as they are now in the computed property */
 }
 
 .wrapper-reverse .wrapper-inner-left {
@@ -186,6 +205,15 @@ onBeforeUnmount(() => {
 
 .fade-in.fade-in {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+.header-2 {
+  font-size: var(--fs-800);
+}
+
+.header-2-large {
+  font-size: var(--fs-1000);
+  line-height: .9;
 }
 
 /* Media query for mobile devices */

@@ -20,6 +20,7 @@
   --fs-700: 2rem;
   --fs-800: 2.2rem;
   --fs-900: 3.2rem;
+  --fs-1000: 3.5rem;
 
 
   /* wrappers */
@@ -43,6 +44,7 @@
     --fs-700: 2.5rem;
     --fs-800: 3.5rem;
     --fs-900: 5.5rem;
+    --fs-1000: clamp(2.4rem, 9vw + 1rem, 8rem);
 
  /* wrappers */
  --inner-content-max-width-v1: 1260px;
