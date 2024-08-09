@@ -133,7 +133,6 @@ onBeforeUnmount(() => {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   align-items: center;
-  /* Remove background styles here as they are now in the computed property */
 }
 
 .wrapper-reverse .wrapper-inner-left {
@@ -224,5 +223,14 @@ onBeforeUnmount(() => {
   .wrapper-inner-right {
     order: 1;
   }
+}
+
+@media (width < 570px) {
+  .wrapper-basic-two-up {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
 }
 </style>

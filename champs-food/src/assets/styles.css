@@ -16,7 +16,7 @@ body {
   font-size: var(--fs-300);
   color: var(--main-copy-clr);
   text-wrap: pretty;
-  line-height: 1.5rem;
+  line-height: 1.3rem;
 }
 
 .detail-copy {
@@ -48,6 +48,7 @@ body {
  @media (width < 851px) {
   .wrapper-with-info-card-right {
     grid-template-columns: 1fr;
+    gap: 1rem;
 }
 }
 
@@ -113,6 +114,7 @@ body {
     background-color: rgb(0,0,0,0);
     box-shadow: none;
     padding: 0rem;
+    min-width: 230px;
   }
 }
 
@@ -214,11 +216,13 @@ body {
   .header-2 {
     line-height: 2.5rem;
     margin-bottom: 1.2rem;
+    letter-spacing: .04rem;
   }
   
   .header-3 {
     line-height: 2rem;
     margin-bottom: 1rem;
+    letter-spacing: .08rem;
   }
   
   .header-4 {

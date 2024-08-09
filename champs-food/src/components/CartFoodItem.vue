@@ -98,7 +98,7 @@ const handleRemove = () => {
   font-size: var(--fs-200);
   background-color: rgb(0, 0, 0, 0);
   padding: 0rem;
-  min-width: 3rem;
+  min-width: 2rem;
   text-align: left;
   line-height: 1rem;
   border: none;
@@ -116,6 +116,15 @@ const handleRemove = () => {
 @media (width < 500px) {
   .main-cart-item-details {
   gap: 0.3rem;
+}
+
+.wrapper-cart-single-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 0rem;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1.5rem;
+  transition: transform 0.3s ease-out, opacity 0.8s ease-out;
 }
 }
 </style>

@@ -241,6 +241,18 @@ watch(route, (newRoute, oldRoute) => {
   }
 }
 
+@media (width < 570px) {
+  .cart-icon {
+  width: 1.4rem;
+  padding-right: .2rem;
+}
+
+.cart-notification {
+  min-width: 28px;
+  font-size: var(--fs-100);
+}
+}
+
 /* Fade-in animation */
 @keyframes fadeInFromTop {
   0% {
