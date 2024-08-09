@@ -1,9 +1,14 @@
 <!-- Header.vue -->
+<!-- Header.vue -->
 <template>
   <header class="wrapper-header-outer">
     <nav class="wrapper-nav-inner">
       <button class="hamburger mobile-header" @click="toggleMenu" :class="{ 'fade-in': shouldAnimate && isHomePage }">
-        <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
+        <img 
+          :src="isMenuOpen ? '/images/close-menu.svg' : '/images/mobile-nav-hamburger.svg'" 
+          :alt="isMenuOpen ? 'Close Menu' : 'Hamburger Menu'"
+          :class="isMenuOpen ? 'close-icon' : 'hamburger-icon'"
+        />
       </button>
       <ul :class="['nav-menu-links', 'desktop-header', { 'fade-in': shouldAnimate && isHomePage }]">
         <li>
@@ -184,7 +189,7 @@ watch(route, (newRoute, oldRoute) => {
 
 .cart-notification {
   position: absolute;
-  top: -15px;
+  top: -10px;
   left: 10px;
   background-color: var(--clr-primary);
   color: #ffffff;
@@ -228,6 +233,10 @@ watch(route, (newRoute, oldRoute) => {
 
 .hamburger img {
   width: 25px;
+}
+
+.hamburger img.close-icon {
+  width: 20px; 
 }
 
 @media (width < 851px) {

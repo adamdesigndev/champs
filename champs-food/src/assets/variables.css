@@ -43,7 +43,7 @@
     --fs-600: 2rem;
     --fs-700: 2.5rem;
     --fs-800: 3.5rem;
-    --fs-900: 5.5rem;
+    --fs-900: clamp(2rem, 8vw + 1rem, 7rem);
     --fs-1000: clamp(2.4rem, 9vw + 1rem, 8rem);
 
  /* wrappers */
