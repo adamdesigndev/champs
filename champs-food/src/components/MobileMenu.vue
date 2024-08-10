@@ -116,7 +116,7 @@ watch(isMenuOpen, async () => {
   left: 50%;
   bottom: -35px;
   transform: translateX(-50%);
-  max-height: 10rem;
+  max-height: 20rem;
 }
 }
 
