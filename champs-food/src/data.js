@@ -209,7 +209,7 @@ export const foodItems = [
     },
     {
       name: 'SPICY CHICKEN® W/ CHEESE',
-      description: '100% all white meat spicy crispy chicken fillet with melty Swiss style cheese, tomato, lettuce & mayo on a toasted buttery bakery bun.',
+      description: '100% all white meat spicy crispy chicken fillet with melty Swiss style cheese, juicy tomato, lettuce & mayo on a toasted buttery bakery bun.',
       price: 5.99,
       images: {
         small: '/images/food/Spicy_Chicken_W_Cheese_small.png',
