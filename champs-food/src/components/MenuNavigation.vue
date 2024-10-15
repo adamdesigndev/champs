@@ -1,5 +1,4 @@
 <!-- MenuNavigation.vue -->
-<!-- MenuNavigation.vue -->
 <template>
   <h1 class="header-2 fade-in-down" ref="header">Menu</h1>
   <nav>
