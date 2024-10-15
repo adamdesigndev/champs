@@ -1,6 +1,6 @@
-Food Ordering App
+Champs App
 
-The Food Ordering App is a web-based application that allows users to browse food items, add items to a shopping cart, and proceed to checkout with payment information. The app is built with Vue.js using the Composition API and localStorage for persisting cart data. It features a dynamic menu with category filtering, a cart management system, and checkout functionality.
+Champs App is a web-based application that allows users to browse food items, add items to a shopping cart, and proceed to checkout with payment information. The app is built with Vue.js using the Composition API and localStorage for persisting cart data. It features a dynamic menu with category filtering, a cart management system, and checkout functionality.
 
 Table of Contents
 
