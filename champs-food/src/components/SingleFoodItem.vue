@@ -9,9 +9,15 @@
             <router-link :to="'/menu'" class="back-menu"><span class="back-arrow"><</span> Menu</router-link>
             <!-- Picture element for responsive images -->
             <picture>
+<<<<<<< HEAD
               <source :srcset="item.images.medium" media="(max-width: 850px)" />
               <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left" />
             </picture>
+=======
+            <source :srcset="item.images.medium" media="(max-width: 850px)" />
+            <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left single-food-item-card-img" />
+          </picture>
+>>>>>>> Main-New
           </div>
           <!-- Buy card with food item details and actions -->
           <div class="single-food-item-buy-card fade-in-down" ref="buyCard">
@@ -234,6 +240,26 @@ watch(
   padding: 0rem;
   box-shadow: none;
 
+}
+}
+
+@media (width < 500px) {
+  .wrapper-single-food-item-buy-card-img {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+ 
+}
+  
+  .single-food-item-card-img{
+  max-height: 120px;
+  margin: auto;
+
+}
+
+.size-square {
+  height: 50px;
+  width: 50px;
 }
 }
 

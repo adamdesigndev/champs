@@ -1,15 +1,16 @@
 <!-- HeroSection.vue -->
+<!-- HeroSection.vue -->
 <template>
   <section class="wrapper-outer-hero-home">
     <div class="wrapper-inner-hero-content wrapper-general">
-      <div class="wrapper-inner-hero-left fade-in" ref="heroLeft">
+      <div class="wrapper-inner-hero-left fade-in-left" ref="heroLeft">
         <h1 class="header-1">{{ heading }}</h1>
         <p class="body-bottom-button">{{ subheading }}</p>
         <router-link :to="buttonLink">
           <button class="main-btn">{{ buttonText }}</button>
         </router-link>
       </div>
-      <div class="wrapper-inner-hero-right fade-in" ref="heroRight">
+      <div class="wrapper-inner-hero-right fade-in-right" ref="heroRight">
         <picture>
           <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
           <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
@@ -43,8 +44,8 @@ onMounted(() => {
     heroRight.value.classList.add('fade-in-no-move');
   } else {
     setTimeout(() => {
-      heroLeft.value.classList.add('animate');
-      heroRight.value.classList.add('animate');
+      heroLeft.value.classList.add('animate-left');
+      heroRight.value.classList.add('animate-right');
     }, 500); // 0.5 second delay
   }
 });
@@ -70,9 +71,8 @@ onMounted(() => {
   max-width: 400px;
 }
 
-.fade-in {
+.fade-in-left, .fade-in-right {
   opacity: 0;
-  transform: translateY(0);
 }
 
 .fade-in-no-move {
@@ -88,22 +88,26 @@ onMounted(() => {
   }
 }
 
-.animate.fade-in {
-  animation: fadeInFromTop 0.5s ease-out forwards;
-}
-
-@keyframes fadeInFromTop {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.animate-left.fade-in-left {
+  animation: fadeInFromLeft 0.5s ease-out forwards;
 }
 
 @keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-right.fade-in-right {
+  animation: fadeInFromRight 0.5s ease-out forwards;
+}
+
+@keyframes fadeInFromRight {
   0% {
     opacity: 0;
     transform: translateX(30px);
@@ -112,16 +116,6 @@ onMounted(() => {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.fade-in-top {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.fade-in-left {
-  opacity: 0;
-  transform: translateX(-20px);
 }
 
 /* Media query for mobile devices */
@@ -134,8 +128,7 @@ onMounted(() => {
   }
 
   .wrapper-inner-hero-content {
-  grid-template-columns: 1fr;
-  
-}
+    grid-template-columns: 1fr;
+  }
 }
 </style>

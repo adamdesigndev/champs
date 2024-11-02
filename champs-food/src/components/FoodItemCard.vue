@@ -6,11 +6,17 @@
     <router-link :to="{ name: 'SingleFoodItem', params: { name: item.name } }">
       <!-- Food item image -->
       <img :src="item.images.small" :alt="item.name">
+<<<<<<< HEAD
       <!-- Food item name -->
       <h6 class="header-6">{{ item.name }}</h6>
       <!-- Food item price (single price or minimum price from sizes) -->
       <p v-if="item.price">${{ item.price }}</p>
       <p v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
+=======
+      <h6 class="header-6 menu-card-name">{{ item.name }}</h6>
+      <p class="menu-card-price" v-if="item.price">${{ item.price }}</p>
+      <p class="menu-card-price" v-if="item.sizes">${{ Math.min(...Object.values(item.sizes)) }}</p>
+>>>>>>> Main-New
     </router-link>
   </div>
 </template>
@@ -41,6 +47,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   min-height: 275px;
   text-align: center;
   opacity: 1; /* Ensure the card stays visible */
@@ -60,11 +67,12 @@ onMounted(() => {
 @media (width < 570px) {
   .food-item-card {
   padding: 0rem;
-  min-width: 200px;
-  min-height: 250px;
+  min-width: 0px;
+  min-height: 170px;
 }
 
 .food-item-card img {
+  max-height: 80px;
   margin-bottom: .3rem;
 }
 
@@ -72,6 +80,15 @@ onMounted(() => {
   .food-item-card:hover {
   background-color: rgba(0,0,0,0);
   filter: none;
+}
+
+.menu-card-name {
+  max-width: 200px;
+  text-align: center;
+}
+
+.menu-card-price {
+  font-size: var(--fs-300);
 }
 }
 </style>

@@ -1,4 +1,5 @@
 <!-- Header.vue -->
+<!-- Header.vue -->
 <template>
   <!-- Main header wrapper -->
   <header class="wrapper-header-outer">
@@ -6,7 +7,11 @@
     <nav class="wrapper-nav-inner">
       <!-- Hamburger menu for mobile view -->
       <button class="hamburger mobile-header" @click="toggleMenu" :class="{ 'fade-in': shouldAnimate && isHomePage }">
-        <img src="/images/mobile-nav-hamburger.svg" alt="Hamburger Menu" />
+        <img 
+          :src="isMenuOpen ? '/images/close-menu.svg' : '/images/mobile-nav-hamburger.svg'" 
+          :alt="isMenuOpen ? 'Close Menu' : 'Hamburger Menu'"
+          :class="isMenuOpen ? 'close-icon' : 'hamburger-icon'"
+        />
       </button>
       <!-- Navigation links for desktop view -->
       <ul :class="['nav-menu-links', 'desktop-header', { 'fade-in': shouldAnimate && isHomePage }]">
@@ -202,7 +207,7 @@ watch(route, (newRoute, oldRoute) => {
 
 .cart-notification {
   position: absolute;
-  top: -15px;
+  top: -10px;
   left: 10px;
   background-color: var(--clr-primary);
   color: #ffffff;
@@ -248,6 +253,10 @@ watch(route, (newRoute, oldRoute) => {
   width: 25px;
 }
 
+.hamburger img.close-icon {
+  width: 20px; 
+}
+
 @media (width < 851px) {
   .mobile-header {
     display: flex;
@@ -257,6 +266,18 @@ watch(route, (newRoute, oldRoute) => {
   .desktop-header {
     display: none;
   }
+}
+
+@media (width < 570px) {
+  .cart-icon {
+  width: 1.4rem;
+  padding-right: .2rem;
+}
+
+.cart-notification {
+  min-width: 28px;
+  font-size: var(--fs-100);
+}
 }
 
 /* Fade-in animation */

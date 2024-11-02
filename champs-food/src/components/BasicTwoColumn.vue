@@ -1,12 +1,16 @@
 <!-- BasicTwoColumn.vue -->
 <template>
+<<<<<<< HEAD
   <!-- Section container with conditional classes -->
   <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" ref="section">
+=======
+  <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" :style="backgroundImageStyle" ref="section">
+>>>>>>> Main-New
     <div class="wrapper-general">
       <div :class="['wrapper-basic-two-up', { 'wrapper-reverse': reverse }]">
         <!-- Left inner wrapper with conditional animation classes -->
         <div class="wrapper-inner-left" :class="[fadeInClass, { 'animate': !isAboutPage && hasHeader && isVisible, 'initial-hidden': !isAboutPage && hasHeader }]">
-          <h2 :class="['header-2', { 'white-text': textWhite }]">
+          <h2 :class="['header-2', { 'white-text': textWhite, 'header-2-large': largeHeader }]">
             {{ header }}
           </h2>
           <img
@@ -42,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 // Define props for the component
@@ -77,6 +81,14 @@ const props = defineProps({
   hideButton: {
     type: Boolean,
     default: false,
+  },
+  backgroundImage: {
+    type: String,
+    default: ''
+  },
+  largeHeader: {
+    type: Boolean,
+    default: false,
   }
 });
 
@@ -88,7 +100,20 @@ const hasHeader = ref(!!props.header);
 const isAboutPage = ref(route.path === '/About');
 const fadeInClass = ref('');
 
+<<<<<<< HEAD
 // Lifecycle hook to handle mounted logic
+=======
+const backgroundImageStyle = computed(() => {
+  return props.backgroundImage ? { 
+    backgroundImage: `url(${props.backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+
+  } : {};
+});
+
+>>>>>>> Main-New
 onMounted(() => {
   if (isAboutPage.value) {
     fadeInClass.value = 'fade-in';
@@ -196,6 +221,15 @@ onBeforeUnmount(() => {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+.header-2 {
+  font-size: var(--fs-800);
+}
+
+.header-2-large {
+  font-size: var(--fs-1000);
+  line-height: .9;
+}
+
 /* Media query for mobile devices */
 @media (width < 880px) {
   .wrapper-inner-left {
@@ -204,5 +238,14 @@ onBeforeUnmount(() => {
   .wrapper-inner-right {
     order: 1;
   }
+}
+
+@media (width < 570px) {
+  .wrapper-basic-two-up {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
 }
 </style>
