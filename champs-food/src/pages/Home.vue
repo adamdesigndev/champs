@@ -1,6 +1,7 @@
 <!-- Home.vue -->
 <template>
   <div>
+    <!-- Hero Section: Top of the page with main call-to-action -->
     <HeroSection
       :heading="heroHeading"
       :subheading="heroSubheading"
@@ -10,7 +11,11 @@
       :imageSrcSmall="heroImageSrcSmall"
       :imageAlt="heroImageAlt"
     />
+
+    <!-- Three Column Section: Highlights key features or information -->
     <ThreeColumnSection />
+
+    <!-- Basic Two Column Sections: Main content sections with optional configurations -->
     <BasicTwoColumn
       :imageSrc="firstTwoColumnImageSrc"
       :imageAlt="firstTwoColumnImageAlt"
@@ -25,6 +30,7 @@
       backgroundImage="/path/to/your/background-image.jpg"
       :largeHeader="false"
     />
+
     <BasicTwoColumn
       :imageSrc="secondTwoColumnImageSrc"
       :imageSrcSmall="imageSrcSmall"
@@ -40,6 +46,7 @@
       backgroundImage="public/images/Champs-pattern-3.png"
       :largeHeader="true"
     />
+
     <BasicTwoColumn
       :imageSrc="thirdTwoColumnImageSrc"
       :imageAlt="thirdTwoColumnImageAlt"
@@ -59,10 +66,12 @@
 </template>
 
 <script setup>
+// Importing page components
 import HeroSection from "../components/HeroSection.vue";
 import ThreeColumnSection from "../components/ThreeColumnSection.vue";
 import BasicTwoColumn from "../components/BasicTwoColumn.vue";
 
+// Hero section content
 const heroHeading = "Chicken for the Champs";
 const heroSubheading = "Delicious food, ready to serve!";
 const heroButtonText = "View Menu";
@@ -71,15 +80,15 @@ const heroImageSrc = "/images/Spicy_Chicken_W_Cheese_Hero.png";
 const heroImageSrcSmall = "/images/Spicy_Chicken_W_Cheese_hero-mobile.png";
 const heroImageAlt = "Delicious food";
 
-const firstTwoColumnImageSrc =
-  "/images/DALL·E 2024-06-06 20.35.05 - A fast food restaurant employee, a female wearing a red uniform and cap, serving food to a family. The focus is more on the female employee, who is ha.webp";
+// First two-column section content
+const firstTwoColumnImageSrc = "/images/DALL·E 2024-06-06 20.35.05 - A fast food restaurant employee, a female wearing a red uniform and cap, serving food to a family. The focus is more on the female employee, who is ha.webp";
 const firstTwoColumnImageAlt = "";
 const firstTwoColumnHeader = "Who we are";
-const firstTwoColumnBody =
-  "It’s a responsibility we take seriously ‒ because we know when our communities thrive, so does our business. By thinking globally and acting locally, we are better equipped to effectively support our customers, our employees and the communities we are all part of.";
+const firstTwoColumnBody = "It’s a responsibility we take seriously ‒ because we know when our communities thrive, so does our business. By thinking globally and acting locally, we are better equipped to effectively support our customers, our employees and the communities we are all part of.";
 const firstTwoColumnButtonText = "Learn More";
 const firstTwoColumnButtonLink = "/About";
 
+// Second two-column section content
 const secondTwoColumnImageSrc = "/images/Grilled-Chicken-Sandwich-home.png";
 const imageSrcSmall = "/images/Grilled-Chicken-Sandwich-mobile.png";
 const secondTwoColumnImageAlt = "";
@@ -88,10 +97,11 @@ const secondTwoColumnBody = "";
 const secondTwoColumnButtonText = "Get It Now";
 const secondTwoColumnButtonLink = "/food/GRILLED CHICKEN SANDWICH";
 
+// Third two-column section content
 const thirdTwoColumnImageSrc = "/images/Champs-app.png";
 const thirdTwoColumnImageAlt = "";
 const thirdTwoColumnHeader = "Free Spicy Chicken w/ $1 min. purchase";
-const thirdTwoColumnBody = "Vist the app store for more deals and offers!";
+const thirdTwoColumnBody = "Visit the app store for more deals and offers!";
 const thirdTwoColumnButtonText = "Learn More";
 const thirdTwoColumnButtonLink = "/About";
 </script>

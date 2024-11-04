@@ -3,23 +3,30 @@
   <div class="user-payment">
     <h2 class="header-4 user-payment-stagger">Payment Info</h2>
     <form class="wrapper-user-payment body-bottom-button" @submit.prevent="submitPaymentInfo">
+      <!-- Card Number Input with formatting and validation -->
       <label class="form-label user-payment-stagger">
         Card Number
         <input class="form-input" type="text" v-model="formattedCardNumber" required maxlength="19" @input="validateCardNumber">
         <span v-if="!isCardNumberValid && showErrors" class="error-message">Please input a valid card number</span>
       </label>
+
       <div class="user-payment-date-ccv">
+        <!-- Expiration Date Input with formatting and validation -->
         <label class="form-label user-payment-stagger">
           Expiration Date
           <input class="form-input" type="text" v-model="formattedExpirationDate" required maxlength="5" @input="validateExpirationDate">
           <span v-if="!isExpirationDateValid && showErrors" class="error-message">Please input a valid expiration date</span>
         </label>
+
+        <!-- CCV Input with validation -->
         <label class="form-label user-payment-stagger">
           CCV
           <input class="form-input" type="text" v-model="userPayment.ccv" required maxlength="3" @input="validateCCV">
           <span v-if="!isCCVValid && showErrors" class="error-message">Please input a valid CCV</span>
         </label>
       </div>
+
+      <!-- Submit Button to place order -->
       <button class="main-btn user-payment-stagger" type="submit">Place Order</button>
     </form>
   </div>
@@ -29,17 +36,17 @@
 import { ref, computed, onMounted } from 'vue';
 import { useCheckoutStore } from '../../useCheckoutStore.js';
 
+// Access payment info from checkout store
 const { userPayment } = useCheckoutStore();
-
-userPayment.cardNumber = "1085268432574025";
-userPayment.expirationDate = "0105";
-userPayment.ccv = "558";
 
 const isCardNumberValid = ref(true);
 const isExpirationDateValid = ref(true);
 const isCCVValid = ref(true);
 const showErrors = ref(false);
 
+const emit = defineEmits(['placeOrder']); // Emits 'placeOrder' event upon form submission
+
+// Computed property for formatted card number with spaces
 const formattedCardNumber = computed({
   get() {
     return userPayment.cardNumber.replace(/(\d{4})(?=\d)/g, '$1 ');
@@ -49,6 +56,7 @@ const formattedCardNumber = computed({
   }
 });
 
+// Computed property for formatted expiration date with "/"
 const formattedExpirationDate = computed({
   get() {
     return userPayment.expirationDate.replace(/(\d{2})(?=\d)/, '$1/');
@@ -58,26 +66,39 @@ const formattedExpirationDate = computed({
   }
 });
 
-const emit = defineEmits(['placeOrder']);
-
+/**
+ * Validates card number to ensure it contains 16 digits
+ * @param {Event} event - Input event from card number field
+ */
 const validateCardNumber = (event) => {
   const value = event.target.value.replace(/\s+/g, '').slice(0, 16);
   userPayment.cardNumber = value;
   isCardNumberValid.value = value.length === 16;
 };
 
+/**
+ * Validates expiration date format (MMYY)
+ * @param {Event} event - Input event from expiration date field
+ */
 const validateExpirationDate = (event) => {
   const value = event.target.value.replace(/\D/g, '').slice(0, 4);
   userPayment.expirationDate = value;
   isExpirationDateValid.value = value.length === 4;
 };
 
+/**
+ * Validates CCV to ensure it contains 3 digits
+ * @param {Event} event - Input event from CCV field
+ */
 const validateCCV = (event) => {
   const value = event.target.value.replace(/[^0-9]/g, '').slice(0, 3);
   userPayment.ccv = value;
   isCCVValid.value = value.length === 3;
 };
 
+/**
+ * Submits payment information, validating all fields before proceeding
+ */
 const submitPaymentInfo = () => {
   showErrors.value = true;
   validateCardNumber({ target: { value: userPayment.cardNumber } });
@@ -89,8 +110,8 @@ const submitPaymentInfo = () => {
   }
 };
 
+// Staggered animations for form fields on mount
 onMounted(() => {
-  // Start animation immediately without delay
   const elements = document.querySelectorAll('.user-payment-stagger');
   elements.forEach((element, index) => {
     setTimeout(() => {
@@ -101,15 +122,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Fade-in animation for form fields */
 @keyframes fadeInUpUserPayment {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .user-payment-stagger {
@@ -121,10 +137,7 @@ onMounted(() => {
   animation: fadeInUpUserPayment 0.3s forwards;
 }
 
-.user-payment label {
-  margin-bottom: 0.5rem;
-}
-
+/* Layout for payment form */
 .wrapper-user-payment {
   display: flex;
   flex-direction: column;
@@ -137,6 +150,7 @@ onMounted(() => {
   gap: 1rem;
 }
 
+/* Error message styling */
 .error-message {
   color: red;
   font-size: 0.875rem;

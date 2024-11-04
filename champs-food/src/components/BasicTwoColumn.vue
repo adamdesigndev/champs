@@ -1,10 +1,24 @@
 <!-- BasicTwoColumn.vue -->
 <template>
-  <section :class="['wrapper-basic-outer-section', { 'special-two-up': red }]" :style="backgroundImageStyle" ref="section">
+  <!-- Two-column section with conditional styling and background image -->
+  <section 
+    :class="['wrapper-basic-outer-section', { 'special-two-up': red }]"
+    :style="backgroundImageStyle"
+    ref="section"
+  >
     <div class="wrapper-general">
       <div :class="['wrapper-basic-two-up', { 'wrapper-reverse': reverse }]">
-        <div class="wrapper-inner-left" :class="[fadeInClass, { 'animate': !isAboutPage && hasHeader && isVisible, 'initial-hidden': !isAboutPage && hasHeader }]">
-          <h2 :class="['header-2', { 'white-text': textWhite, 'header-2-large': largeHeader }]">
+        <!-- Left column with header, text, button, and optional App Store icon -->
+        <div 
+          class="wrapper-inner-left" 
+          :class="[
+            fadeInClass, 
+            { 'animate': !isAboutPage && hasHeader && isVisible, 'initial-hidden': !isAboutPage && hasHeader }
+          ]"
+        >
+          <h2 
+            :class="['header-2', { 'white-text': textWhite, 'header-2-large': largeHeader }]"
+          >
             {{ header }}
           </h2>
           <img
@@ -14,20 +28,27 @@
             alt="App Store"
           />
           <p
-            :class="[
-              'main-copy body-bottom-button',
-              { 'white-text': textWhite },
-            ]"
+            :class="['main-copy body-bottom-button', { 'white-text': textWhite }]"
           >
             {{ body }}
           </p>
           <router-link :to="buttonLink">
-            <button :class="['main-btn', { 'button-reverse': buttonReverse }, {'hide-button': hideButton}]">
+            <button 
+              :class="['main-btn', { 'button-reverse': buttonReverse }, {'hide-button': hideButton}]"
+            >
               {{ buttonText }}
             </button>
           </router-link>
         </div>
-        <div class="wrapper-inner-right" :class="[fadeInClass, { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }]">
+        
+        <!-- Right column for image display, including responsive options -->
+        <div 
+          class="wrapper-inner-right" 
+          :class="[
+            fadeInClass, 
+            { 'animate': !isAboutPage && !hasHeader && isVisible, 'initial-hidden': !isAboutPage && !hasHeader }
+          ]"
+        >
           <picture>
             <source :media="'(max-width: 500px)'" :srcset="imageSrcSmall">
             <img class="two-up-section-image" :src="imageSrc" :alt="imageAlt" />
@@ -42,6 +63,7 @@
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
+// Props definition to make component flexible and customizable
 const props = defineProps({
   imageSrc: String,
   imageSrcSmall: String,
@@ -84,6 +106,7 @@ const props = defineProps({
   }
 });
 
+// Route and scroll detection setup
 const route = useRoute();
 const section = ref(null);
 const isVisible = ref(false);
@@ -91,16 +114,17 @@ const hasHeader = ref(!!props.header);
 const isAboutPage = ref(route.path === '/About');
 const fadeInClass = ref('');
 
+// Background image styling with computed property
 const backgroundImageStyle = computed(() => {
   return props.backgroundImage ? { 
     backgroundImage: `url(${props.backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-
   } : {};
 });
 
+// Mounted lifecycle for setting up animations based on page
 onMounted(() => {
   if (isAboutPage.value) {
     fadeInClass.value = 'fade-in';
@@ -108,10 +132,11 @@ onMounted(() => {
   
   if (!isAboutPage.value) {
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    handleScroll(); // Trigger check on mount
   }
 });
 
+// Handles scroll-based animation trigger
 const handleScroll = () => {
   const rect = section.value.getBoundingClientRect();
   if (rect.top <= window.innerHeight * 0.65) {
@@ -120,6 +145,7 @@ const handleScroll = () => {
   }
 };
 
+// Cleanup scroll event listener on component unmount
 onBeforeUnmount(() => {
   if (!isAboutPage.value) {
     window.removeEventListener('scroll', handleScroll);
@@ -206,6 +232,7 @@ onBeforeUnmount(() => {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+/* Large header styling */
 .header-2 {
   font-size: var(--fs-800);
 }
@@ -215,7 +242,7 @@ onBeforeUnmount(() => {
   line-height: .9;
 }
 
-/* Media query for mobile devices */
+/* Responsive adjustments for mobile layout */
 @media (width < 880px) {
   .wrapper-inner-left {
     order: 2;
@@ -227,10 +254,10 @@ onBeforeUnmount(() => {
 
 @media (width < 570px) {
   .wrapper-basic-two-up {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: center;
-}
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
 }
 </style>

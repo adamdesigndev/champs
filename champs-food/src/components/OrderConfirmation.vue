@@ -1,11 +1,14 @@
 <!-- OrderConfirmation.vue -->
 <template>
   <div class="wrapper-order-confirmation">
+    <!-- Confirmation Image -->
     <img
       src="/images/order-confirmed-check.svg"
       alt="Order Confirmed"
       class="order-confirmed-img"
     />
+
+    <!-- Confirmation Text and Return Button -->
     <div class="order-confirmed-text">
       <h1 class="header-2">Order Complete!</h1>
       <p class="main-copy body-bottom-button">
@@ -22,10 +25,16 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+/**
+ * Navigates the user back to the home page
+ */
 const goHome = () => {
   router.push("/");
 };
 
+/**
+ * Triggers fade-in animations for image and text on mount
+ */
 onMounted(() => {
   setTimeout(() => {
     const img = document.querySelector('.order-confirmed-img');
@@ -33,11 +42,12 @@ onMounted(() => {
 
     img.classList.add('fade-in-slide-down');
     text.classList.add('fade-in-slide-up');
-  }, 350); // 1-second delay before starting the animation
+  }, 350); // 0.35-second delay before starting the animation
 });
 </script>
 
 <style scoped>
+/* Fade-in slide-down animation for confirmation image */
 @keyframes fadeInSlideDown {
   from {
     opacity: 0;
@@ -49,6 +59,7 @@ onMounted(() => {
   }
 }
 
+/* Fade-in slide-up animation for confirmation text */
 @keyframes fadeInSlideUp {
   from {
     opacity: 0;
@@ -60,6 +71,7 @@ onMounted(() => {
   }
 }
 
+/* Animation classes */
 .fade-in-slide-down {
   animation: fadeInSlideDown 0.5s ease-in-out forwards;
 }
@@ -68,6 +80,7 @@ onMounted(() => {
   animation: fadeInSlideUp 0.5s ease-in-out forwards;
 }
 
+/* Wrapper for confirmation layout */
 .wrapper-order-confirmation {
   display: flex;
   flex-direction: column;
@@ -76,16 +89,18 @@ onMounted(() => {
   text-align: center;
 }
 
+/* Styling for confirmation image */
 .order-confirmed-img {
   max-width: 300px;
   margin-bottom: 2rem;
-  opacity: 0; /* Start hidden */
+  opacity: 0; /* Hidden initially for fade-in */
 }
 
+/* Styling for confirmation text */
 .order-confirmed-text {
   text-align: center;
   max-width: 600px;
-  opacity: 0; /* Start hidden */
+  opacity: 0; /* Hidden initially for fade-in */
 }
 
 .order-confirmed-text h1,
@@ -94,6 +109,7 @@ onMounted(() => {
   margin-top: 1rem;
 }
 
+/* Styling for return button */
 .order-confirmation button {
   background-color: var(--primary-color);
   color: white;
