@@ -1,56 +1,57 @@
 :root {
-  /* Colors */
-  --clr-body: #292B2F;
-  --clr-primary: #F43737;
-  --clr-primary-100: #FDD7D7;
-  --clr-primary-200: #B42929;
-  --clr-accent-creme: #f7f5f1; 
+  /* Color Palette */
+  --clr-body: #292B2F; /* Main text color */
+  --clr-primary: #F43737; /* Primary action color */
+  --clr-primary-100: #FDD7D7; /* Lighter shade of primary, for backgrounds */
+  --clr-primary-200: #B42929; /* Darker shade of primary, for hover states */
+  --clr-accent-creme: #f7f5f1; /* Accent background color */
 
   /* Font Families */
-  --ff-headers: "Nunito Sans", sans-serif;
-  --font-fam-body: "DM Sans", sans-serif;
+  --ff-headers: "Nunito Sans", sans-serif; /* Font for headers */
+  --font-fam-body: "DM Sans", sans-serif; /* Font for body text */
 
-  /* Font size */
-  --fs-100: .7rem;
-  --fs-200: .9rem;
-  --fs-300: 1rem;
+  /* Font Sizes */
+  /* Creates a scalable typography system */
+  --fs-100: 0.7rem; 
+  --fs-200: 0.9rem;
+  --fs-300: 1rem; 
   --fs-400: 1.225rem;
-  --fs-500: 1.425rem;
+  --fs-500: 1.425rem; 
   --fs-600: 1.8rem;
-  --fs-700: 2rem;
+  --fs-700: 2rem; 
   --fs-800: 2.2rem;
-  --fs-900: 3.2rem;
-  --fs-1000: 3.5rem;
+  --fs-900: 3.2rem; 
+  --fs-1000: 3.5rem; 
 
-
-  /* wrappers */
-  --inner-content-max-width-v1: 1260px;
-  --padding-inline-v1: 1.2rem;
-  --wrapper-outer-padding-tb: 3rem;
-  --content-gap: 2rem;
-  --wrapper-outer-menu-padding-tb: 1.2rem;
+  /* Wrappers and Layout Spacing */
+  --inner-content-max-width-v1: 1260px; /* Max width for content areas */
+  --padding-inline-v1: 1.2rem; /* Padding for inline spacing */
+  --wrapper-outer-padding-tb: 3rem; /* Padding for outer sections */
+  --content-gap: 2rem; /* Default gap between content elements */
+  --wrapper-outer-menu-padding-tb: 1.2rem; /* Padding specifically for menu sections */
 }
 
-/* Font size */
 @media (width > 850px) {
-  /* Font size */
+  /* Larger Screen Adjustments */
+
+  /* Scaled font sizes for better readability on larger screens */
   :root {
-    --fs-100: .7rem;
-    --fs-200: .9rem;
+    --fs-100: 0.7rem;
+    --fs-200: 0.9rem;
     --fs-300: 1rem;
     --fs-400: 1.325rem;
     --fs-500: 1.625rem;
     --fs-600: 2rem;
     --fs-700: 2.5rem;
     --fs-800: 3.5rem;
-    --fs-900: clamp(2rem, 8vw + 1rem, 7rem);
-    --fs-1000: clamp(2.4rem, 9vw + 1rem, 8rem);
+    --fs-900: clamp(2rem, 8vw + 1rem, 7rem); /* Clamped responsive scaling for large headers */
+    --fs-1000: clamp(2.4rem, 9vw + 1rem, 8rem); /* Clamped scaling for the largest headers */
 
- /* wrappers */
- --inner-content-max-width-v1: 1260px;
- --padding-inline-v1: 2rem;
- --wrapper-outer-padding-tb: 6rem;
- --content-gap: 3rem;
- --wrapper-outer-menu-padding-tb: 3rem;
+    /* Larger layout adjustments */
+    --inner-content-max-width-v1: 1260px;
+    --padding-inline-v1: 2rem; /* Increased padding on larger screens */
+    --wrapper-outer-padding-tb: 6rem; /* Increased outer padding for sections */
+    --content-gap: 3rem; /* Increased gap for better spacing */
+    --wrapper-outer-menu-padding-tb: 3rem; /* Increased padding specifically for menus */
   }
 }

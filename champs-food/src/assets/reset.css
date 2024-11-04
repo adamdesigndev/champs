@@ -1,53 +1,72 @@
-/* A simple CSS reset */
+/* reset.css */
+
+/* Basic CSS Reset */
 * {
-    margin: 0;
-    padding: 0;
-  }
-
-  /* reintroduces top spacing except parent element */
-  .flow > * + * {
-    margin-top: 1em;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
+  margin: 0;
+  padding: 0;
 }
 
+/* 
+* Flow spacing utility
+* Adds top margin to all direct children of elements with the "flow" class.
+* Useful for vertical spacing in components.
+*/
+.flow > * + * {
+  margin-top: 1em;
+}
+
+/* 
+* Border-box sizing for all elements, including pseudo-elements.
+* Ensures padding and border are included in element’s total width and height.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove outline for focused form elements */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* Basic styles for input fields */
 input {
-  border-radius: 0px;
-  background-color: rgba(0,0,0,0);
+  border-radius: 0; /* Removes default border-radius */
+  background-color: rgba(0,0,0,0); /* Makes input background transparent */
 }
-  
-  /* resets only if it has a class */
-  ul[class] {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
 
-  a[class] {
-    text-decoration: none;
-    color: inherit;
-    font-weight: inherit;
-    font-style: inherit;
-  }
-  
-  button,
-  input,
-  textarea,
-  select {
-    font: inherit;
-  }
+/* 
+* List reset only if the <ul> has a class applied.
+* Useful for removing default bullet points while allowing customization when needed.
+*/
+ul[class] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  img {
-    display: block;
-    max-width: 100%;
-  }
+/* 
+* Anchor link reset only for elements with a class.
+* Removes default text decoration, inheriting color and font styling for flexible customization.
+*/
+a[class] {
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+/* 
+* Ensures form elements inherit font styles from parent, creating a consistent text appearance.
+*/
+button, input, textarea, select {
+  font: inherit;
+}
+
+/* 
+* Makes images responsive by default.
+* Ensures images are contained within their parent elements, preventing overflow.
+*/
+img {
+  display: block;
+  max-width: 100%;
+}

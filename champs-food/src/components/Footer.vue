@@ -1,8 +1,13 @@
-<!-- Footer.nav -->
+<!-- Footer.vue -->
 <template>
   <footer>
     <div class="footer-content">
-      <router-link to="/"><img class="footer-logo" src="/images/champs-full-logo.svg" alt="Logo"></router-link>
+      <!-- Logo linking back to homepage -->
+      <router-link to="/">
+        <img class="footer-logo" src="/images/champs-full-logo.svg" alt="Logo">
+      </router-link>
+
+      <!-- Navigation links and social media icons -->
       <div class="wrapper-footer-mid">
         <nav>
           <ul class="footer-nav">
@@ -12,11 +17,19 @@
             <li><router-link class="footer-menu-link" to="/Cart">Cart</router-link></li>
           </ul>
         </nav>
+        
+        <!-- Social media links -->
         <div class="wrapper-social-media">
-          <a href="https://www.instagram.com/" target="_blank"><img src="/images/instagram-logo.svg" alt="Instagram"></a>
-          <a href="https://x.com/?lang=en" target="_blank"><img src="/images/x-logo.svg" alt="X"></a>
+          <a href="https://www.instagram.com/" target="_blank">
+            <img src="/images/instagram-logo.svg" alt="Instagram">
+          </a>
+          <a href="https://x.com/?lang=en" target="_blank">
+            <img src="/images/x-logo.svg" alt="X">
+          </a>
         </div>
       </div>
+
+      <!-- Footer legal and miscellaneous links -->
       <div class="wrapper-footer-misc">
         <ul class="misc-links">
           <li>Terms</li>
@@ -24,7 +37,9 @@
           <li>Sales</li>
           <li>Cookies</li>
         </ul>
-        <p class="footer-notes">Copyright 2024 Champs<br/>Developed & Designed by Adam Flores</p>
+        <p class="footer-notes">
+          &copy; 2024 Champs<br />Developed & Designed by Adam Flores
+        </p>
       </div>
     </div>
   </footer>
@@ -34,6 +49,7 @@
 </script>
 
 <style scoped>
+/* Main footer layout */
 .footer-content {
   max-width: 2400px;
   margin-inline: auto;
@@ -43,16 +59,20 @@
   border-top: 2px solid var(--clr-primary);
 }
 
+/* Footer logo styling */
 .footer-logo {
   height: 5rem;
   margin-bottom: 1rem;
 }
+
+/* Footer mid-section layout with nav and social media links */
 .wrapper-footer-mid {
- display: flex;
- flex-direction: column;
- gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
+/* Footer navigation links */
 .footer-nav {
   display: flex;
   flex-direction: row;
@@ -65,11 +85,13 @@
   font-weight: 500;
   color: var(--clr-primary);
 }
+
+/* Footer misc links styling */
 .misc-links {
-display: flex;
-flex-direction: row;
-justify-content: right;
-gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 1rem;
 }
 
 .misc-links li {
@@ -77,51 +99,56 @@ gap: 1rem;
   font-size: var(--fs-200);
   font-weight: 300;
 }
+
+/* Social media icon styling */
 .wrapper-social-media {
-display: flex;
-flex-direction: row;
-gap: 2rem;
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper-social-media img {
   height: 1.7rem;
 }
 
+/* Footer legal and note section */
 .wrapper-footer-misc {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem
+  gap: 2.5rem;
 }
 
+/* Footer notes text styling */
 .footer-notes {
   font-size: var(--fs-100);
   color: var(--clr-primary);
   font-weight: 300;
   text-align: right;
   line-height: 1rem;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
 }
 
+/* Responsive layout adjustments for smaller screens */
 @media (width < 850px) {
   .footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.wrapper-footer-mid {
- gap: 1rem;
- margin-bottom: 1rem;
-}
+  .wrapper-footer-mid {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
 
-.wrapper-footer-misc {
-  gap: 1rem
-}
+  .wrapper-footer-misc {
+    gap: 1rem;
+  }
 
-.footer-notes {
-  text-align: center;
-}
+  .footer-notes {
+    text-align: center;
+  }
 }
 </style>

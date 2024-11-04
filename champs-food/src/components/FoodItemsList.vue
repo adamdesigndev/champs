@@ -1,8 +1,16 @@
 <!-- FoodItemsList.vue -->
 <template>
-  <h2 class="header-3 fade-in-down" ref="header" :class="{ 'initial-animate': initialLoad }" :style="{ animationDelay: `${headerDelay}s` }">
+  <!-- Header showing the selected category or default to 'Menu' -->
+  <h2
+    class="header-3 fade-in-down"
+    ref="header"
+    :class="{ 'initial-animate': initialLoad }"
+    :style="{ animationDelay: `${headerDelay}s` }"
+  >
     {{ selectedCategory || 'Menu' }}
   </h2>
+  
+  <!-- Section for displaying filtered food items -->
   <section class="food-items-list fade-in-up" :class="{ 'initial-animate': initialLoad }">
     <FoodItemCard 
       v-for="(item, index) in filteredItems" 
@@ -17,10 +25,12 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import FoodItemCard from './FoodItemCard.vue';
 import { foodItems } from '../data';
 
+// Define selected category as a prop
 const props = defineProps({
   selectedCategory: String
 });
 
+// Compute filtered items based on the selected category
 const filteredItems = computed(() => {
   if (props.selectedCategory === 'FEATURED') {
     return foodItems.filter(item => item.featured);
@@ -30,11 +40,14 @@ const filteredItems = computed(() => {
     : foodItems;
 });
 
-const initialLoad = ref(true);
-const headerDelay = ref(0);
+const initialLoad = ref(true); // Tracks the initial load state for animations
+const headerDelay = ref(0); // Sets a delay for header animation
 
+/**
+ * Triggers animation for header and food items list
+ */
 const triggerAnimation = () => {
-  headerDelay.value = 0.05; // Set the delay for the initial load
+  headerDelay.value = 0.05; // Initial delay for header animation
   setTimeout(() => {
     const headerElement = document.querySelector('.header-3.initial-animate');
     const listElement = document.querySelector('.food-items-list.initial-animate');
@@ -45,24 +58,27 @@ const triggerAnimation = () => {
     if (listElement) {
       listElement.classList.add('animate');
     }
-  }, 500); // Delay before starting the animation
+  }, 500); // Animation delay
 };
 
+// Initialize animations on component mount
 onMounted(() => {
   if (initialLoad.value) {
     triggerAnimation();
   }
 });
 
+// Watcher for category changes to re-trigger animations
 watch(() => props.selectedCategory, async () => {
-  initialLoad.value = false;
-  await nextTick(); // Wait for the DOM to update
-  initialLoad.value = true;
+  initialLoad.value = false; // Reset animation state
+  await nextTick(); // Wait for DOM to update
+  initialLoad.value = true; // Re-trigger animation on new category
   triggerAnimation();
 });
 </script>
 
 <style scoped>
+/* Grid layout for food items */
 .food-items-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -82,8 +98,8 @@ watch(() => props.selectedCategory, async () => {
 }
 
 .fade-in-down {
-  opacity: 1; /* Ensure the h2 stays visible */
-  transform: translateY(0); /* Ensure the h2 stays in place */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .initial-animate {
@@ -92,10 +108,10 @@ watch(() => props.selectedCategory, async () => {
 }
 
 .animate.initial-animate {
-  animation: fadeInDown .3s ease-out forwards;
+  animation: fadeInDown 0.3s ease-out forwards;
 }
 
-/* Slide-up fade-in animation for food items */
+/* Slide-up fade-in animation for food items list */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -108,8 +124,8 @@ watch(() => props.selectedCategory, async () => {
 }
 
 .fade-in-up {
-  opacity: 1; /* Ensure the section stays visible */
-  transform: translateY(0); /* Ensure the section stays in place */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .initial-animate {
@@ -118,6 +134,6 @@ watch(() => props.selectedCategory, async () => {
 }
 
 .animate.initial-animate {
-  animation: fadeInUp .3s ease-out forwards;
+  animation: fadeInUp 0.3s ease-out forwards;
 }
 </style>

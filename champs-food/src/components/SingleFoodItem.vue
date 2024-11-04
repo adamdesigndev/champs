@@ -5,17 +5,26 @@
       <div class="wrapper-general">
         <div class="wrapper-with-info-card-right">
           <div>
-            <router-link :to="'/menu'" class="back-menu"><span class="back-arrow"><</span> Menu</router-link>
+            <!-- Back link to Menu -->
+            <router-link :to="'/menu'" class="back-menu">
+              <span class="back-arrow"><</span> Menu
+            </router-link>
+
+            <!-- Item image with responsive support -->
             <picture>
-            <source :srcset="item.images.medium" media="(max-width: 850px)" />
-            <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left single-food-item-card-img" />
-          </picture>
+              <source :srcset="item.images.medium" media="(max-width: 850px)" />
+              <img :src="item.images.large" :alt="item.name" ref="image" class="fade-in-left single-food-item-card-img" />
+            </picture>
           </div>
+
+          <!-- Item details and action card -->
           <div class="single-food-item-buy-card fade-in-down" ref="buyCard">
             <div ref="buyCardContent" class="content-wrapper">
               <h3 class="header-4 fade-in-up">{{ item.name }}</h3>
               <p class="main-copy fade-in-up">{{ item.description }}</p>
             </div>
+
+            <!-- Size selection -->
             <div v-if="item.sizes" class="fade-in-up">
               <h6 class="header-6">Select size</h6>
               <div class="wrapper-size-selecter">
@@ -45,13 +54,13 @@
                 </button>
               </div>
             </div>
+
+            <!-- Quantity selection and add-to-cart button -->
             <div class="wrapper-qauntity-add-to-cart fade-in-up">
               <div class="wrapper-quanitity">
                 <h6 class="header-6 header-quanitity">Quantity</h6>
                 <div class="quanitiy-picker">
-                  <button class="minus-qty" @click="updateQuantity(-1)">
-                    -
-                  </button>
+                  <button class="minus-qty" @click="updateQuantity(-1)">-</button>
                   <p class="food-item-amount-number">{{ quantity }}</p>
                   <button class="plus-qty" @click="updateQuantity(1)">+</button>
                 </div>
@@ -61,9 +70,7 @@
                 @click="addOrUpdateCart(item)"
               >
                 <p>{{ isEditing ? 'Update' : 'Add To Cart' }}</p>
-                <p class="single-item-price-in-button">
-                  {{ totalPriceFormatted }}
-                </p>
+                <p class="single-item-price-in-button">{{ totalPriceFormatted }}</p>
               </button>
             </div>
           </div>
@@ -87,32 +94,43 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
-const isEditing = ref(false);
+const isEditing = ref(false); // Tracks if editing an existing item in the cart
 
-const selectedSize = ref("medium"); // Default to 'medium'
+// Default state
+const selectedSize = ref("medium");
 const quantity = ref(1);
 const initialLoad = ref(true);
 
+/**
+ * Sets the selected size for the item
+ * @param {string} size - Size selected by the user
+ */
 const selectSize = (size) => {
   selectedSize.value = size;
 };
 
+/**
+ * Updates the item quantity
+ * @param {number} amount - Amount to increase or decrease the quantity
+ */
 const updateQuantity = (amount) => {
   quantity.value = Math.max(1, quantity.value + amount); // Ensure quantity is at least 1
 };
 
+// Computed property for total price based on selected size and quantity
 const totalPrice = computed(() => {
-  if (props.item.sizes) {
-    return quantity.value * props.item.sizes[selectedSize.value];
-  } else {
-    return quantity.value * props.item.price;
-  }
+  return quantity.value * (props.item.sizes?.[selectedSize.value] || props.item.price);
 });
 
+// Formatted total price for display
 const totalPriceFormatted = computed(() => {
   return `$${totalPrice.value.toFixed(2)}`;
 });
 
+/**
+ * Adds or updates the item in the cart and redirects to the appropriate page
+ * @param {Object} item - The item to add or update in the cart
+ */
 const addOrUpdateCart = (item) => {
   const cartItem = {
     ...item,
@@ -129,38 +147,39 @@ const addOrUpdateCart = (item) => {
   }
 };
 
+// Initialize component animations and set editing state if applicable
 onMounted(() => {
   setTimeout(() => {
     initialLoad.value = false;
     document.querySelector('.fade-in-left').classList.add('animate');
     document.querySelector('.fade-in-down').classList.add('animate');
     setTimeout(() => {
-      const fadeUpElements = document.querySelectorAll('.fade-in-up');
-      fadeUpElements.forEach(el => el.classList.add('animate'));
-    }, 0); // Delay before starting the child elements animation
-  }, 500); // 1-second delay before starting the animation
-});
+      document.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('animate'));
+    }, 0);
+  }, 500);
 
-if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
-  const { size, quantity: editQuantity } = cartStore.currentEditItem;
-  selectedSize.value = size;
-  quantity.value = editQuantity;
-  isEditing.value = true;
-}
+  if (route.query.edit && cartStore.isEditing && cartStore.currentEditItem) {
+    const { size, quantity: editQuantity } = cartStore.currentEditItem;
+    selectedSize.value = size;
+    quantity.value = editQuantity;
+    isEditing.value = true;
+  }
+});
 
 // Watch for changes in the item prop to set the default size
 watch(
   () => props.item,
   (newItem) => {
     if (newItem && newItem.sizes) {
-      selectedSize.value =
-        "medium" in newItem.sizes ? "medium" : Object.keys(newItem.sizes)[0];
+      selectedSize.value = "medium" in newItem.sizes ? "medium" : Object.keys(newItem.sizes)[0];
     }
   }
 );
 </script>
 
 <style scoped>
+/* Styles for size selection, item details, and animations */
+
 .wrapper-size-selecter {
   display: flex;
   flex-direction: row;
@@ -168,7 +187,7 @@ watch(
 }
 
 .single-size {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
@@ -190,59 +209,6 @@ watch(
   color: #fff;
 }
 
-.size-square-text-below {
-  font-size: var(--fs-200);
-  color: var(--clr-body);
-}
-
-.size-square:hover {
-  background-color: var(--clr-primary);
-  color: #fff;
-}
-
-.single-food-item-buy-card {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  background-color: var(--clr-accent-creme);
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0.5rem 1rem rgba(73, 73, 73, 0.25);
-  align-self: start;
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-@media (width < 851px) {
-  .single-food-item-buy-card {
-  gap: 1.5rem;
-  background-color: rgb(0, 0, 0, 0);
-  padding: 0rem;
-  box-shadow: none;
-
-}
-}
-
-@media (width < 500px) {
-  .wrapper-single-food-item-buy-card-img {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
- 
-}
-  
-  .single-food-item-card-img{
-  max-height: 120px;
-  margin: auto;
-
-}
-
-.size-square {
-  height: 50px;
-  width: 50px;
-}
-}
-
 .single-food-item img {
   width: 100%;
   opacity: 0;
@@ -255,76 +221,10 @@ watch(
   gap: 0.5rem;
 }
 
-.wrapper-quanitity {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.header-quanitity {
-  margin-bottom: 0rem;
-}
-
-.quanitiy-picker {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  max-width: 200px;
-}
-
-.quanitiy-picker button {
-  padding: 0rem 0.8rem;
-  border: none;
-  background-color: rgb(0, 0, 0, 0);
-  font-size: var(--fs-500);
-  font-weight: 500;
-  color: var(--clr-body);
-  cursor: pointer;
-}
-
-.food-item-amount-number {
-  text-align: center;
-  font-size: var(--fs-500);
-  margin: auto;
-}
-
-.single-food-item button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
-.add-item-with-price {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.back-menu{
- font-size: var(--fs-300);
- font-weight: 600;
- color: var(--clr-body);
-}
-.back-arrow {
-  font-size: var(--fs-400);
-  color: var(--clr-primary);
-}
-
-/* Slide-in fade-in from left animation */
+/* Fade-in animations */
 @keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 .fade-in-left {
@@ -333,7 +233,7 @@ watch(
 }
 
 .animate.fade-in-left {
-  animation: fadeInLeft .5s ease-out forwards;
+  animation: fadeInLeft 0.5s ease-out forwards;
 }
 
 /* Slide-down fade-in animation */

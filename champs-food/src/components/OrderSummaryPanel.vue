@@ -1,6 +1,7 @@
 <!-- OrderSummaryPanel.vue -->
 <template>
   <aside class="menu-cart-card-right cart-summary fade-in">
+    <!-- Header for order summary and toggle button for item view -->
     <div class="card-header-cart">
       <h2 class="header-5 order-summary-stagger">Order Summary</h2>
       <div class="wrapper-total-items-in-cart order-summary-stagger">
@@ -10,6 +11,8 @@
         </button>
       </div>
     </div>
+
+    <!-- List of items in the cart, displayed if viewAll is true -->
     <div class="panel-list-items" v-show="viewAll">
       <div
         v-for="item in cartStore.items"
@@ -31,6 +34,7 @@
       </div>
     </div>
 
+    <!-- Summary of cart prices: subtotal, tax, and grand total (if on checkout page) -->
     <div class="cart-price-order-details">
       <div class="inner-cart-price-order-details order-summary-stagger">
         <p class="cart-total-details">Subtotal:</p>
@@ -45,6 +49,8 @@
         <p class="cart-total-details cart-grand-js">${{ total.toFixed(2) }}</p>
       </div>
     </div>
+
+    <!-- Checkout button with total amount, hidden on checkout page -->
     <button class="main-btn add-item-with-price order-summary-stagger" @click="proceedToCheckout" v-if="!isCheckoutPage">
       <p>Checkout</p>
       <p class="cart-grand-js">${{ total.toFixed(2) }}</p>
@@ -57,12 +63,13 @@ import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { cartStore } from "../../cartStore";
 
+// Toggle view for full item list
 const viewAll = ref(false);
-
 const toggleViewAll = () => {
   viewAll.value = !viewAll.value;
 };
 
+// Computed properties for total items, subtotal, tax, and total
 const totalItems = computed(() =>
   cartStore.items.reduce((sum, item) => sum + item.quantity, 0)
 );
@@ -77,59 +84,52 @@ const route = useRoute();
 const isCheckoutPage = computed(() => route.name === 'Checkout');
 const isCartPage = computed(() => route.name === 'Cart');
 
+/**
+ * Navigates to the checkout page
+ */
 const proceedToCheckout = () => {
   router.push({ name: 'Checkout' });
 };
 
+/**
+ * Capitalizes the first letter of a string
+ * @param {string} string - The string to capitalize
+ * @returns {string} - Capitalized string
+ */
 const capitalizeFirstLetter = (string) => {
   if (!string) return '';
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+// Animation setup on mount for order summary staggered effect
 onMounted(() => {
+  const elements = document.querySelectorAll('.order-summary-stagger');
   if (isCartPage.value) {
-    // Apply fade-in without movement
-    const elements = document.querySelectorAll('.order-summary-stagger');
-    elements.forEach((element) => {
-      element.classList.add('fade-in-no-move');
-    });
+    elements.forEach((element) => element.classList.add('fade-in-no-move'));
   } else {
-    // Original staggered animation with movement
     setTimeout(() => {
-      const elements = document.querySelectorAll('.order-summary-stagger');
       elements.forEach((element, index) => {
-        setTimeout(() => {
-          element.classList.add('staggered');
-        }, index * 50); // Stagger each element by 50ms
+        setTimeout(() => element.classList.add('staggered'), index * 50);
       });
-    }, 250); // Delay before starting the stagger
+    }, 250);
   }
 });
 </script>
 
 <style scoped>
+/* Animation keyframes for order summary */
 @keyframes fadeInUpOrderSummary {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInContainer {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .fade-in {
-  animation: fadeInContainer 0.5s forwards; /* Immediate fade-in animation for the container */
+  animation: fadeInContainer 0.5s forwards;
 }
 
 .fade-in-no-move {
@@ -146,21 +146,21 @@ onMounted(() => {
   animation: fadeInUpOrderSummary 0.5s forwards;
 }
 
+/* Style for cart summary container */
 .cart-summary {
-  gap: 2rem; 
+  gap: 2rem;
 }
 
 .wrapper-total-items-in-cart {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Toggle view button */
 .btn-view-all {
-  background-color: rgba(0,0,0,0);
+  background-color: transparent;
   padding: 0 5px;
-  line-height: 0;
   border: none;
   cursor: pointer;
 }
@@ -174,11 +174,12 @@ onMounted(() => {
 .panel-item {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  border-bottom: 1px rgb(219, 219, 219) solid;
+  border-bottom: 1px solid rgb(219, 219, 219);
   gap: 1rem;
   padding-bottom: 1rem;
 }
 
+/* Styling for item quantity and price */
 .size-quantity-details {
   font-size: var(--fs-300);
   color: rgb(103, 103, 103);
@@ -187,7 +188,6 @@ onMounted(() => {
 .panel-price-quantity {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-align: right;
 }
 
@@ -197,9 +197,7 @@ onMounted(() => {
 
 .inner-cart-price-order-details {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
 }
 
 .cart-total-details {
@@ -208,19 +206,17 @@ onMounted(() => {
 
 .add-item-with-price {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
 }
 
 .view-btn {
- max-height: 10px;
+  max-height: 10px;
 }
-
 
 @media (width < 851px) {
   .inner-cart-price-order-details {
-  gap: .5rem;
-}
+    gap: 0.5rem;
+  }
 }
 </style>

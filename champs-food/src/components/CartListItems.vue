@@ -1,7 +1,6 @@
-<!-- @format -->
-
 <!-- CartListItems.vue -->
 <template>
+  <!-- Cart list section with fade-in effect if on the Cart page -->
   <section :class="['cart-list', fadeInClass]">
     <CartFoodItem
       v-for="item in cartStore.items"
@@ -18,8 +17,9 @@ import { cartStore } from "../../cartStore";
 import CartFoodItem from "./CartFoodItem.vue";
 
 const route = useRoute();
-const fadeInClass = ref('');
+const fadeInClass = ref(''); // Tracks fade-in class to apply animation
 
+// Adds fade-in animation class if on the Cart page
 onMounted(() => {
   if (route.name === 'Cart') {
     fadeInClass.value = 'fade-in';
@@ -28,13 +28,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Cart list layout */
 .cart-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Fade-in without movement */
+/* Fade-in animation for cart items */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -46,9 +47,6 @@ onMounted(() => {
 
 .fade-in {
   opacity: 0;
-}
-
-.fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 </style>
